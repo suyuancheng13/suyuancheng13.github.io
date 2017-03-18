@@ -3,7 +3,7 @@ title: iOS Dev
 date: 2017-03-18 11:08:00
 tags:
 ---
-iOS Dev
+
 
 # iOS开发
 ## 一、iOS基础知识
@@ -18,27 +18,21 @@ iOS Dev
 3、`self`的赋值一定要在`initxxx`系列函数里调用，不能在别的函数里调用，`initialxxx`都不行
 
 
-###2、关于在一个工程中添加自定义framework
+### 2、关于在一个工程中添加自定义framework
 1、添加方式：File->New->Target->Cocoa Touch Framework
 2、真机测试时可会出现dyld:Library no loaded:....   
 **解决方法**：在app对应的Target->General->Embedded Binaries 添加自定义framwork
-###3、Framework 命令行编译
+### 3、Framework 命令行编译
 
 利用xcode tools[参考](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html),命令如下：
 
 > xcodebuild clean build -project /Users/yuanchengsu/Desktop/iMSDK/iMSDK/iOS/IMSDK/IMSDK.xcodeproj 
-
-                                 -target IMSDKCoreKit
-
-                                 -configuration Release 
-
-                                 -xcconfig /Users/yuanchengsu/Desktop/iMSDK/iMSDK/iOS/IMSDK/Demo/Configurations/IMSDKGNU++98.xcconfig 
-                               -sdk iphoneos9.1
+-target IMSDKCoreKit -configuration Release  -xcconfig /Users/yuanchengsu/Desktop/iMSDK/iMSDK/iOS/IMSDK/Demo/Configurations/IMSDKGNU++98.xcconfig -sdk iphoneos9.1
 
 
-###4.[KVO]( https://www.mikeash.com/pyblog/friday-qa-2009-01-23.html)     
-###5.[ios https](http://io.diveinedu.com/2016/01/09/iOS%E5%BA%94%E7%94%A8%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8BHTTPS.html)
-###6.runloop     
+### 4.[KVO]( https://www.mikeash.com/pyblog/friday-qa-2009-01-23.html)     
+### 5.[ios https](http://io.diveinedu.com/2016/01/09/iOS%E5%BA%94%E7%94%A8%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8BHTTPS.html)
+### 6.runloop     
 runloop只有在开启第二个线程的时候才考虑使用runloop，而且也并非所有的线程需要runloop
 + 使用runloop的情况    
   + use ports or custom input sources to communicate with other threads
@@ -51,16 +45,16 @@ runloop只有在开启第二个线程的时候才考虑使用runloop，而且也
 + runLoop在获取时，就是创建
 + 一个runloop有两个CFRunloopSource,source0:处理UIEvent，CFSocket,source1:mach port,CFMachPort,CFMessagePort;一种mode:default,tracking,common     
 
-###7.copy与retain    
+### 7.copy与retain    
 + copy是指拷贝内容    
 + retain是指拷贝指针     
 + copy需要对象遵守NSCopying协议的    
 +     
 
-###8.关于xcode查看汇编的方法   
+### 8.关于xcode查看汇编的方法   
 + xcode 7.x: Debug ==> Debug Workflow ==> Show Disassembly when Debugging     
 + xocde 7.x之前： Product ==> Debug Workflow ==> Show Disassembly when Debugging
-##二、关于certificates 和provisioning proflies
+## 二、关于certificates 和provisioning proflies
 
 1、certificates：key(private key)
 
@@ -78,7 +72,7 @@ runloop只有在开启第二个线程的时候才考虑使用runloop，而且也
 4、wwdr证书失效会导致自己证书无效
 
 
-##三、关于Clang 与LLVM  
+## 三、关于Clang 与LLVM  
 
 
 Clang 是一个 C++ 编写、基于 LLVM、发布于 LLVM BSD 许可证下的/C++/Objective C/Objective C++ 编译器。LLVM 是 Low Level Virtual Machine。具体介绍参考[clang and llvm]( http://objccn.io/issue-6-2/)
@@ -87,7 +81,7 @@ Clang 是一个 C++ 编写、基于 LLVM、发布于 LLVM BSD 许可证下的/C+
 
    
 
-##四、反馈系统UI设计问题：
+## 四、反馈系统UI设计问题：
 
 
 
@@ -103,12 +97,12 @@ Clang 是一个 C++ 编写、基于 LLVM、发布于 LLVM BSD 许可证下的/C+
 
 target:action];[参见]( http://www.cnblogs.com/ygm900/p/3659619.html )  
 
-##五、关于isKindOfClass与isMemberOfClass的区别：
+## 五、关于isKindOfClass与isMemberOfClass的区别：
 
 1、isKindOfClass，是判断一个对象是属于哪个类~~ 型，一直追溯到父类~~ 。或者子类的实例
 
 2、isMemberClass，是判断一个对象属于哪个类~~ 型，不追溯到父类!~~ 。   
-##六、Core Data编程
+## 六、Core Data编程
 1、core data 与sql的一些对应关系：
 
 | 功能 | sql |core data| 
@@ -125,41 +119,42 @@ target:action];[参见]( http://www.cnblogs.com/ygm900/p/3659619.html )
 3、`NSPersistentStoreCoordinator`
 `NSPersistentStoreCoordinator`才是最终的操作实现都是才是核心,[参考](http://objccn.io/issue-4-1)   
 4、[编程参考](http://iiiyu.com/2013/03/29/learning-ios-notes-eighteen/)
-##七、关于异步加载问题
+## 七、关于异步加载问题
 1、`nsdata datawithcontentsofurl`是一个同步加载方法，因此要使用此方法要采用异步加载方法。可以适用于加载图片等；
-2、注意`AFNertworking success/failure block` invoked in main thread。如果 没有进行队列设置默认会返回到主线程去。  
-```Objective-c
-if(sucess)
-{
-dispatch_group_async(self.completionGroup?:http_request_operation_completion_group(),self.completionQueue?:dispatch_get_main_queue(),^{});
-}   
+2、注意`AFNertworking success/failure block` invoked in main thread。如果 没有进行队列设置默认会返回到主线程去。 
+ 
+```
+	if(sucess)
+	{
+	dispatch_group_async(self.completionGroup?:http_request_operation_completion_group(),self.completionQueue?:dispatch_get_main_queue(),^{});
+	}   
 ```   
-##八、关于 strong,weak引用修饰符  
+## 八、关于 strong,weak引用修饰符  
 1、strong相当于手动引用计数（manual reference count）中的retain，拥有对象直到对象释放。
 2、weak与strong刚好相反，weak并不持有对象，而且当对象释放时weak我修饰的对象会自动赋值为nil。例如：   
 ```
-id _weak obj = [[NSObject alloc]init];//错误，weak不能持有对象
-
-id _weak oo = nil;
-{
-   id strong object = [[NSObject alloc]init];
-   oo= object
-   NSLog(@"%@",oo)//此处对象是存在的
-}
-NSLog(@"%@",oo)//此处将打印null
+	id _weak obj = [[NSObject alloc]init];//错误，weak不能持有对象
+	
+	id _weak oo = nil;
+	{
+	   id strong object = [[NSObject alloc]init];
+	   oo= object
+	   NSLog(@"%@",oo)//此处对象是存在的
+	}
+	NSLog(@"%@",oo)//此处将打印null
 ```   
-##九、[关于draweRect消耗内存](http://bihongbo.com/2016/01/03/memoryGhostdrawRect/)  
+## 九、[关于draweRect消耗内存](http://bihongbo.com/2016/01/03/memoryGhostdrawRect/)  
 要想搞明白这个问题，我们需要撸一撸在`iOS`程序上图形显示的原理。在`iOS`系统中所有显示的视图都是从基类`UIView`继承而来的，同时`UIView`负责接收用户交互。**但是实际上你所看到的视图内容，包括图形等，都是由`UIView`的一个实例图层属性来绘制和渲染的，那就是`CALayer`。**
 **最终我们的图形渲染落点落在`contents`身上**![如图](http://7xkdhe.com1.z0.glb.clouddn.com/drawRect3.001.png)。
 `contents`也被称为寄宿图，除了给它赋值`CGImage`之外，我们也可以直接对它进行绘制，绘制的方法正是这次问题的关键，通过继承`UIView`并实现`-drawRect:`方法即可自定义绘制。`-drawRect:` 方法没有默认的实现，因为对`UIView`来说，寄宿图并不是必须的，`UIView`不关心绘制的内容。如果`UIView`检测到`-drawRect:`方法被调用了，它就会为视图分配一个寄宿图，这个寄宿图的像素尺寸等于视图大小乘以`contentsScale`(这个属性与屏幕分辨率有关，我们的画板程序在不同模拟器下呈现的内存用量不同也是因为它)的值。这也就是`-drawRect:`消耗内存的原因。
 
 **解决方案：**使用CAShapeLayer,另外与屏幕大小的画板可以算出消耗内存几M左右，可以接受   
-##十、[关于设置圆角问题](http://www.cocoachina.com/ios/20160301/15486.html)  
+## 十、[关于设置圆角问题](http://www.cocoachina.com/ios/20160301/15486.html)  
 
 
 由于设置圆角发生离屏渲染，所以对    
 
-##十一、[数据持久化]( http://casatwy.com/iosying-yong-jia-gou-tan-ben-di-chi-jiu-hua-fang-an-ji-dong-tai-bu-shu.html)
+## 十一、[数据持久化]( http://casatwy.com/iosying-yong-jia-gou-tan-ben-di-chi-jiu-hua-fang-an-ji-dong-tai-bu-shu.html)
 
 1.使用 archive的对象需要实现<NSCoding>里的方法，关于NSCoder怎么使用参考如下 ：   
 
@@ -167,47 +162,45 @@ NSLog(@"%@",oo)//此处将打印null
 
 
 ```
-
-
-- (
-void
-)encodeWithCoder:(NSCoder *
-)aCoder {
-    [aCoder encodeObject:self.firstName forKey:PERSON_KEY_FIRSTNAME];
-    [aCoder encodeObject:self.lastName forKey:PERSON_KEY_LASTNAME];
-    [aCoder encodeFloat:self.height forKey:PERSON_KEY_HEIGHT];
-}
-
-
-- (
-id
-)initWithCoder:(NSCoder *
-)aDecoder {
-    self 
-=
- [super init];
-    
-if
- (self !=
- nil) {
-        self.firstName 
-=
- [aDecoder decodeObjectForKey:PERSON_KEY_FIRSTNAME];
-        self.lastName 
-=
- [aDecoder decodeObjectForKey:PERSON_KEY_LASTNAME];
-        self.height 
-=
- [aDecoder decodeFloatForKey:PERSON_KEY_HEIGHT];
-    }
-    
-return
- self;
-}
+	- (
+	void
+	)encodeWithCoder:(NSCoder *
+	)aCoder {
+	    [aCoder encodeObject:self.firstName forKey:PERSON_KEY_FIRSTNAME];
+	    [aCoder encodeObject:self.lastName forKey:PERSON_KEY_LASTNAME];
+	    [aCoder encodeFloat:self.height forKey:PERSON_KEY_HEIGHT];
+	}
+	
+	
+	- (
+	id
+	)initWithCoder:(NSCoder *
+	)aDecoder {
+	    self 
+	=
+	 [super init];
+	    
+	if
+	 (self !=
+	 nil) {
+	        self.firstName 
+	=
+	 [aDecoder decodeObjectForKey:PERSON_KEY_FIRSTNAME];
+	        self.lastName 
+	=
+	 [aDecoder decodeObjectForKey:PERSON_KEY_LASTNAME];
+	        self.height 
+	=
+	 [aDecoder decodeFloatForKey:PERSON_KEY_HEIGHT];
+	    }
+	    
+	return
+	 self;
+	}
 
 ```   
 
-##十二、离屏渲染  
+## 十二、离屏渲染  
 
 
 
