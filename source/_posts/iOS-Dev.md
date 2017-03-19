@@ -1,7 +1,7 @@
 ---
 title: iOS Dev
 date: 2017-03-18 11:08:00
-tags: [iOS, DEV]
+tags: [iOS, Dev]
 categories: iOS
 ---
 ## 一、iOS基础知识
@@ -18,9 +18,11 @@ categories: iOS
 
 
 ### 2、关于在一个工程中添加自定义framework
+
 1、添加方式：File->New->Target->Cocoa Touch Framework
 2、真机测试时可会出现dyld:Library no loaded:....   
 **解决方法**：在app对应的Target->General->Embedded Binaries 添加自定义framwork
+
 ### 3、Framework 命令行编译
 
 利用xcode tools[参考](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html),命令如下：
@@ -122,26 +124,32 @@ target:action];[参见]( http://www.cnblogs.com/ygm900/p/3659619.html )
 1、`nsdata datawithcontentsofurl`是一个同步加载方法，因此要使用此方法要采用异步加载方法。可以适用于加载图片等；
 2、注意`AFNertworking success/failure block` invoked in main thread。如果 没有进行队列设置默认会返回到主线程去。 
  
-```
+
+
 	if(sucess)
 	{
 	dispatch_group_async(self.completionGroup?:http_request_operation_completion_group(),self.completionQueue?:dispatch_get_main_queue(),^{});
 	}   
-```   
+     
+
+
 ## 八、关于 strong,weak引用修饰符  
+
 1、strong相当于手动引用计数（manual reference count）中的retain，拥有对象直到对象释放。
 2、weak与strong刚好相反，weak并不持有对象，而且当对象释放时weak我修饰的对象会自动赋值为nil。例如：   
-```
-	id _weak obj = [[NSObject alloc]init];//错误，weak不能持有对象
-	
+
+
+
+	id _weak obj = [[NSObject alloc]init];//错误，weak不能持有对象	
 	id _weak oo = nil;
 	{
 	   id strong object = [[NSObject alloc]init];
 	   oo= object
 	   NSLog(@"%@",oo)//此处对象是存在的
 	}
-	NSLog(@"%@",oo)//此处将打印null
-```   
+     
+
+
 ## 九、[关于draweRect消耗内存](http://bihongbo.com/2016/01/03/memoryGhostdrawRect/)  
 要想搞明白这个问题，我们需要撸一撸在`iOS`程序上图形显示的原理。在`iOS`系统中所有显示的视图都是从基类`UIView`继承而来的，同时`UIView`负责接收用户交互。**但是实际上你所看到的视图内容，包括图形等，都是由`UIView`的一个实例图层属性来绘制和渲染的，那就是`CALayer`。**
 **最终我们的图形渲染落点落在`contents`身上**![如图](http://7xkdhe.com1.z0.glb.clouddn.com/drawRect3.001.png)。
@@ -159,26 +167,18 @@ target:action];[参见]( http://www.cnblogs.com/ygm900/p/3659619.html )
 
 
 
-
-```
-	- (
-	void
-	)encodeWithCoder:(NSCoder *
-	)aCoder {
+	- (	void)encodeWithCoder:(NSCoder *	)aCoder {
 	    [aCoder encodeObject:self.firstName forKey:PERSON_KEY_FIRSTNAME];
 	    [aCoder encodeObject:self.lastName forKey:PERSON_KEY_LASTNAME];
 	    [aCoder encodeFloat:self.height forKey:PERSON_KEY_HEIGHT];
 	}
-	
-	
 	- (
 	id
 	)initWithCoder:(NSCoder *
 	)aDecoder {
 	    self 
 	=
-	 [super init];
-	    
+	 [super init];	    
 	if
 	 (self !=
 	 nil) {
@@ -191,26 +191,25 @@ target:action];[参见]( http://www.cnblogs.com/ygm900/p/3659619.html )
 	        self.height 
 	=
 	 [aDecoder decodeFloatForKey:PERSON_KEY_HEIGHT];
-	    }
-	    
+	    }	    
 	return
 	 self;
 	}
-
-```   
+   
 
 ## 十二、离屏渲染  
 
 
 
-设置了以下属性时，都会触发离屏绘制：
-+ shouldRasterize（光栅化）
-+ masks（遮罩）
-+ shadows（阴影）
-+ edge antialiasing（抗锯齿）
+设置了以下属性时，都会触发离屏绘制：    
+
++ shouldRasterize（光栅化）  
++ masks（遮罩）    
++ shadows（阴影）   
++ edge antialiasing（抗锯齿）  
 
 
-+ group opacity（不透明）
++ group opacity（不透明）   
 
 
 + 还有一种特殊的离屏渲染，`cpu`渲染，当我们使用drawRect时会触发

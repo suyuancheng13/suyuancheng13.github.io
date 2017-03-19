@@ -5,6 +5,10 @@ categories: Hexo
 tags: 使用手册
 ---
 
+> Hexo 的日常使用，包括增加，修改以及多设备操作
+
+<!--More-->
+
 ## 一、关于日常笔记（添加新，修改等）：
 + 依次执行git pull, git add .、git commit -m "..."、git push origin hexo指令将改动推送到GitHub；
 + 然后才执行hexo g -d发布网站到master分支上 
