@@ -1,11 +1,9 @@
 ---
 title: iOS Dev
 date: 2017-03-18 11:08:00
-tags:
+tags: iOS
+categories: iOS DEV
 ---
-
-
-# iOS开发
 ## 一、iOS基础知识
 
 <!--More-->
