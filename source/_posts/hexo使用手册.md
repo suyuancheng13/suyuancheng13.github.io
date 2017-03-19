@@ -1,7 +1,8 @@
 ---
 title: hexo使用手册
 date: 2017-03-19 11:04:18
-tags:
+categories: Hexo
+tags: 使用手册
 ---
 
 ## 一、关于日常笔记（添加新，修改等）：
