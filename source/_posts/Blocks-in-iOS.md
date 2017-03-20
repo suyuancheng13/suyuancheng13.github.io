@@ -83,8 +83,8 @@ tags: [iOS, Dev]
 	    }
 	}
 ```
-## 二、关于Block类型
-## 三、__block变量
+# 二、关于Block类型
+# 三、__block变量
 ```
 	typedef void (^ test1) (BOOL success, NSError *error) ;
 
