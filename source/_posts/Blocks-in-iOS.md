@@ -9,9 +9,11 @@ tags: [iOS, Dev]
 <!--More-->
 
 # 一、关于Block的内存表示
-## 1.1、对以下源码，通过`clang -rewite-objc 源文件 -o 目标文件（可以为.txt）`
+## 1.1、`clang -rewite-objc 源文件 -o 目标文件（可以为.txt）`
++ 首先我们来看一段常见源码，通过上述命令查看其中间文件：
 
-```
+```     
+
 	typedef void (^ test1) (BOOL success, NSError *error) ;
 
 	int main(int argc, char * argv[]) {
@@ -33,11 +35,11 @@ tags: [iOS, Dev]
 
 ```
 
-## 1.2、分析重写文件
-
++ 通过sublime打开目标文件会发现代码远不止上面那寥寥几行，不难从其中可以找到如下与Block相关的代码。
 
 ```
-	truct __block_impl {
+
+	struct __block_impl {
   		void *isa;
   		int Flags;
   		int Reserved;
@@ -45,7 +47,10 @@ tags: [iOS, Dev]
 	};
 ```
 
-```
+`struct __block_impl`就是block的真面目，结构还是相当清晰。`isa`对OC开发人员再熟悉不过，是表示其类型或者说本质的，block有三种类型`NSGlobalBlock`，`NSStackBlock`,`NSMallocBlock`，不同类型的block就是通过这个字段区分。然后就是`FuncPtr`，顾名思义就是指向某一函数的指针。其实block本质上与c语言中的函数指针是一样的。
+
+```   
+
 	struct __main_block_impl_0 {
 	  struct __block_impl impl;
 	  struct __main_block_desc_0* Desc;
@@ -70,6 +75,7 @@ tags: [iOS, Dev]
 	} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
 ```
 ```
+
 	int main(int argc, char * argv[]) {
 	    /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
 	        int base =10;
@@ -83,9 +89,12 @@ tags: [iOS, Dev]
 	    }
 	}
 ```
+以上这一段代码正是与源码相对应的`struct __main_block_impl_0`是此处block的真正实现，主要分为两部分一个是block的定义一个是block的一些描述。`__main_block_func_0`是具体执行的函数体。接下来就是要`main`函数体中初始化block，然后就大功告成可以便可享用block。
+以上揭示了block的本质。
 # 二、关于Block类型
 # 三、__block变量
 ```
+
 	typedef void (^ test1) (BOOL success, NSError *error) ;
 
 	int main(int argc, char * argv[]) {
@@ -109,6 +118,7 @@ tags: [iOS, Dev]
 
 
 ```
+
 	struct __Block_byref_base_0 {
 	  void *__isa;
 	__Block_byref_base_0 *__forwarding;
