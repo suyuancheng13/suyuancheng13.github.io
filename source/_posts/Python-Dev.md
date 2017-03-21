@@ -6,9 +6,11 @@ categories: Python
 ---
 # Python 学习
 
+<!--More-->
+
 ## 一、基础知识   
-<span id = "1"></span>
- ###1.0、逻辑运算（补充）
+
+### 1.0、逻辑运算（补充）
  
 |逻辑运算|python 表示|  
 | -- | --|  
