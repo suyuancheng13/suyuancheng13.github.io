@@ -1,7 +1,7 @@
 ---
 title: Python Dev
 date: 2017-03-21 16:57:02
-tags:[Python, Dev]
+tags: [Python, Dev]
 categories: Python
 ---
 # Python 学习
