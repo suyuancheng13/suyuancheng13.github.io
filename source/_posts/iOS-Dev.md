@@ -55,7 +55,43 @@ runloop只有在开启第二个线程的时候才考虑使用runloop，而且也
 
 ### 8.关于xcode查看汇编的方法   
 + xcode 7.x: Debug ==> Debug Workflow ==> Show Disassembly when Debugging     
-+ xocde 7.x之前： Product ==> Debug Workflow ==> Show Disassembly when Debugging
++ xocde 7.x之前： Product ==> Debug Workflow ==> Show Disassembly when Debugging    
+
+### 9.oc严格单例
+
+创建对象的步骤分为申请内存(alloc)、初始化(init)这两个步骤，我们要确保对象的唯一性，因此在第一步这个阶段我们就要拦截它。当我们调用alloc方法时，oc内部会调用allocWithZone这个方法来申请内存，我们覆写这个方法，然后在这个方法中调用shareInstance方法返回单例对象，这样就可以达到我们的目的。拷贝对象也是同样的原理，覆写copyWithZone方法，然后在这个方法中调用shareInstance方法返回单例对象。看代码吧：
+
+```
+
+	#import "Singleton.h"  
+	  
+	@implementation Singleton  
+	  
+	static Singleton* _instance = nil;  
+	  
+	+(instancetype) shareInstance  
+	{  
+	    static dispatch_once_t onceToken ;  
+	    dispatch_once(&onceToken, ^{  
+	        _instance = [[super allocWithZone:NULL] init] ;  
+	    }) ;  
+	      
+	    return _instance ;  
+	}  
+	  
+	+(id) allocWithZone:(struct _NSZone *)zone  
+	{  
+	    return [Singleton shareInstance] ;  
+	}  
+	  
+	-(id) copyWithZone:(struct _NSZone *)zone  
+	{  
+	    return [Singleton shareInstance] ;  
+	}  
+	  
+	@end  
+```
+
 ## 二、关于certificates 和provisioning proflies
 
 1、certificates：key(private key)
