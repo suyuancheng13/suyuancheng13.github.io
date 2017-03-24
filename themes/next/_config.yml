@@ -428,9 +428,9 @@ calendar:
 
 donate: 
   enable: true
-  text: Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
+  reward_comment: Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！
   alipay: 
-  wechat: suyuancheng13
+  wechatpay: https://github.com/suyuancheng13/suyuancheng13.github.io/tree/hexo/themes/next/wechatpay.jpg
 
 # Algolia Search
 algolia_search:
@@ -445,7 +445,7 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: false
+  enable: true
 
 # External URL with BASE64 encrypt & decrypt
 # Usage: {% exturl text url "title" %}
