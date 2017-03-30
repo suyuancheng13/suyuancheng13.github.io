@@ -57,21 +57,22 @@ categories: Python
 
 ```
 
-	d  = {&#39;a&#39;:1,&#39;b&#39;:2}
+	d  = { a :1, b :2}
 	
 	for key in d:
 	
 	    print key
-
 ```  
 
 1、但是要使用迭代一个对象，那么这个对象要是**可迭代的**，<font color = red>方法：可以通过collections 模块的iterable进行判断</font>  
+
 
 ### 1.6、生成器(Generator)
 
 由于通过列表生成器生成一个列表时，受到内存的限制，列表的容量是有限的。所以如果可以按照一种算法进行推算出来，那就不必创建完整的list从而可以节省大量空间。创建generator的方法有多种：  
 
 第一种： 
+
 
 ```
 
@@ -137,7 +138,7 @@ categories: Python
 	    def char2num (s) :
 	
 	
-	        return { &#39;0&#39; : 0 , &#39;1&#39; : 1 , &#39;2&#39; : 2 , &#39;3&#39; : 3 , &#39;4&#39; : 4 , &#39;5&#39; : 5 , &#39;6&#39; : 6 , &#39;7&#39; : 7 , &#39;8&#39; : 8 , &#39;9&#39; : 9 }[s]
+	        return {  0  : 0 ,  1  : 1 ,  2  : 2 ,  3  : 3 ,  4  : 4 ,  5  : 5 ,  6  : 6 ,  7  : 7 ,  8  : 8 ,  9  : 9 }[s]
 	
 	    return reduce(fn,map(char2num,s))
 
@@ -182,7 +183,7 @@ categories: Python
 	        def wrapper(*args,**kw):
 	
 	
-	            print &#39;call %s&#39;%func.__name__
+	            print  call %s %func.__name__
 	
 	
 	            return func(*args,**kw)
@@ -200,7 +201,7 @@ categories: Python
 	
 	def now():
 	
-	    print &#39;sdfdsfds&#39;
+	    print  sdfdsfds 
 
 
 ```  
@@ -219,11 +220,11 @@ categories: Python
 
 ```
 
-	```
+		‘’‘
 	
-	注释
-	
-	```
+		注释
+		
+		’‘’
 
 ```
 
@@ -259,7 +260,7 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 	        def print_score(self):
 	
 	
-	                print &#39;%s,%s&#39;%(self.name,self.score)
+	                print  %s,%s %(self.name,self.score)
 	
 
 ```    
@@ -298,7 +299,7 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 
 	import types 
 	
-	type(&#39;ssdfdf&#39;)
+	type( ssdfdf )
 
 ```
 
@@ -336,7 +337,7 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 
 	class Student(object):
 	
-	        __slot__ = (&#39;name&#39;,&#39;age&#39;)  #用tuple定义允许修改的属性名称
+	        __slot__ = ( name , age )  #用tuple定义允许修改的属性名称
 
 
 ```
@@ -399,7 +400,7 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 
 ```
 
-	hello = type(&#39;Hello&#39;,(object,),dict(hello = fn))
+	hello = type( Hello ,(object,),dict(hello = fn))
 
 ```  
 
@@ -421,23 +422,23 @@ type接收三个参数：
 
 	try:
 	
-	    print &#39;try....&#39;
+	    print  try.... 
 	
 	
 	    r = 10/0
 	
 	
-	    print &#39;reuslt:&#39;,r
+	    print  reuslt: ,r
 	
 	
 	except ZeroDivisionError ,e:        #还可以多级捕获
 	
-	    print &#39;error:&#39;,e
+	    print  error: ,e
 	
 	
 	finally:
 	
-	    print &#39;finally...&#39;
+	    print  finally... 
 ```   
 
 1、可以通过`raise`抛出异常，`raise`后面不带参数则将错误原样抛出，同样`raise`也可以修改抛出错误的类型  
@@ -448,7 +449,46 @@ type接收三个参数：
 
 2、asser断言
 
-3、logging推荐，可以定义log级别：debug,info,waning,error ,可以指定输出文件`logging.config.fileConfig(filename)`,[filename规则](https://docs.python.org/2/library/logging.config.html#logging-config-fileformat)
+3、logging推荐，可以定义log级别：debug,info,waning,error ,可以指定输出文件`logging.config.fileConfig(filename)`,[filename规则](https://docs.python.org/2/library/logging.config.html#logging-config-fileformat)  ，给一个log.conf
+
+```
+	[loggers]
+	keys=root
+	
+	[handlers]
+	keys=consoleHandler,fileHandler
+	
+	[formatters]
+	keys=simpleFormatter
+	
+	[logger_root]
+	level=DEBUG
+	handlers=consoleHandler,fileHandler
+	
+	[handler_consoleHandler]
+	class=StreamHandler
+	level=DEBUG
+	formatter=simpleFormatter
+	args=(sys.stdout,)
+	
+	[handler_fileHandler]
+	class=logging.handlers.TimedRotatingFileHandler
+	level=DEBUG
+	formatter=simpleFormatter
+	args=('./log/sample.log','D',1,14)
+	#args=('/data/iTOP_ROOT/dev/log/admin/pack/sample.log','D',1,14)
+	
+	[formatter_simpleFormatter]
+	format=[%(asctime)s][pid %(process)d][%(levelname)s][%(filename)s:%(lineno)d]%(message)s
+	datefmt=
+```
+
+使用方式：  
+
+```
+	logging.config.fileConfig('./log.conf')
+	logger = logging.getLogger('root')
+```
 
 4、[pdb]( http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/00138683229901532c40b749184441dbd428d2e0f8aa50e000)   
 
@@ -462,7 +502,7 @@ type接收三个参数：
 
 ```python
 
-    f = open(&#39;filename&#39;,&#39;r&#39;)
+    f = open(filename,r)
 
 
     f.read()
@@ -478,7 +518,7 @@ type接收三个参数：
 
 ```python
 
-	with open(&#39;filename&#39;,&#39;r&#39;) as f:
+	with open( filename ,r ) as f:
 
    		 print f.read()
 
@@ -497,7 +537,7 @@ type接收三个参数：
 | ---- | ---- |     
 | { } | dict |  
 | [ ] | list |  
-| "string" | &#39;str&#39;或者u&#39;unicode&#39; |
+| "string" |  str 或者u unicode  |
 | 123.4 | int 或者 float |  
 | true/false | Ture /False |
 | null | None |   
@@ -568,7 +608,7 @@ type接收三个参数：
 	                   change_it(n)
 	               finally:
 	                   lock.release()  #释放锁
-	if __name__ == &#39;__main__&#39;:
+	if __name__ ==  __main__ :
 	      t1 = threading.Thread(target=run_thread, args=(5,))  
 	
 	      t2 = threading.Thread(target=run_thread, args=(8,))   
@@ -597,7 +637,7 @@ type接收三个参数：
 	
 	def pro_std():
 	
-	    print&#39;hello,%s (in %s)&#39;%(loca_school.student,threading.current_thread().name)
+	    print hello,%s (in %s) %(loca_school.student,threading.current_thread().name)
 	
 	
 	def pro_thread(name):
@@ -607,9 +647,9 @@ type接收三个参数：
 	
 	    pro_std()
 	
-	t1 = threading.Thread(target = pro_thread,args = (&#39;Alice&#39;),name = &#39;a&#39;)
+	t1 = threading.Thread(target = pro_thread,args = ( Alice ),name =  a )
 	
-	t2 = threading.Thread(target = pro_thread,args = (&#39;Bob&#39;),name = &#39;B&#39;)
+	t2 = threading.Thread(target = pro_thread,args = ( Bob ),name =  B )
 	
 	t1.start()
 	
@@ -641,9 +681,9 @@ type接收三个参数：
 	
 	md5 = hashlib.md5()
 	
-	md5.update(&#39; hello world&#39;)
+	md5.update(  hello world )
 	
-	md5.update(&#39;hdhhd&#39;)
+	md5.update( hdhhd )
 	
 	print md5.hexdigest()
 
@@ -651,14 +691,18 @@ type接收三个参数：
 
 SHA1与md5的调用 一样将上述代码改成SHA1即可  
 ## 2、python进阶  
-    
-<span id = "2"> </span>    
 ### 2.1、Range与XRange的区别
 在 Range的方法中，它会生成一个**list**的对象，但是在XRange中，它生成的却是一个**xrange的对象**，当返回的东西不是很大的时候，或者在一个 循环里，基本上都是从头查到底的情况下，这两个方法的效率差不多。但是，当返回的东西很大，或者循环中常常会被Break出来的话，还是建议使用 XRange，这样既省空间，又会提高效率。
 
+### 2.2、ArgumentParser处理数组传入
+
+```
+	ap = argparse.ArgumentParser()
+    ap.add_argument('-p','--plugins',required = True, nargs = '+', help = 'the channel which you will test')
+```
+
 
 ## 3、python实战
-<span id = "3"> </span>  
 ### 3.1、[python制作gif]( http://python.jobbole.com/81185/)，然后可以在ppt导入    
 ### 3.2、Tkinter UI  
 1、动态更新UI，使用`config`   
