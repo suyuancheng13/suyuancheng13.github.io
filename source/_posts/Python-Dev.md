@@ -502,6 +502,14 @@ SHA1与md5的调用 一样将上述代码改成SHA1即可
 
 ### 2.2、ArgumentParser处理数组传入
 
++ nargs说明
+
+||说明|   
+|:--|:--|
+|nargs ='+'|输入至少一个参数|
+|nargs = '*'|输入零个或多个参数|
+
+例如：
 ```
 	ap = argparse.ArgumentParser()
     ap.add_argument('-p','--plugins',required = True, nargs = '+', help = 'the channel which you will test')
