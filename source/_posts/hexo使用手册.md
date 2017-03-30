@@ -22,3 +22,8 @@ tags: 使用手册
 ### git clone 时一般有两种方式https和ssh，但是https模式下每一次push都需要输入用户名与密码，而ssh方式下只要设置好ssh后不需要每一次都输入用户名与密码。那么如果一个https如何才能转成ssh呢，那就按以下步骤：    
 + 通过`git remote -v`查看当前模式
 + 通过`git remote set-url git@github.com:xxxx/xxx.git`便可转成ssh
+
+
+## 四、关于hexo使用markdown语法
++ 代码块使用tap键缩进，不要使用语法
++ 标题与`##`之间要人空格

@@ -47,7 +47,7 @@ tags: [iOS, Dev]
 	};
 ```
 
-`struct __block_impl`就是block的真面目，结构还是相当清晰。`isa`对OC开发人员再熟悉不过，是表示其类型或者说本质的，block有三种类型`NSGlobalBlock`，`NSStackBlock`,`NSMallocBlock`，不同类型的block就是通过这个字段区分。然后就是`FuncPtr`，顾名思义就是指向某一函数的指针。其实block本质上与c语言中的函数指针是一样的。
+`struct __block_impl`就是block的真面目，结构还是相当清晰。`isa`对OC开发人员再熟悉不过，是表示其类型或者说本质的，block有三种类型`NSGlobalBlock`，`NSStackBlock`,`NSMallocBlock`，不同类型的block就是通过`isa`字段区分。然后就是`FuncPtr`，顾名思义就是指向某一函数的指针。其实block本质上与c语言中的函数指针是一样的。
 
 ```   
 
@@ -92,30 +92,30 @@ tags: [iOS, Dev]
 以上这一段代码正是与源码相对应的`struct __main_block_impl_0`是此处block的真正实现，主要分为两部分一个是block的定义一个是block的一些描述。`__main_block_func_0`是具体执行的函数体。接下来就是要`main`函数体中初始化block，然后就大功告成可以便可享用block。
 以上揭示了block的本质。
 # 二、关于Block类型
+## 2.1 Block的类型
+
+|类|对象存储域|
+|:--|:--|
+|_NSConreteStackBlock|栈上|
+|_NSConreteGlobalBlock|全局数据区（.data区）|
+|_NSConreteMallocBlock|堆上|
+
+## 2.2 对Block进行copy的效果
+
+|类|源存储域|复制效果|   
+|:--|:--|:--|   
+|_NSConreteStackBlock|栈上|从栈复制到堆|   
+|_NSConreteGlobalBlock|全局数据区（.data区）|无效果|   
+|_NSConreteMallocBlock|堆上|引用计数增加|
+在ARC中不需要显示进行copy操作。
+  
+
 # 三、__block变量
-```
+还是原来的demo，仅将其中的变量`base`声明为`__block`
 
-	typedef void (^ test1) (BOOL success, NSError *error) ;
+	 __block int base =10;
 
-	int main(int argc, char * argv[]) {
-	    @autoreleasepool {
-	        int base =10;
-	        for(int i=0;i<10;i++){
-	            int a =10;
-	            // int *b  = (int*)malloc(10*sizeof(int));
-	            void (^ test) (BOOL success, NSError *error)= ^(BOOL success, NSError *error) {
-	                NSLog(@"sssss:%d,base:%d",success,base);
-	            } ;
-	            test(1,nil);
-	           
-	        }
-	
-	//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
-	    }
-	}
-
-```
-
+经过重写后，结果又大不相同
 
 ```
 
@@ -167,4 +167,23 @@ tags: [iOS, Dev]
 	
 	    }
 	}
-```
+```    
+
+不难发现一个`__block`变量竟然是一个结构体。注意`main`函数中的`__block`变量的初始化已经演变成如下代码：     
+
+	__attribute__((__blocks__(byref))) __Block_byref_base_0 base = 
+	{(void*)0,
+	(__Block_byref_base_0 *)&base,
+	 0, 
+	sizeof(__Block_byref_base_0), 
+	10
+	};
+
+### __block变量在Block内外都可以访问
+
+注意结合该结构体声明分析。值得关注的是其`__forwarding`指针指向了自己本身。**<font color = red>__forwarding的存在是为了不管__block变量是在堆上还是栈上都可以访问该变量，因为在复制__block变量到堆上是会改变栈上__block结构中的__forwarding指向堆上的，而堆上的__block变量指向自己本身，因此堆上与栈上都能可以该变量。</font>**
+
+
+# 总结
+### 1、 Block是一个OC对象
+### 2、__block变量可以有Block内外都可以访问，是由于`__forwarding`的存在
