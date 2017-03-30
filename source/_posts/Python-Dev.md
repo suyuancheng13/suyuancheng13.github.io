@@ -54,18 +54,14 @@ categories: Python
 
 
 ### 1.5、迭代使用`for ... in `或者`for value in d.iteatervalues()`同时也可以用`for k,v in d.iteritems()`
+例如：   
 
 ```
-
-	d  = { a :1, b :2}
-	
-	for key in d:
-	
-	    print key
-```  
-
-1、但是要使用迭代一个对象，那么这个对象要是**可迭代的**，<font color = red>方法：可以通过collections 模块的iterable进行判断</font>  
-
+	d  = { a :1, b :2}	
+	for key in d:	
+	print key
+```
+1、但是要使用迭代一个对象，那么这个对象要是**可迭代的**，<font color = red>方法：可以通过collections 模块的iterable进行判断</font>      
 
 ### 1.6、生成器(Generator)
 
@@ -73,46 +69,25 @@ categories: Python
 
 第一种： 
 
-
 ```
-
-	l = [ x*x for x in range(1,11) ]
-	
+	l = [ x*x for x in range(1,11) ]	
 	g = (x*x for x in range(1,11))   # g就是一个generator，与列表生成器不同的是[ ]与（ ）的问题  
-	
 	g.next()  # generator保存的是算法每次调用next()实际是在计算下一个元素，直到计算到最后的元素，当没有元素时就会抛出StopIteration的错误
-	
 	for n in g: # 由于不断调用next（）函数并不是很方便，由于generator是可迭代对象，因此正确的使用方法是使用迭代
-	
-	    print n
-```  
+	print n
+```
 
 第二种：
-
-在函数定义中如果包含yield关键字，那么这个函数就是一个generator
+在函数定义中如果包含yield关键字，那么这个函数就是一个generator      
 
 ```
-
-	def fib(max):
-	
-	    n,a,b = 0,0,1
-	
-	
-	    while n<max:
-	
-	
-	        yield b      # yield关键字
-	
-	
-	        a,b =b ,a+b
-	
-	
-	        n = n+1
-```  
-
-
-
-
+	def fib(max):	
+		    n,a,b = 0,0,1	
+		    while n<max:	
+		        yield b      # yield关键字
+		        a,b =b ,a+b	
+		        n = n+1
+```
 ### 1.7、python高函数
 
 所谓的高阶函数就是一个函数接收函数作为参数
@@ -123,40 +98,23 @@ categories: Python
 
 + map/reduce demo  
 
-
-
-
 ```
-
-	def str2int(s):
-	
-	    def fn(x,y):
-	
-	        return x*10+y
-	
-	
-	    def char2num (s) :
-	
-	
-	        return {  0  : 0 ,  1  : 1 ,  2  : 2 ,  3  : 3 ,  4  : 4 ,  5  : 5 ,  6  : 6 ,  7  : 7 ,  8  : 8 ,  9  : 9 }[s]
-	
-	    return reduce(fn,map(char2num,s))
-
-```  
+	def str2int(s):	
+		    def fn(x,y):	
+		        return x*10+y	
+		    def char2num (s) :	
+		        return {  0  : 0 ,  1  : 1 ,  2  : 2 ,  3  : 3 ,  4  : 4 ,  5  : 5 ,  6  : 6 ,  7  : 7 ,  8  : 8 ,  9  : 9 }[s]
+		    return reduce(fn,map(char2num,s))
+```
 
 <font color=red>**注意map,reduce都接收一个函数与一个list，因此第5行代码就好理解了**   </font>    
 
 + filter 与map/reduce一样都 是高阶函数都是接收一个函数与list变量,filter是根据传入函数作用于每一个元素返回true/false来决定这个元素是否保留
 
 ```
-
-	def is_odd(n):
-	
+	def is_odd(n):	
 	    return n%2 ==1
-	
-	
-	filter(is_odd,[1,2,3,4,5])
-
+	   	filter(is_odd,[1,2,3,4,5])
 ```   
 
 
@@ -165,11 +123,9 @@ categories: Python
 ### 1.9、**funciton.partial偏函数**，把一个函数的某些参数给固定住，返回一个新函数，那么调用 这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools.partial创建一个偏函数。
 
 ```
-
-	import functools
-	
-	int2 = functools.partial(int,base = 2) #int2就是一个新函数只有一个参数
-```      
+		import functools	
+		int2 = functools.partial(int,base = 2) #int2就是一个新函数只有一个参数
+```    
 
 ### 1.9.1 `@`语法
 
@@ -177,33 +133,19 @@ categories: Python
 开门见山，直上代码
 
 ```
-
-	def log(func):
-	
-	        def wrapper(*args,**kw):
-	
-	
-	            print  call %s %func.__name__
-	
-	
-	            return func(*args,**kw)
-	
-	
-	return wrapper
-
+		def log(func):	
+		        def wrapper(*args,**kw):	
+		            print  call %s %func.__name__
+		            return func(*args,**kw)	
+		return wrapper
 ```  
 
 `log`函数接收一个函数作为参数，然后返回一个函数，这就叫做decorator。那么怎么用这个decorator呢？代码直上：  
 
 ```
-
-	@log
-	
-	def now():
-	
-	    print  sdfdsfds 
-
-
+		@log	
+		def now():	
+		    print  sdfdsfds 
 ```  
 
 `@`语法相当于：`now = log(now)`     
@@ -219,13 +161,11 @@ categories: Python
 4、注释也可采用  
 
 ```
-
-		‘’‘
-	
-		注释
+			‘’‘
 		
-		’‘’
-
+			注释
+			
+			’‘’
 ```
 
 ### 1.11、关于`if __name__== main:`
@@ -241,39 +181,20 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 话不多说直接上demo
 
 ```
-
-	class Student(object):                                 #表示Student从object继承 
-	
-	        def __init__(self,name,score):            #__init__类于构造函数，且第一个参数永远是self，表示创建实例本身。而且实例化对象时一定要传入与__init__参数对应的参数
-	
-	
-	                self.name = name
-	
-	                self.score = score
-	
-	                super(Student,self).__init__()    #表示调用父类方法
-	
-	
-	        
-	
-	
-	        def print_score(self):
-	
-	
-	                print  %s,%s %(self.name,self.score)
-	
-
+		class Student(object):                                 #表示Student从object继承 
+		        def __init__(self,name,score):            #__init__类于构造函数，且第一个参数永远是self，表示创建实例本身。而且实例化对象时一定要传入与__init__参数对应的参数
+		
+		                self.name = name	
+		                self.score = score	
+		                super(Student,self).__init__()    #表示调用父类方法
+			        def print_score(self):	
+		                print  %s,%s %(self.name,self.score)
 ```    
 
- 1、`__init__`类于构造函数，且第一个参数永远是self，表示创建实例本身。而且实例化对象时一定要传入与__init__参数对应的参数。
-
-
-2、成员函数与普通函数不一样的地方就是第一个参数永远是self
-
-3、private访问控制权限就是在变量前面添加`__`前缀。`_`在类中视为private但是其实是可以访问的，只是按约定视为private.
-
-4、private变量其实也是可以访问的，可以通过`_类名_private变量`如`_Student_name`  
-
+1、`__init__`类于构造函数，且第一个参数永远是self，表示创建实例本身。而且实例化对象时一定要传入与__init__参数对应的参数。    
+2、成员函数与普通函数不一样的地方就是第一个参数永远是self     
+3、private访问控制权限就是在变量前面添加`__`前缀。`_`在类中视为private但是其实是可以访问的，只是按约定视为private.    
+4、private变量其实也是可以访问的，可以通过`_类名_private变量`如`_Student_name`     
 5、  super(className,self).function()      父类方法调用<font color = red> 如果是多继承且多个父类有同样的方法则按顺序调用</font>
 
 ### 1.14、关于python的多态
@@ -281,12 +202,8 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 由于python里不需要事先声明变量的类型，因此多态实现起来就简单得多：  
 
 ```
-
-	def run(animal):
-	
-	    animal.run()
-
-
+		def run(animal):	
+		    animal.run()
 ```  
 
 代码中只要传入的参数有run这个方法就可以，<font color = red>**不管是不是animal还是子类或者不是子类**</font>，这样子就与c++里的多态一样。其实本质上是由于python本来就是动态语言。  
@@ -296,11 +213,8 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 1、type可以判断基本类型的所属类型
 
 ```
-
-	import types 
-	
+	import types	
 	type( ssdfdf )
-
 ```
 
 2、isinstance可以判断基本数据类型还可以判断class类
@@ -312,21 +226,11 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 ### 1.16、python动态绑定方法
 
 ```
-
-	def set_age(self,age):
-	
-	        self.age = age
-	
-	
-	from types import MethodType
-	
+	def set_age(self,age):	
+	        self.age = age		
+	from types import MethodType	
 	s.set_age = MethodType(set_age,s,Student)          #给实例新增方法
-	
-	
-	
-	
 	Student.set_age = MethodType(set_age,None,Student)    #给类新增方法
-
 ```   
 
 1、<font color = red>**`__slot__`**</font>关键字
@@ -334,58 +238,29 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 如果想对class限制只允许给类的实例添加属性时，我们可以使用`__slot__`，但是不遗传
 
 ```
-
-	class Student(object):
-	
+	class Student(object):	
 	        __slot__ = ( name , age )  #用tuple定义允许修改的属性名称
-
-
 ```
 
 ###1.17、`@property`关键字
 
 `@property`负责将一个方法变成属性调用，而与一个属性不同的是属性并没有检查是否合法，而方法是可以进行检查的。
 
-```
 
-	class Student(object):
-	
-	        @property
-	
-	
-	        def score(self):
-	
-	
-	                return self._score
-	
-	
-	        
-	
-	
-	        @score.setter
-	
-	
-	        def score(self,value):
-	
-	
+```
+	class Student(object):	
+	        @property	
+	        def score(self):	
+	                return self._score	
+	        @score.setter	
+	        def score(self,value):	
 	                if():
-	
-	
 	                        .....#参数检查
-	
-	
 	                self._score = value
 	
-	
-	
-	
-	
-	>>>s = Student()
-	
+	>>>s = Student()	
 	>>>s.score = 10 #实际上是调用的s.set_score()
-	
 	>>>s.score #实际上调用 的是s.get_score()
-
 ```
 
 `@property`把一个方法变成属性，`@xxx.setter`把一个方法变成属性赋值，与OC的property有一点相似
@@ -399,9 +274,7 @@ private访问控制在python里通过`_`或者`__`前缀来实现。这里所说
 1、type动态创建一个对象
 
 ```
-
 	hello = type( Hello ,(object,),dict(hello = fn))
-
 ```  
 
 type接收三个参数：
@@ -419,25 +292,13 @@ type接收三个参数：
 ### 1.21、异常捕获`try:....except...finally...`
 
 ```
-
-	try:
-	
-	    print  try.... 
-	
-	
-	    r = 10/0
-	
-	
-	    print  reuslt: ,r
-	
-	
+	try:	
+	    print  try.... 	
+	    r = 10/0	
+	    print  reuslt: ,r	
 	except ZeroDivisionError ,e:        #还可以多级捕获
-	
-	    print  error: ,e
-	
-	
-	finally:
-	
+	    print  error: ,e	
+	finally:	
 	    print  finally... 
 ```   
 
@@ -500,29 +361,18 @@ type接收三个参数：
 
 1、文件读写   
 
-```python
-
+```
     f = open(filename,r)
-
-
     f.read()
-
-
     f.close
-
-
 ```    
 
 为了保证会调用`close()`同时也是为了简单化，Python引入了`with`语法来帮助我们调用`close()`
 
 
-```python
-
+```
 	with open( filename ,r ) as f:
-
    		 print f.read()
-
-
 ```   
 
 2、[操作文件和目录]( http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868321590543ff305fb9f9949f08d760883cc243812000)    
@@ -542,27 +392,20 @@ type接收三个参数：
 | true/false | Ture /False |
 | null | None |   
 
-```python
-
-	import josn
-	
-	d = dict(name = 'Bob',age = 10,score = 88)
-	
-	json.dumps(d)  #dump意为转储
-	
+```
+	import josn	
+	d = dict(name = 'Bob',age = 10,score = 88)	json.dumps(d)  #dump意为转储	
 	json.loads(str)#转成dict python对象
-
 ```  
 
 <font color = red>**CAUTION:**</font>json反序列化得到字符串对象都是unicode不是str。  
 
 + class 序列化（json的进阶）   
 
-```python
+```
 	json.dumps(s, 
 	default
 	=lambda obj: obj.__dict__)#当class有__slot__属性时不能用 
-
 ```      
 
 
@@ -586,41 +429,27 @@ type接收三个参数：
 
 
 
-```python
-
-	import time, threading 
-	
+```
+	import time, threading 	
 	balance = 0
 	lock = threading.Lock()
-	def change_it(n):    
-	
-	        global balance   
-	
-	         balance = balance + n   
-	
+	def change_it(n):    	
+	        global balance   	
+	         balance = balance + n	
 	         balance = balance - n 
-	
-	 def run_thread(n):    
-	
+	 def run_thread(n):    	
 	        for i in range(100000):
-	               lock.acquire()     #先获取锁
-	               try:                #try...finally保证不管什么情况下都会释放locK
+	               lock.acquire()     #先获取锁	               try:                #try...finally保证不管什么情况下都会释放locK
 	                   change_it(n)
 	               finally:
 	                   lock.release()  #释放锁
 	if __name__ ==  __main__ :
-	      t1 = threading.Thread(target=run_thread, args=(5,))  
-	
+	      t1 = threading.Thread(target=run_thread, args=(5,)) 
 	      t2 = threading.Thread(target=run_thread, args=(8,))   
-	
-	      t1.start()   
-	
-	     t2.start()   
-	
-	     t1.join()    
-	
-	    t2.join()    
-	
+	      t1.start()   	
+	      t2.start()   	
+	     t1.join()    	
+	    t2.join()  	
 	    print balance
 ```    
 
@@ -628,37 +457,20 @@ type接收三个参数：
 
 
 
-
-```python
-
-	import threading
-	
+```
+	import threading	
 	local_shcool = threading.local()  #每一个线程都可以写，且相互不影响，可以理解为一个以thread为key的dict
-	
-	def pro_std():
-	
+	def pro_std():	
 	    print hello,%s (in %s) %(loca_school.student,threading.current_thread().name)
-	
-	
-	def pro_thread(name):
-	
-	    local_shcool.student = name
-	
-	
-	    pro_std()
-	
+	def pro_thread(name):	
+	    local_shcool.student = name	
+	    	    pro_std()	
 	t1 = threading.Thread(target = pro_thread,args = ( Alice ),name =  a )
-	
 	t2 = threading.Thread(target = pro_thread,args = ( Bob ),name =  B )
-	
-	t1.start()
-	
-	t2.start()
-	
-	t1.join()
-	
-	t2.join()
-	
+	t1.start()	
+	t2.start()	
+	t1.join()	
+	t2.join()	
 ```  
 
 ### 1.27、分布式编程   
@@ -675,18 +487,12 @@ type接收三个参数：
 
 3、hashlib摘要算法库，md5,SHA1。md5结果是128bit,SHA1结果是160bit
 
-```python
-	
-	import hashlib
-	
-	md5 = hashlib.md5()
-	
-	md5.update(  hello world )
-	
-	md5.update( hdhhd )
-	
+```	
+	import hashlib	
+	md5 = hashlib.md5()	
+	md5.update(  hello world )	
+	md5.update( hdhhd )	
 	print md5.hexdigest()
-
 ```    
 
 SHA1与md5的调用 一样将上述代码改成SHA1即可  
@@ -706,7 +512,7 @@ SHA1与md5的调用 一样将上述代码改成SHA1即可
 ### 3.1、[python制作gif]( http://python.jobbole.com/81185/)，然后可以在ppt导入    
 ### 3.2、Tkinter UI  
 1、动态更新UI，使用`config`   
-```python
+```
 	root = Tk()
 	btn = Button(root,text ='test')
 	btn.pack()
@@ -716,8 +522,6 @@ SHA1与md5的调用 一样将上述代码改成SHA1即可
 
 
 ## 4、opencv python   
-   
-<span id = "4"> </span>
 ### 4.1、反转黑白图片
 ```
 	thresh = cv2.thrsehold(image,122,255,cv2.THRESH_BINARY_INV)[1]
@@ -725,7 +529,7 @@ SHA1与md5的调用 一样将上述代码改成SHA1即可
 
 ### 4.2、[python进行条形码检测]( http://python.jobbole.com/81130/)    
 ### 4.3、cv2  crop图片  
-```python
+```
 	img = image[y:y+h,x:x+w]
 ```   
 ### 4.4、由文本生成图片，[参考](http://python.jobbole.com/81983/)     
