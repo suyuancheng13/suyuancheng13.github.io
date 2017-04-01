@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/21/Python-Dev/index.html">
 <meta property="og:site_name" content="Rain Frog">
 <meta property="og:description" content="Python 学习">
-<meta property="og:updated_time" content="2017-03-30T10:48:53.000Z">
+<meta property="og:updated_time" content="2017-04-01T06:23:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Dev">
 <meta name="twitter:description" content="Python 学习">
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-03-30T18:48:53+08:00">
-                2017-03-30
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-01T14:23:39+08:00">
+                2017-04-01
               </time>
             
           </span>
@@ -463,197 +463,147 @@
 </table>
 <h3 id="1-1、-关于list与tuple-元组-数组"><a href="#1-1、-关于list与tuple-元组-数组" class="headerlink" title="1.1、 关于list与tuple(元组), 数组"></a>1.1、 关于list与tuple(元组),<font color="red"> <em>数组</em></font></h3><p>1、<code>list</code> 是可变，<code>tuple</code>是不可变，可以用<code>tuple</code>的地方尽量用<code>tuple</code>；  </p>
 <p>2、<code>list</code>利用“[]”表示，<code>tuple</code>利用”()”表示<br>3、数组python用numpy来做的：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import numpy</div><div class="line">matrix = numpy.zeros(shape=(5,2))#创建数组</div><div class="line">print matrix[i,j]#获取元素</div></pre></td></tr></table></figure>
-<h3 id="1-2、关于dict-set"><a href="#1-2、关于dict-set" class="headerlink" title="1.2、关于dict,set"></a>1.2、关于dict,set</h3><p>参考c++map,set</p>
+<pre><code>import numpy
+matrix = numpy.zeros(shape=(5,2))#创建数组
+print matrix[i,j]#获取元素
+</code></pre><h3 id="1-2、关于dict-set"><a href="#1-2、关于dict-set" class="headerlink" title="1.2、关于dict,set"></a>1.2、关于dict,set</h3><p>参考c++map,set</p>
 <p><strong>CAUTION:</strong> Python的集合(set)和其他语言类似, 是一个无序不重复元素集, 基本功能包括关系测试和消除重复元素. 集合对象还支持union(联合), intersection(交), difference(差)和sysmmetric difference(对称差集)等数学运算.由于集合是无序的,所以，sets 不支持 索引, 分片, 或其它类序列（sequence-like）的操作。Dict的key必须是不可变的</p>
 <h3 id="1-3、关于python的可变参数与关键字参数"><a href="#1-3、关于python的可变参数与关键字参数" class="headerlink" title="1.3、关于python的可变参数与关键字参数"></a>1.3、关于python的可变参数与关键字参数</h3><p>1、可变参数就是传入的参数的个数是可变定义方式为<code>def func(*args)</code>。可变参数在函数调用时自动组装为一tuple。</p>
 <p>2、关键字参数可以传入零个或多个含参数名的参数也就是键值对，定义方式为<code>def func(**kv)</code>。关键字参数在函数调用时组装成一个dict。</p>
 <p>3、list,tuple可以在变量前面添加<code>*</code>来传入到参数为可变参数的函数，dict同样也可传入到参数为关键字参数的函数。</p>
 <p>4、由于3，对于任意函数我们都可以通过<code>def func(*args,**kv)</code>来调用它，不管他是怎么样定义的。</p>
 <p>5、python函数的参数顺序问题：必须函数，默认参数，可变参数，关键字参数  </p>
-<h3 id="1-4、Python所谓的高级我切片与matlab的取第几行几列类似"><a href="#1-4、Python所谓的高级我切片与matlab的取第几行几列类似" class="headerlink" title="1.4、Python所谓的高级我切片与matlab的取第几行几列类似"></a>1.4、Python所谓的高级我切片与matlab的取第几行几列类似</h3><h3 id="1-5、迭代使用for-in或者for-value-in-d-iteatervalues-同时也可以用for-k-v-in-d-iteritems"><a href="#1-5、迭代使用for-in或者for-value-in-d-iteatervalues-同时也可以用for-k-v-in-d-iteritems" class="headerlink" title="1.5、迭代使用for ... in或者for value in d.iteatervalues()同时也可以用for k,v in d.iteritems()"></a>1.5、迭代使用<code>for ... in</code>或者<code>for value in d.iteatervalues()</code>同时也可以用<code>for k,v in d.iteritems()</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">	d  = &#123; a :1, b :2&#125;</div><div class="line">	</div><div class="line">	for key in d:</div><div class="line">	</div><div class="line">	    print key</div><div class="line">```  </div><div class="line"></div><div class="line">1、但是要使用迭代一个对象，那么这个对象要是**可迭代的**，&lt;font color = red&gt;方法：可以通过collections 模块的iterable进行判断&lt;/font&gt;  </div><div class="line"></div><div class="line"></div><div class="line">### 1.6、生成器(Generator)</div><div class="line"></div><div class="line">由于通过列表生成器生成一个列表时，受到内存的限制，列表的容量是有限的。所以如果可以按照一种算法进行推算出来，那就不必创建完整的list从而可以节省大量空间。创建generator的方法有多种：  </div><div class="line"></div><div class="line">第一种：</div></pre></td></tr></table></figure>
-<pre><code>l = [ x*x for x in range(1,11) ]
-
+<h3 id="1-4、Python所谓的高级我切片与matlab的取第几行几列类似"><a href="#1-4、Python所谓的高级我切片与matlab的取第几行几列类似" class="headerlink" title="1.4、Python所谓的高级我切片与matlab的取第几行几列类似"></a>1.4、Python所谓的高级我切片与matlab的取第几行几列类似</h3><h3 id="1-5、迭代使用for-in或者for-value-in-d-iteatervalues-同时也可以用for-k-v-in-d-iteritems"><a href="#1-5、迭代使用for-in或者for-value-in-d-iteatervalues-同时也可以用for-k-v-in-d-iteritems" class="headerlink" title="1.5、迭代使用for ... in或者for value in d.iteatervalues()同时也可以用for k,v in d.iteritems()"></a>1.5、迭代使用<code>for ... in</code>或者<code>for value in d.iteatervalues()</code>同时也可以用<code>for k,v in d.iteritems()</code></h3><p>例如：   </p>
+<pre><code>d  = { a :1, b :2}    
+for key in d:    
+print key
+</code></pre><p>1、但是要使用迭代一个对象，那么这个对象要是<strong>可迭代的</strong>，<font color="red">方法：可以通过collections 模块的iterable进行判断</font>      </p>
+<h3 id="1-6、生成器-Generator"><a href="#1-6、生成器-Generator" class="headerlink" title="1.6、生成器(Generator)"></a>1.6、生成器(Generator)</h3><p>由于通过列表生成器生成一个列表时，受到内存的限制，列表的容量是有限的。所以如果可以按照一种算法进行推算出来，那就不必创建完整的list从而可以节省大量空间。创建generator的方法有多种：  </p>
+<p>第一种： </p>
+<pre><code>l = [ x*x for x in range(1,11) ]    
 g = (x*x for x in range(1,11))   # g就是一个generator，与列表生成器不同的是[ ]与（ ）的问题  
-
 g.next()  # generator保存的是算法每次调用next()实际是在计算下一个元素，直到计算到最后的元素，当没有元素时就会抛出StopIteration的错误
-
 for n in g: # 由于不断调用next（）函数并不是很方便，由于generator是可迭代对象，因此正确的使用方法是使用迭代
-
-    print n
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">第二种：</div><div class="line"></div><div class="line">在函数定义中如果包含yield关键字，那么这个函数就是一个generator</div></pre></td></tr></table></figure>
-<pre><code>def fib(max):
-
-    n,a,b = 0,0,1
-
-
-    while n&lt;max:
-
-
-        yield b      # yield关键字
-
-
-        a,b =b ,a+b
-
-
-        n = n+1
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### 1.7、python高函数</div><div class="line"></div><div class="line">所谓的高阶函数就是一个函数接收函数作为参数</div><div class="line"></div><div class="line">### 1.8、map/reduce/filter</div><div class="line"></div><div class="line">[关于MapReduce文章]( http://static.googleusercontent.com/media/research.google.com/zh-CN//archive/mapreduce-osdi04.pdf)    </div><div class="line"></div><div class="line">+ map/reduce demo</div></pre></td></tr></table></figure>
-<pre><code>def str2int(s):
-
-    def fn(x,y):
-
-        return x*10+y
-
-
-    def char2num (s) :
-
-
+print n
+</code></pre><p>第二种：<br>在函数定义中如果包含yield关键字，那么这个函数就是一个generator      </p>
+<pre><code>def fib(max):    
+        n,a,b = 0,0,1    
+        while n&lt;max:    
+            yield b      # yield关键字
+            a,b =b ,a+b    
+            n = n+1
+</code></pre><h3 id="1-7、python高函数"><a href="#1-7、python高函数" class="headerlink" title="1.7、python高函数"></a>1.7、python高函数</h3><p>所谓的高阶函数就是一个函数接收函数作为参数</p>
+<h3 id="1-8、map-reduce-filter"><a href="#1-8、map-reduce-filter" class="headerlink" title="1.8、map/reduce/filter"></a>1.8、map/reduce/filter</h3><p><a href="http://static.googleusercontent.com/media/research.google.com/zh-CN//archive/mapreduce-osdi04.pdf" target="_blank" rel="external">关于MapReduce文章</a>    </p>
+<ul>
+<li><p>map/reduce demo  </p>
+<pre><code>def str2int(s):    
+    def fn(x,y):    
+       return x*10+y    
+      def char2num (s) :    
         return {  0  : 0 ,  1  : 1 ,  2  : 2 ,  3  : 3 ,  4  : 4 ,  5  : 5 ,  6  : 6 ,  7  : 7 ,  8  : 8 ,  9  : 9 }[s]
+        return reduce(fn,map(char2num,s))
+</code></pre></li>
+</ul>
+<font color="red"><strong>注意map,reduce都接收一个函数与一个list，因此第5行代码就好理解了</strong>   </font>    
 
-    return reduce(fn,map(char2num,s))
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;font color=red&gt;**注意map,reduce都接收一个函数与一个list，因此第5行代码就好理解了**   &lt;/font&gt;    </div><div class="line"></div><div class="line">+ filter 与map/reduce一样都 是高阶函数都是接收一个函数与list变量,filter是根据传入函数作用于每一个元素返回true/false来决定这个元素是否保留</div></pre></td></tr></table></figure>
-<pre><code>def is_odd(n):
-
+<ul>
+<li>filter 与map/reduce一样都 是高阶函数都是接收一个函数与list变量,filter是根据传入函数作用于每一个元素返回true/false来决定这个元素是否保留</li>
+</ul>
+<pre><code>def is_odd(n):    
     return n%2 ==1
-
-
-filter(is_odd,[1,2,3,4,5])
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### 1.9、**funciton.partial偏函数**，把一个函数的某些参数给固定住，返回一个新函数，那么调用 这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools.partial创建一个偏函数。</div></pre></td></tr></table></figure>
-<pre><code>import functools
-
+       filter(is_odd,[1,2,3,4,5])
+</code></pre><h3 id="1-9、funciton-partial偏函数，把一个函数的某些参数给固定住，返回一个新函数，那么调用-这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools-partial创建一个偏函数。"><a href="#1-9、funciton-partial偏函数，把一个函数的某些参数给固定住，返回一个新函数，那么调用-这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools-partial创建一个偏函数。" class="headerlink" title="1.9、funciton.partial偏函数，把一个函数的某些参数给固定住，返回一个新函数，那么调用 这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools.partial创建一个偏函数。"></a>1.9、<strong>funciton.partial偏函数</strong>，把一个函数的某些参数给固定住，返回一个新函数，那么调用 这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools.partial创建一个偏函数。</h3><pre><code>import functools    
 int2 = functools.partial(int,base = 2) #int2就是一个新函数只有一个参数
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 1.9.1 `@`语法</div><div class="line"></div><div class="line"></div><div class="line">开门见山，直上代码</div></pre></td></tr></table></figure>
-<pre><code>def log(func):
-
-        def wrapper(*args,**kw):
-
-
+</code></pre><h3 id="1-9-1-装饰器及-语法"><a href="#1-9-1-装饰器及-语法" class="headerlink" title="1.9.1 装饰器及 @语法"></a>1.9.1 装饰器及 <code>@</code>语法</h3><p>开门见山，直上代码</p>
+<pre><code>def log(func):    
+        def wrapper(*args,**kw):    
             print  call %s %func.__name__
-
-
-            return func(*args,**kw)
-
-
+            return func(*args,**kw)    
 return wrapper
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`log`函数接收一个函数作为参数，然后返回一个函数，这就叫做decorator。那么怎么用这个decorator呢？代码直上：</div></pre></td></tr></table></figure>
-<pre><code>@log
-
-def now():
-
+</code></pre><p><code>log</code>函数接收一个函数作为参数，然后返回一个函数，这就叫做decorator。那么怎么用这个decorator呢？代码直上：  </p>
+<pre><code>@log    
+def now():    
     print  sdfdsfds 
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`@`语法相当于：`now = log(now)`     </div><div class="line">  </div><div class="line">### 1.10、python用模块（module）来组织工程</div><div class="line"></div><div class="line">1、使用模块可以避免函数与变量名的冲突。一个.py文件 就是一个模块。</div><div class="line"></div><div class="line">2、为了避免模块名的冲突python引入package，本质就是按目录来组织模块</div><div class="line"></div><div class="line">3、package目录下一定要有一__init__.py模块，否则认为普通目录  </div><div class="line"></div><div class="line">4、注释也可采用</div></pre></td></tr></table></figure>
+</code></pre><p><code>@</code>语法相当于：<code>now = log(now)</code>     </p>
+<h3 id="1-10、python用模块（module）来组织工程"><a href="#1-10、python用模块（module）来组织工程" class="headerlink" title="1.10、python用模块（module）来组织工程"></a>1.10、python用模块（module）来组织工程</h3><p>1、使用模块可以避免函数与变量名的冲突。一个.py文件 就是一个模块。</p>
+<p>2、为了避免模块名的冲突python引入package，本质就是按目录来组织模块</p>
+<p>3、package目录下一定要有一<strong>init</strong>.py模块，否则认为普通目录  </p>
+<p>4、注释也可采用  </p>
 <pre><code>‘’‘
 
 注释
 
 ’‘’
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 1.11、关于`if __name__== main:`</div><div class="line"></div><div class="line">当我们用命令行运行模块的时候，Python解释器就会将一个特殊变量`__name__`置为`__main__`，而在其它地方导入该模块这个判断就会失败，也就是说这条语句主要是便于我们使用命令行。  </div><div class="line"></div><div class="line">### 1.12、作用域</div><div class="line"></div><div class="line">private访问控制在python里通过`_`或者`__`前缀来实现。这里所说的private只是一种编程习惯，因为python并没有private的控制访问。</div><div class="line"></div><div class="line">### 1.13、python面向对象编程(Object Oriented Programming,OOP)</div><div class="line"></div><div class="line">话不多说直接上demo</div></pre></td></tr></table></figure>
+</code></pre><h3 id="1-11、关于if-name-main"><a href="#1-11、关于if-name-main" class="headerlink" title="1.11、关于if __name__== main:"></a>1.11、关于<code>if __name__== main:</code></h3><p>当我们用命令行运行模块的时候，Python解释器就会将一个特殊变量<code>__name__</code>置为<code>__main__</code>，而在其它地方导入该模块这个判断就会失败，也就是说这条语句主要是便于我们使用命令行。  </p>
+<h3 id="1-12、作用域"><a href="#1-12、作用域" class="headerlink" title="1.12、作用域"></a>1.12、作用域</h3><p>private访问控制在python里通过<code>_</code>或者<code>__</code>前缀来实现。这里所说的private只是一种编程习惯，因为python并没有private的控制访问。</p>
+<h3 id="1-13、python面向对象编程-Object-Oriented-Programming-OOP"><a href="#1-13、python面向对象编程-Object-Oriented-Programming-OOP" class="headerlink" title="1.13、python面向对象编程(Object Oriented Programming,OOP)"></a>1.13、python面向对象编程(Object Oriented Programming,OOP)</h3><p>话不多说直接上demo</p>
 <pre><code>class Student(object):                                 #表示Student从object继承 
-
         def __init__(self,name,score):            #__init__类于构造函数，且第一个参数永远是self，表示创建实例本身。而且实例化对象时一定要传入与__init__参数对应的参数
 
-
-                self.name = name
-
-                self.score = score
-
+                self.name = name    
+                self.score = score    
                 super(Student,self).__init__()    #表示调用父类方法
-
-
-
-
-
-        def print_score(self):
-
-
+            def print_score(self):    
                 print  %s,%s %(self.name,self.score)
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> 1、`__init__`类于构造函数，且第一个参数永远是self，表示创建实例本身。而且实例化对象时一定要传入与__init__参数对应的参数。</div><div class="line"></div><div class="line"></div><div class="line">2、成员函数与普通函数不一样的地方就是第一个参数永远是self</div><div class="line"></div><div class="line">3、private访问控制权限就是在变量前面添加`__`前缀。`_`在类中视为private但是其实是可以访问的，只是按约定视为private.</div><div class="line"></div><div class="line">4、private变量其实也是可以访问的，可以通过`_类名_private变量`如`_Student_name`  </div><div class="line"></div><div class="line">5、  super(className,self).function()      父类方法调用&lt;font color = red&gt; 如果是多继承且多个父类有同样的方法则按顺序调用&lt;/font&gt;</div><div class="line"></div><div class="line">### 1.14、关于python的多态</div><div class="line"></div><div class="line">由于python里不需要事先声明变量的类型，因此多态实现起来就简单得多：</div></pre></td></tr></table></figure>
-<pre><code>def run(animal):
-
+</code></pre><p>1、<code>__init__</code>类于构造函数，且第一个参数永远是self，表示创建实例本身。而且实例化对象时一定要传入与<strong>init</strong>参数对应的参数。<br>2、成员函数与普通函数不一样的地方就是第一个参数永远是self<br>3、private访问控制权限就是在变量前面添加<code>__</code>前缀。<code>_</code>在类中视为private但是其实是可以访问的，只是按约定视为private.<br>4、private变量其实也是可以访问的，可以通过<code>_类名_private变量</code>如<code>_Student_name</code><br>5、  super(className,self).function()      父类方法调用<font color="red"> 如果是多继承且多个父类有同样的方法则按顺序调用</font></p>
+<h3 id="1-14、关于python的多态"><a href="#1-14、关于python的多态" class="headerlink" title="1.14、关于python的多态"></a>1.14、关于python的多态</h3><p>由于python里不需要事先声明变量的类型，因此多态实现起来就简单得多：  </p>
+<pre><code>def run(animal):    
     animal.run()
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">代码中只要传入的参数有run这个方法就可以，&lt;font color = red&gt;**不管是不是animal还是子类或者不是子类**&lt;/font&gt;，这样子就与c++里的多态一样。其实本质上是由于python本来就是动态语言。  </div><div class="line"></div><div class="line">### 1.15、获取对象信息</div><div class="line"></div><div class="line">1、type可以判断基本类型的所属类型</div></pre></td></tr></table></figure>
-<pre><code>import types 
-
+</code></pre><p>代码中只要传入的参数有run这个方法就可以，<font color="red"><strong>不管是不是animal还是子类或者不是子类</strong></font>，这样子就与c++里的多态一样。其实本质上是由于python本来就是动态语言。  </p>
+<h3 id="1-15、获取对象信息"><a href="#1-15、获取对象信息" class="headerlink" title="1.15、获取对象信息"></a>1.15、获取对象信息</h3><p>1、type可以判断基本类型的所属类型</p>
+<pre><code>import types    
 type( ssdfdf )
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2、isinstance可以判断基本数据类型还可以判断class类</div><div class="line"></div><div class="line">3、dir可以获取对象的所有属性和方法</div><div class="line"></div><div class="line">4、getattr(),setattr(),hasattr()可以操作一个对象的属性，顾名思义  </div><div class="line"></div><div class="line">### 1.16、python动态绑定方法</div></pre></td></tr></table></figure>
-<pre><code>def set_age(self,age):
-
-        self.age = age
-
-
-from types import MethodType
-
+</code></pre><p>2、isinstance可以判断基本数据类型还可以判断class类</p>
+<p>3、dir可以获取对象的所有属性和方法</p>
+<p>4、getattr(),setattr(),hasattr()可以操作一个对象的属性，顾名思义  </p>
+<h3 id="1-16、python动态绑定方法"><a href="#1-16、python动态绑定方法" class="headerlink" title="1.16、python动态绑定方法"></a>1.16、python动态绑定方法</h3><pre><code>def set_age(self,age):    
+        self.age = age        
+from types import MethodType    
 s.set_age = MethodType(set_age,s,Student)          #给实例新增方法
-
-
-
-
 Student.set_age = MethodType(set_age,None,Student)    #给类新增方法
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">1、&lt;font color = red&gt;**`__slot__`**&lt;/font&gt;关键字</div><div class="line"></div><div class="line">如果想对class限制只允许给类的实例添加属性时，我们可以使用`__slot__`，但是不遗传</div></pre></td></tr></table></figure>
-<pre><code>class Student(object):
-
-        __slot__ = ( name , age )  #用tuple定义允许修改的属性名称
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">###1.17、`@property`关键字</div><div class="line"></div><div class="line">`@property`负责将一个方法变成属性调用，而与一个属性不同的是属性并没有检查是否合法，而方法是可以进行检查的。</div></pre></td></tr></table></figure>
-<pre><code>class Student(object):
-
-        @property
-
-
-        def score(self):
-
-
-                return self._score
-
-
-
-
-
-        @score.setter
-
-
-        def score(self,value):
-
-
+</code></pre><p>1、<font color="red"><strong><code>__slot__</code></strong></font>关键字</p>
+<p>如果想对class限制只允许给类的实例添加属性时，我们可以使用<code>__slot__</code>，但是不遗传</p>
+<pre><code>class Student(object):    
+__slot__ = ( name , age )  #用tuple定义允许修改的属性名称
+</code></pre><h3 id="1-17、-property关键字"><a href="#1-17、-property关键字" class="headerlink" title="1.17、@property关键字"></a>1.17、<code>@property</code>关键字</h3><p><code>@property</code>负责将一个方法变成属性调用，而与一个属性不同的是属性并没有检查是否合法，而方法是可以进行检查的。</p>
+<pre><code>class Student(object):    
+        @property    
+        def score(self):    
+                return self._score    
+        @score.setter    
+        def score(self,value):    
                 if():
-
-
                         .....#参数检查
-
-
                 self._score = value
 
-
-
-
-
-&gt;&gt;&gt;s = Student()
-
+&gt;&gt;&gt;s = Student()    
 &gt;&gt;&gt;s.score = 10 #实际上是调用的s.set_score()
-
 &gt;&gt;&gt;s.score #实际上调用 的是s.get_score()
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">`@property`把一个方法变成属性，`@xxx.setter`把一个方法变成属性赋值，与OC的property有一点相似</div><div class="line"></div><div class="line">### 1.18、多重继承</div><div class="line"></div><div class="line">### 1.19、定制类</div><div class="line"></div><div class="line">### 1.20、元类</div><div class="line"></div><div class="line">1、type动态创建一个对象</div></pre></td></tr></table></figure>
+</code></pre><p><code>@property</code>把一个方法变成属性，<code>@xxx.setter</code>把一个方法变成属性赋值，与OC的property有一点相似</p>
+<h3 id="1-18、多重继承"><a href="#1-18、多重继承" class="headerlink" title="1.18、多重继承"></a>1.18、多重继承</h3><h3 id="1-19、定制类"><a href="#1-19、定制类" class="headerlink" title="1.19、定制类"></a>1.19、定制类</h3><h3 id="1-20、元类"><a href="#1-20、元类" class="headerlink" title="1.20、元类"></a>1.20、元类</h3><p>1、type动态创建一个对象</p>
 <pre><code>hello = type( Hello ,(object,),dict(hello = fn))
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">type接收三个参数：</div><div class="line"></div><div class="line">+ class名字</div><div class="line"></div><div class="line">+ 参数2 为父类，是一个tuple（object,）</div><div class="line"></div><div class="line">+ dict(hello = fn),绑定函数到类的方法</div><div class="line"></div><div class="line">   </div><div class="line"></div><div class="line">2、metaclass元类，（OC中也有这个概念）   </div><div class="line"></div><div class="line">### 1.21、异常捕获`try:....except...finally...`</div></pre></td></tr></table></figure>
-<pre><code>try:
-
-    print  try.... 
-
-
-    r = 10/0
-
-
-    print  reuslt: ,r
-
-
+</code></pre><p>type接收三个参数：</p>
+<ul>
+<li><p>class名字</p>
+</li>
+<li><p>参数2 为父类，是一个tuple（object,）</p>
+</li>
+<li><p>dict(hello = fn),绑定函数到类的方法</p>
+</li>
+</ul>
+<p>2、metaclass元类，（OC中也有这个概念）   </p>
+<h3 id="1-21、异常捕获try-except-finally"><a href="#1-21、异常捕获try-except-finally" class="headerlink" title="1.21、异常捕获try:....except...finally..."></a>1.21、异常捕获<code>try:....except...finally...</code></h3><pre><code>try:    
+    print  try....     
+    r = 10/0    
+    print  reuslt: ,r    
 except ZeroDivisionError ,e:        #还可以多级捕获
-
-    print  error: ,e
-
-
-finally:
-
+    print  error: ,e    
+finally:    
     print  finally... 
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">1、可以通过`raise`抛出异常，`raise`后面不带参数则将错误原样抛出，同样`raise`也可以修改抛出错误的类型  </div><div class="line"></div><div class="line">### 1.22、调试</div><div class="line"></div><div class="line">1、print打印信息</div><div class="line"></div><div class="line">2、asser断言</div><div class="line"></div><div class="line">3、logging推荐，可以定义log级别：debug,info,waning,error ,可以指定输出文件`logging.config.fileConfig(filename)`,[filename规则](https://docs.python.org/2/library/logging.config.html#logging-config-fileformat)  ，给一个log.conf</div></pre></td></tr></table></figure>
+</code></pre><p>1、可以通过<code>raise</code>抛出异常，<code>raise</code>后面不带参数则将错误原样抛出，同样<code>raise</code>也可以修改抛出错误的类型  </p>
+<h3 id="1-22、调试"><a href="#1-22、调试" class="headerlink" title="1.22、调试"></a>1.22、调试</h3><p>1、print打印信息</p>
+<p>2、asser断言</p>
+<p>3、logging推荐，可以定义log级别：debug,info,waning,error ,可以指定输出文件<code>logging.config.fileConfig(filename)</code>,<a href="https://docs.python.org/2/library/logging.config.html#logging-config-fileformat" target="_blank" rel="external">filename规则</a>  ，给一个log.conf</p>
 <pre><code>[loggers]
 keys=root
 
@@ -683,19 +633,163 @@ args=(&apos;./log/sample.log&apos;,&apos;D&apos;,1,14)
 [formatter_simpleFormatter]
 format=[%(asctime)s][pid %(process)d][%(levelname)s][%(filename)s:%(lineno)d]%(message)s
 datefmt=
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">使用方式：</div></pre></td></tr></table></figure>
+</code></pre><p>使用方式：  </p>
 <pre><code>logging.config.fileConfig(&apos;./log.conf&apos;)
 logger = logging.getLogger(&apos;root&apos;)
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">4、[pdb]( http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/00138683229901532c40b749184441dbd428d2e0f8aa50e000)   </div><div class="line"></div><div class="line">### 1.23、单元测试  </div><div class="line"></div><div class="line">### 1.24、文档测试（测试注释了的代码--python交互式代码）</div><div class="line"></div><div class="line">### 1.25、IO编程</div><div class="line"></div><div class="line">1、文件读写   </div><div class="line"></div><div class="line">```python</div><div class="line"></div><div class="line">    f = open(filename,r)</div><div class="line"></div><div class="line"></div><div class="line">    f.read()</div><div class="line"></div><div class="line"></div><div class="line">    f.close</div><div class="line"></div><div class="line"></div><div class="line">```    </div><div class="line"></div><div class="line">为了保证会调用`close()`同时也是为了简单化，Python引入了`with`语法来帮助我们调用`close()`</div><div class="line"></div><div class="line"></div><div class="line">```python</div><div class="line"></div><div class="line">	with open( filename ,r ) as f:</div><div class="line"></div><div class="line">   		 print f.read()</div><div class="line"></div><div class="line"></div><div class="line">```   </div><div class="line"></div><div class="line">2、[操作文件和目录]( http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868321590543ff305fb9f9949f08d760883cc243812000)    </div><div class="line"></div><div class="line">3、序列化   </div><div class="line"></div><div class="line">+ python中序列化提供了两个模块来实现：`cPickle`和`pickle`(有`c`开头的就是用c语言实现的)[pickle参考]( http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/00138683221577998e407bb309542d9b6a68d9276bc3dbe000)   </div><div class="line"></div><div class="line">+ json，`pickle`的问题在于序列化只能用在python中不能进行传递或者其它语言来解释，json刚好可以解决这个问题。</div><div class="line"></div><div class="line">| json | python |  </div><div class="line">| ---- | ---- |     </div><div class="line">| &#123; &#125; | dict |  </div><div class="line">| [ ] | list |  </div><div class="line">| &quot;string&quot; |  str 或者u unicode  |</div><div class="line">| 123.4 | int 或者 float |  </div><div class="line">| true/false | Ture /False |</div><div class="line">| null | None |   </div><div class="line"></div><div class="line">```python</div><div class="line"></div><div class="line">	import josn</div><div class="line">	</div><div class="line">	d = dict(name = &apos;Bob&apos;,age = 10,score = 88)</div><div class="line">	</div><div class="line">	json.dumps(d)  #dump意为转储</div><div class="line">	</div><div class="line">	json.loads(str)#转成dict python对象</div><div class="line"></div><div class="line">```  </div><div class="line"></div><div class="line">&lt;font color = red&gt;**CAUTION:**&lt;/font&gt;json反序列化得到字符串对象都是unicode不是str。  </div><div class="line"></div><div class="line">+ class 序列化（json的进阶）   </div><div class="line"></div><div class="line">```python</div><div class="line">	json.dumps(s, </div><div class="line">	default</div><div class="line">	=lambda obj: obj.__dict__)#当class有__slot__属性时不能用 </div><div class="line"></div><div class="line">```      </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### 1.26、[进程与线程]( http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868323401155ceb3db1e2044f80b974b469eb06cb43000)     </div><div class="line"></div><div class="line">1、进程</div><div class="line"></div><div class="line">+ Unix/Linux下可以调用`fork()`实现多进程</div><div class="line"></div><div class="line">+ 跨平台的多进程，可以使用multiprocessing  </div><div class="line"></div><div class="line">+ 进程间的通信可以使用Queue,Pipes  </div><div class="line"></div><div class="line">2、线程，python中有两个模块（thread,threading，后者是高级，我们一般使用高级）</div><div class="line"></div><div class="line">+ 线程与进程最大的不同是，同一个变量在进程中是各自有一份copy互不影响，而多线程中所有的线程共享进程的变量，是相互影响的。因此在多线程中我们使用Lock来保证变量的不相互影响   </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">```python</div><div class="line"></div><div class="line">	import time, threading </div><div class="line">	</div><div class="line">	balance = 0</div><div class="line">	lock = threading.Lock()</div><div class="line">	def change_it(n):    </div><div class="line">	</div><div class="line">	        global balance   </div><div class="line">	</div><div class="line">	         balance = balance + n   </div><div class="line">	</div><div class="line">	         balance = balance - n </div><div class="line">	</div><div class="line">	 def run_thread(n):    </div><div class="line">	</div><div class="line">	        for i in range(100000):</div><div class="line">	               lock.acquire()     #先获取锁</div><div class="line">	               try:                #try...finally保证不管什么情况下都会释放locK</div><div class="line">	                   change_it(n)</div><div class="line">	               finally:</div><div class="line">	                   lock.release()  #释放锁</div><div class="line">	if __name__ ==  __main__ :</div><div class="line">	      t1 = threading.Thread(target=run_thread, args=(5,))  </div><div class="line">	</div><div class="line">	      t2 = threading.Thread(target=run_thread, args=(8,))   </div><div class="line">	</div><div class="line">	      t1.start()   </div><div class="line">	</div><div class="line">	     t2.start()   </div><div class="line">	</div><div class="line">	     t1.join()    </div><div class="line">	</div><div class="line">	    t2.join()    </div><div class="line">	</div><div class="line">	    print balance</div><div class="line">```    </div><div class="line"></div><div class="line">+ 在多线程下每一个线程要保持自己的数据时，我们可使用ThreadLocal, **ThreadLocal最常用的地方就是为每一个线程绑定一个数据库链接，http请求，用户身份信息等**</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">```python</div><div class="line"></div><div class="line">	import threading</div><div class="line">	</div><div class="line">	local_shcool = threading.local()  #每一个线程都可以写，且相互不影响，可以理解为一个以thread为key的dict</div><div class="line">	</div><div class="line">	def pro_std():</div><div class="line">	</div><div class="line">	    print hello,%s (in %s) %(loca_school.student,threading.current_thread().name)</div><div class="line">	</div><div class="line">	</div><div class="line">	def pro_thread(name):</div><div class="line">	</div><div class="line">	    local_shcool.student = name</div><div class="line">	</div><div class="line">	</div><div class="line">	    pro_std()</div><div class="line">	</div><div class="line">	t1 = threading.Thread(target = pro_thread,args = ( Alice ),name =  a )</div><div class="line">	</div><div class="line">	t2 = threading.Thread(target = pro_thread,args = ( Bob ),name =  B )</div><div class="line">	</div><div class="line">	t1.start()</div><div class="line">	</div><div class="line">	t2.start()</div><div class="line">	</div><div class="line">	t1.join()</div><div class="line">	</div><div class="line">	t2.join()</div><div class="line">	</div><div class="line">```  </div><div class="line"></div><div class="line">### 1.27、分布式编程   </div><div class="line"></div><div class="line">[参考]( http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386832973658c780d8bfa4c6406f83b2b3097aed5df6000)   </div><div class="line"></div><div class="line">### 1.28、正则表达式</div><div class="line"></div><div class="line">### 1.29常用内嵌模块  </div><div class="line"></div><div class="line">1、collections</div><div class="line"></div><div class="line">2、base64:base64是一种任意二进制到文本字符串的编码方法。**关于base64的理解：将3个字符串转成4个字符串，3 \* 8 = 4\*6，因此叫base64**  </div><div class="line"></div><div class="line">3、hashlib摘要算法库，md5,SHA1。md5结果是128bit,SHA1结果是160bit</div><div class="line"></div><div class="line">```python</div><div class="line">	</div><div class="line">	import hashlib</div><div class="line">	</div><div class="line">	md5 = hashlib.md5()</div><div class="line">	</div><div class="line">	md5.update(  hello world )</div><div class="line">	</div><div class="line">	md5.update( hdhhd )</div><div class="line">	</div><div class="line">	print md5.hexdigest()</div><div class="line"></div><div class="line">```    </div><div class="line"></div><div class="line">SHA1与md5的调用 一样将上述代码改成SHA1即可  </div><div class="line">## 2、python进阶  </div><div class="line">### 2.1、Range与XRange的区别</div><div class="line">在 Range的方法中，它会生成一个**list**的对象，但是在XRange中，它生成的却是一个**xrange的对象**，当返回的东西不是很大的时候，或者在一个 循环里，基本上都是从头查到底的情况下，这两个方法的效率差不多。但是，当返回的东西很大，或者循环中常常会被Break出来的话，还是建议使用 XRange，这样既省空间，又会提高效率。</div><div class="line"></div><div class="line">### 2.2、ArgumentParser处理数组传入</div></pre></td></tr></table></figure>
+</code></pre><p>4、<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/00138683229901532c40b749184441dbd428d2e0f8aa50e000" target="_blank" rel="external">pdb</a>   </p>
+<h3 id="1-23、单元测试"><a href="#1-23、单元测试" class="headerlink" title="1.23、单元测试"></a>1.23、单元测试</h3><h3 id="1-24、文档测试（测试注释了的代码–python交互式代码）"><a href="#1-24、文档测试（测试注释了的代码–python交互式代码）" class="headerlink" title="1.24、文档测试（测试注释了的代码–python交互式代码）"></a>1.24、文档测试（测试注释了的代码–python交互式代码）</h3><h3 id="1-25、IO编程"><a href="#1-25、IO编程" class="headerlink" title="1.25、IO编程"></a>1.25、IO编程</h3><p>1、文件读写   </p>
+<pre><code>f = open(filename,r)
+f.read()
+f.close
+</code></pre><p>为了保证会调用<code>close()</code>同时也是为了简单化，Python引入了<code>with</code>语法来帮助我们调用<code>close()</code></p>
+<pre><code>with open( filename ,r ) as f:
+        print f.read()
+</code></pre><p>2、<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868321590543ff305fb9f9949f08d760883cc243812000" target="_blank" rel="external">操作文件和目录</a>    </p>
+<p>3、序列化   </p>
+<ul>
+<li><p>python中序列化提供了两个模块来实现：<code>cPickle</code>和<code>pickle</code>(有<code>c</code>开头的就是用c语言实现的)<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/00138683221577998e407bb309542d9b6a68d9276bc3dbe000" target="_blank" rel="external">pickle参考</a>   </p>
+</li>
+<li><p>json，<code>pickle</code>的问题在于序列化只能用在python中不能进行传递或者其它语言来解释，json刚好可以解决这个问题。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>json</th>
+<th>python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{ }</td>
+<td>dict</td>
+</tr>
+<tr>
+<td>[ ]</td>
+<td>list</td>
+</tr>
+<tr>
+<td>“string”</td>
+<td>str 或者u unicode</td>
+</tr>
+<tr>
+<td>123.4</td>
+<td>int 或者 float</td>
+</tr>
+<tr>
+<td>true/false</td>
+<td>Ture /False</td>
+</tr>
+<tr>
+<td>null</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<pre><code>import josn    
+d = dict(name = &apos;Bob&apos;,age = 10,score = 88)    json.dumps(d)  #dump意为转储    
+json.loads(str)#转成dict python对象
+</code></pre><p><font color="red"><strong>CAUTION:</strong></font>json反序列化得到字符串对象都是unicode不是str。  </p>
+<ul>
+<li>class 序列化（json的进阶）   </li>
+</ul>
+<pre><code>json.dumps(s, 
+default
+=lambda obj: obj.__dict__)#当class有__slot__属性时不能用 
+</code></pre><h3 id="1-26、进程与线程"><a href="#1-26、进程与线程" class="headerlink" title="1.26、进程与线程"></a>1.26、<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868323401155ceb3db1e2044f80b974b469eb06cb43000" target="_blank" rel="external">进程与线程</a></h3><p>1、进程</p>
+<ul>
+<li><p>Unix/Linux下可以调用<code>fork()</code>实现多进程</p>
+</li>
+<li><p>跨平台的多进程，可以使用multiprocessing  </p>
+</li>
+<li><p>进程间的通信可以使用Queue,Pipes  </p>
+</li>
+</ul>
+<p>2、线程，python中有两个模块（thread,threading，后者是高级，我们一般使用高级）</p>
+<ul>
+<li><p>线程与进程最大的不同是，同一个变量在进程中是各自有一份copy互不影响，而多线程中所有的线程共享进程的变量，是相互影响的。因此在多线程中我们使用Lock来保证变量的不相互影响   </p>
+<pre><code>import time, threading     
+balance = 0
+lock = threading.Lock()
+def change_it(n):        
+        global balance       
+         balance = balance + n    
+         balance = balance - n 
+ def run_thread(n):        
+        for i in range(100000):
+               lock.acquire()     #先获取锁                   try:                #try...finally保证不管什么情况下都会释放locK
+                   change_it(n)
+               finally:
+                   lock.release()  #释放锁
+if __name__ ==  __main__ :
+      t1 = threading.Thread(target=run_thread, args=(5,)) 
+      t2 = threading.Thread(target=run_thread, args=(8,))   
+      t1.start()       
+      t2.start()       
+     t1.join()        
+    t2.join()      
+    print balance
+</code></pre></li>
+</ul>
+<ul>
+<li>在多线程下每一个线程要保持自己的数据时，我们可使用ThreadLocal, <strong>ThreadLocal最常用的地方就是为每一个线程绑定一个数据库链接，http请求，用户身份信息等</strong></li>
+</ul>
+<pre><code>import threading    
+local_shcool = threading.local()  #每一个线程都可以写，且相互不影响，可以理解为一个以thread为key的dict
+def pro_std():    
+    print hello,%s (in %s) %(loca_school.student,threading.current_thread().name)
+def pro_thread(name):    
+    local_shcool.student = name    
+            pro_std()    
+t1 = threading.Thread(target = pro_thread,args = ( Alice ),name =  a )
+t2 = threading.Thread(target = pro_thread,args = ( Bob ),name =  B )
+t1.start()    
+t2.start()    
+t1.join()    
+t2.join()    
+</code></pre><h3 id="1-27、分布式编程"><a href="#1-27、分布式编程" class="headerlink" title="1.27、分布式编程"></a>1.27、分布式编程</h3><p><a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386832973658c780d8bfa4c6406f83b2b3097aed5df6000" target="_blank" rel="external">参考</a>   </p>
+<h3 id="1-28、正则表达式"><a href="#1-28、正则表达式" class="headerlink" title="1.28、正则表达式"></a>1.28、正则表达式</h3><h3 id="1-29常用内嵌模块"><a href="#1-29常用内嵌模块" class="headerlink" title="1.29常用内嵌模块"></a>1.29常用内嵌模块</h3><p>1、collections</p>
+<p>2、base64:base64是一种任意二进制到文本字符串的编码方法。<strong>关于base64的理解：将3个字符串转成4个字符串，3 * 8 = 4*6，因此叫base64</strong>  </p>
+<p>3、hashlib摘要算法库，md5,SHA1。md5结果是128bit,SHA1结果是160bit</p>
+<pre><code>import hashlib    
+md5 = hashlib.md5()    
+md5.update(  hello world )    
+md5.update( hdhhd )    
+print md5.hexdigest()
+</code></pre><p>SHA1与md5的调用 一样将上述代码改成SHA1即可  </p>
+<h2 id="2、python进阶"><a href="#2、python进阶" class="headerlink" title="2、python进阶"></a>2、python进阶</h2><h3 id="2-1、Range与XRange的区别"><a href="#2-1、Range与XRange的区别" class="headerlink" title="2.1、Range与XRange的区别"></a>2.1、Range与XRange的区别</h3><p>在 Range的方法中，它会生成一个<strong>list</strong>的对象，但是在XRange中，它生成的却是一个<strong>xrange的对象</strong>，当返回的东西不是很大的时候，或者在一个 循环里，基本上都是从头查到底的情况下，这两个方法的效率差不多。但是，当返回的东西很大，或者循环中常常会被Break出来的话，还是建议使用 XRange，这样既省空间，又会提高效率。</p>
+<h3 id="2-2、ArgumentParser处理数组传入"><a href="#2-2、ArgumentParser处理数组传入" class="headerlink" title="2.2、ArgumentParser处理数组传入"></a>2.2、ArgumentParser处理数组传入</h3><ul>
+<li>nargs说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">nargs =’+’</td>
+<td style="text-align:left">输入至少一个参数</td>
+</tr>
+<tr>
+<td style="text-align:left">nargs = ‘*’</td>
+<td style="text-align:left">输入零个或多个参数</td>
+</tr>
+</tbody>
+</table>
+<p>例如：</p>
 <pre><code>ap = argparse.ArgumentParser()
 ap.add_argument(&apos;-p&apos;,&apos;--plugins&apos;,required = True, nargs = &apos;+&apos;, help = &apos;the channel which you will test&apos;)
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">## 3、python实战</div><div class="line">### 3.1、[python制作gif]( http://python.jobbole.com/81185/)，然后可以在ppt导入    </div><div class="line">### 3.2、Tkinter UI  </div><div class="line">1、动态更新UI，使用`config`   </div><div class="line">```python</div><div class="line">	root = Tk()</div><div class="line">	btn = Button(root,text =&apos;test&apos;)</div><div class="line">	btn.pack()</div><div class="line">	btn.config(state = &apos;disabled&apos;）</div><div class="line">```   </div><div class="line">关于布局有三种，pack,grid,place[参考]( http://www.tutorialspoint.com/python/tk_pack.htm)   </div><div class="line"></div><div class="line"></div><div class="line">## 4、opencv python   </div><div class="line">   </div><div class="line">&lt;span id = &quot;4&quot;&gt; &lt;/span&gt;</div><div class="line">### 4.1、反转黑白图片</div></pre></td></tr></table></figure>
-<pre><code>thresh = cv2.thrsehold(image,122,255,cv2.THRESH_BINARY_INV)[1]
-</code></pre><pre><code>
-### 4.2、[python进行条形码检测]( http://python.jobbole.com/81130/)    
-### 4.3、cv2  crop图片  
-```python
-    img = image[y:y+h,x:x+w]
+</code></pre><h2 id="3、python实战"><a href="#3、python实战" class="headerlink" title="3、python实战"></a>3、python实战</h2><h3 id="3-1、python制作gif，然后可以在ppt导入"><a href="#3-1、python制作gif，然后可以在ppt导入" class="headerlink" title="3.1、python制作gif，然后可以在ppt导入"></a>3.1、<a href="http://python.jobbole.com/81185/" target="_blank" rel="external">python制作gif</a>，然后可以在ppt导入</h3><h3 id="3-2、Tkinter-UI"><a href="#3-2、Tkinter-UI" class="headerlink" title="3.2、Tkinter UI"></a>3.2、Tkinter UI</h3><p>1、动态更新UI，使用<code>config</code>   </p>
+<pre><code>root = Tk()
+btn = Button(root,text =&apos;test&apos;)
+btn.pack()
+btn.config(state = &apos;disabled&apos;）
+</code></pre><p>关于布局有三种，pack,grid,place<a href="http://www.tutorialspoint.com/python/tk_pack.htm" target="_blank" rel="external">参考</a>   </p>
+<h2 id="4、opencv-python"><a href="#4、opencv-python" class="headerlink" title="4、opencv python"></a>4、opencv python</h2><h3 id="4-1、反转黑白图片"><a href="#4-1、反转黑白图片" class="headerlink" title="4.1、反转黑白图片"></a>4.1、反转黑白图片</h3><pre><code>thresh = cv2.thrsehold(image,122,255,cv2.THRESH_BINARY_INV)[1]
+</code></pre><h3 id="4-2、python进行条形码检测"><a href="#4-2、python进行条形码检测" class="headerlink" title="4.2、python进行条形码检测"></a>4.2、<a href="http://python.jobbole.com/81130/" target="_blank" rel="external">python进行条形码检测</a></h3><h3 id="4-3、cv2-crop图片"><a href="#4-3、cv2-crop图片" class="headerlink" title="4.3、cv2  crop图片"></a>4.3、cv2  crop图片</h3><pre><code>img = image[y:y+h,x:x+w]
 </code></pre><h3 id="4-4、由文本生成图片，参考"><a href="#4-4、由文本生成图片，参考" class="headerlink" title="4.4、由文本生成图片，参考"></a>4.4、由文本生成图片，<a href="http://python.jobbole.com/81983/" target="_blank" rel="external">参考</a></h3><h3 id="4-5、图片生成汉字库，关于怎么样将汉字切片可以参考"><a href="#4-5、图片生成汉字库，关于怎么样将汉字切片可以参考" class="headerlink" title="4.5、图片生成汉字库，关于怎么样将汉字切片可以参考"></a>4.5、图片生成汉字库，关于怎么样将汉字切片可以<a href="http://python.jobbole.com/81985/" target="_blank" rel="external">参考</a></h3>
       
     </div>
@@ -759,6 +853,10 @@ ap.add_argument(&apos;-p&apos;,&apos;--plugins&apos;,required = True, nargs = &a
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/01/设计模式/" rel="prev" title="设计模式">
+                设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -853,7 +951,7 @@ ap.add_argument(&apos;-p&apos;,&apos;--plugins&apos;,required = True, nargs = &a
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -862,7 +960,7 @@ ap.add_argument(&apos;-p&apos;,&apos;--plugins&apos;,required = True, nargs = &a
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -871,7 +969,7 @@ ap.add_argument(&apos;-p&apos;,&apos;--plugins&apos;,required = True, nargs = &a
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -906,7 +1004,7 @@ ap.add_argument(&apos;-p&apos;,&apos;--plugins&apos;,required = True, nargs = &a
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-学习"><span class="nav-number">1.</span> <span class="nav-text">Python 学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-0、逻辑运算（补充）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.0、逻辑运算（补充）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、-关于list与tuple-元组-数组"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1、 关于list与tuple(元组), 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、关于dict-set"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.2、关于dict,set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3、关于python的可变参数与关键字参数"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.3、关于python的可变参数与关键字参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4、Python所谓的高级我切片与matlab的取第几行几列类似"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.4、Python所谓的高级我切片与matlab的取第几行几列类似</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5、迭代使用for-in或者for-value-in-d-iteatervalues-同时也可以用for-k-v-in-d-iteritems"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.5、迭代使用for ... in或者for value in d.iteatervalues()同时也可以用for k,v in d.iteritems()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4、由文本生成图片，参考"><span class="nav-number">1.1.7.</span> <span class="nav-text">4.4、由文本生成图片，参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5、图片生成汉字库，关于怎么样将汉字切片可以参考"><span class="nav-number">1.1.8.</span> <span class="nav-text">4.5、图片生成汉字库，关于怎么样将汉字切片可以参考</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-学习"><span class="nav-number">1.</span> <span class="nav-text">Python 学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">一、基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-0、逻辑运算（补充）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.0、逻辑运算（补充）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1、-关于list与tuple-元组-数组"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1、 关于list与tuple(元组), 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2、关于dict-set"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.2、关于dict,set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3、关于python的可变参数与关键字参数"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.3、关于python的可变参数与关键字参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4、Python所谓的高级我切片与matlab的取第几行几列类似"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.4、Python所谓的高级我切片与matlab的取第几行几列类似</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5、迭代使用for-in或者for-value-in-d-iteatervalues-同时也可以用for-k-v-in-d-iteritems"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.5、迭代使用for ... in或者for value in d.iteatervalues()同时也可以用for k,v in d.iteritems()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6、生成器-Generator"><span class="nav-number">1.1.7.</span> <span class="nav-text">1.6、生成器(Generator)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7、python高函数"><span class="nav-number">1.1.8.</span> <span class="nav-text">1.7、python高函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8、map-reduce-filter"><span class="nav-number">1.1.9.</span> <span class="nav-text">1.8、map/reduce/filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9、funciton-partial偏函数，把一个函数的某些参数给固定住，返回一个新函数，那么调用-这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools-partial创建一个偏函数。"><span class="nav-number">1.1.10.</span> <span class="nav-text">1.9、funciton.partial偏函数，把一个函数的某些参数给固定住，返回一个新函数，那么调用 这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools.partial创建一个偏函数。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-1-装饰器及-语法"><span class="nav-number">1.1.11.</span> <span class="nav-text">1.9.1 装饰器及 @语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-10、python用模块（module）来组织工程"><span class="nav-number">1.1.12.</span> <span class="nav-text">1.10、python用模块（module）来组织工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-11、关于if-name-main"><span class="nav-number">1.1.13.</span> <span class="nav-text">1.11、关于if __name__== main:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-12、作用域"><span class="nav-number">1.1.14.</span> <span class="nav-text">1.12、作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-13、python面向对象编程-Object-Oriented-Programming-OOP"><span class="nav-number">1.1.15.</span> <span class="nav-text">1.13、python面向对象编程(Object Oriented Programming,OOP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-14、关于python的多态"><span class="nav-number">1.1.16.</span> <span class="nav-text">1.14、关于python的多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-15、获取对象信息"><span class="nav-number">1.1.17.</span> <span class="nav-text">1.15、获取对象信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-16、python动态绑定方法"><span class="nav-number">1.1.18.</span> <span class="nav-text">1.16、python动态绑定方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-17、-property关键字"><span class="nav-number">1.1.19.</span> <span class="nav-text">1.17、@property关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-18、多重继承"><span class="nav-number">1.1.20.</span> <span class="nav-text">1.18、多重继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-19、定制类"><span class="nav-number">1.1.21.</span> <span class="nav-text">1.19、定制类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-20、元类"><span class="nav-number">1.1.22.</span> <span class="nav-text">1.20、元类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-21、异常捕获try-except-finally"><span class="nav-number">1.1.23.</span> <span class="nav-text">1.21、异常捕获try:....except...finally...</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-22、调试"><span class="nav-number">1.1.24.</span> <span class="nav-text">1.22、调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-23、单元测试"><span class="nav-number">1.1.25.</span> <span class="nav-text">1.23、单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-24、文档测试（测试注释了的代码–python交互式代码）"><span class="nav-number">1.1.26.</span> <span class="nav-text">1.24、文档测试（测试注释了的代码–python交互式代码）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-25、IO编程"><span class="nav-number">1.1.27.</span> <span class="nav-text">1.25、IO编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-26、进程与线程"><span class="nav-number">1.1.28.</span> <span class="nav-text">1.26、进程与线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-27、分布式编程"><span class="nav-number">1.1.29.</span> <span class="nav-text">1.27、分布式编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-28、正则表达式"><span class="nav-number">1.1.30.</span> <span class="nav-text">1.28、正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-29常用内嵌模块"><span class="nav-number">1.1.31.</span> <span class="nav-text">1.29常用内嵌模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、python进阶"><span class="nav-number">1.2.</span> <span class="nav-text">2、python进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1、Range与XRange的区别"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1、Range与XRange的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2、ArgumentParser处理数组传入"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2、ArgumentParser处理数组传入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、python实战"><span class="nav-number">1.3.</span> <span class="nav-text">3、python实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1、python制作gif，然后可以在ppt导入"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1、python制作gif，然后可以在ppt导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2、Tkinter-UI"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2、Tkinter UI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、opencv-python"><span class="nav-number">1.4.</span> <span class="nav-text">4、opencv python</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1、反转黑白图片"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1、反转黑白图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2、python进行条形码检测"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2、python进行条形码检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3、cv2-crop图片"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3、cv2  crop图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4、由文本生成图片，参考"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4、由文本生成图片，参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5、图片生成汉字库，关于怎么样将汉字切片可以参考"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5、图片生成汉字库，关于怎么样将汉字切片可以参考</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
