@@ -126,7 +126,7 @@ categories: Python
 		int2 = functools.partial(int,base = 2) #int2就是一个新函数只有一个参数
    
 
-### 1.9.1 `@`语法
+### 1.9.1 装饰器及 `@`语法
 
 
 开门见山，直上代码
