@@ -349,6 +349,19 @@ type接收三个参数：
 	logging.config.fileConfig('./log.conf')
 	logger = logging.getLogger('root')
 
+还可以直接使用代码： 
+
+	import logging
+	
+	logger = logging.getLogger()
+	handler = logging.StreamHandler()
+	formatter = logging.Formatter(
+	        '%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+	handler.setFormatter(formatter)
+	logger.addHandler(handler)
+	logger.setLevel(logging.DEBUG)
+
+
 
 4、[pdb]( http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/00138683229901532c40b749184441dbd428d2e0f8aa50e000)   
 
