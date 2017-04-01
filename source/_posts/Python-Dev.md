@@ -522,8 +522,31 @@ SHA1与md5的调用 一样将上述代码改成SHA1即可
 	ap = argparse.ArgumentParser()
     ap.add_argument('-p','--plugins',required = True, nargs = '+', help = 'the channel which you will test')
 
+### 2.3、ConfigParser
+在python开发中经常会遇到配置化问题，也就是将配置写在一个xxxx.conf文件，然后程序根据配置文件做相应的事情。那配置化文件长什么样？又需要怎么样解析？本节`ConfigParser`就是来做这样的事情的。首先，给出一个配置文件示例：   
 
+		[IMSDKLoginFacebook]
+		bundleid = com.tencent.imsdk2
+		systemlibs = ["CoreTelephony.framework","CoreLocation.framework"]
+		buildsettings = {"OTHER_LDFLAGS":"-ObjC", "ENABLE_BITCODE":"NO"}
+		xctestfiles = ["DemoFacebookLoginTests.mm"]
+		thirdsdks = ["/IMSDK/Demo/IMSDK/Third/Facebook"]
+		resources = []
+		infoplist = {}
+		capabilites = {}
+接下来就是要解析配置文件
 
+		 cf = ConfigParser.ConfigParser()
+       	cf.read('sample.conf')  #先读取文件
+       
+配置文件内容解析：section, option。`[IMSDKLoginFacebook]`称为section, `resources = []`称为option
+
+		cf.has_section('section') # 判断是否有对应section
+		cf.add_section('section') # 添加section
+		cf.set('section','option','[]') #设置section/option
+		cf.get('section'，‘option’) #获取section/option
+		
+**注意，配置文件都是处理结果都字符串，要想处理其它类型数据可以考虑通过json转换**
 ## 3、python实战
 ### 3.1、[python制作gif]( http://python.jobbole.com/81185/)，然后可以在ppt导入    
 ### 3.2、Tkinter UI  
