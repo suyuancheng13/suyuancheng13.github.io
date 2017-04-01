@@ -99,6 +99,8 @@ tags: [iOS, Dev]
 |_NSConreteStackBlock|栈上|
 |_NSConreteGlobalBlock|全局数据区（.data区）|
 |_NSConreteMallocBlock|堆上|
+>在ARC开启时，将只有 _NSConreteGlobalBlock与_NSConreteMallocBlock。因为ARC下编译器会自己管理对象，默认copy到堆上
+
 其实Block的类型与其自动截获变量有关。
 
 + _NSConreteGlobalBlock类型
@@ -110,7 +112,9 @@ _NSConreteGlobalBlock类的Block，本质就与一个全局函数一样。不截
 一般来说Block除了Global Block外，首先他必须先是一个_NSConreteStackBlock，也就是配置在栈上的。 因为，Block变量首先得是一个变量，而代码中除了主动申请内存外其它变量都在栈上。
 
 + _NSConreteMallocBlock类型    
-**那么关于_NSConreteMallocBlock类型何时才用到呢？由于_NSConreteStackBlock是配置于栈上，所以其生命周期也随其变量在栈上的生命周期。但实际开发中往往需要Block的生命周期更长。所以Block提供了复制，_NSConreteStackBlock可以复制到堆上也就是_NSConreteMallocBlock，在堆上的变量生命周期与栈无关，不会随着栈上变量变化。**
+
+	**那么关于_NSConreteMallocBlock类型何时才用到呢？由于_NSConreteStackBlock是配置于栈上，所以其生命周期也随其变量在栈上的生命周期。但实际开发中往往需要Block的生命周期更长。所以Block提供了复制，_NSConreteStackBlock可以复制到堆上也就是_NSConreteMallocBlock，在堆上的变量生命周期与栈无关，不会随着栈上变量变化。block 通常不会在源码中直接出现，因为默认它是当一个 block 被 copy 的时候，才会将这个 block 复制到堆中。**
+	
 ## 2.2 对Block进行copy的效果
 
 |类|源存储域|复制效果|   
@@ -123,7 +127,13 @@ _NSConreteGlobalBlock类的Block，本质就与一个全局函数一样。不截
 
 # 三、__block变量
 
-**Block中可以进行修改的值包括三种：全局变量，静态变量，`__block`变量**。前两种不用说，因为其存储在全局区域访问自然无可厚非，本节主要说一下`__block`变量。还是原来的demo，仅将其中的变量`base`声明为`__block`
+**Block中可以进行修改的值包括三种：**   
+ 
++ 全局变量   
++ 静态变量   
++ `__block`变量  
+
+前两种不用说，因为其存储在全局区域访问自然无可厚非，本节主要说一下`__block`变量。还是原来的demo，仅将其中的变量`base`声明为`__block`
 
 	 __block int base =10;
 
@@ -193,7 +203,8 @@ _NSConreteGlobalBlock类的Block，本质就与一个全局函数一样。不截
 
 ### __block变量在Block内外都可以访问
 
-注意结合该结构体声明分析。值得关注的是其`__forwarding`指针指向了自己本身。**<font color = red>__forwarding的存在是为了不管__block变量是在堆上还是栈上都可以访问该变量，因为在复制__block变量到堆上是会改变栈上__block结构中的__forwarding指向堆上的，而堆上的__block变量指向自己本身，因此堆上与栈上都能可以该变量。</font>**
+注意结合该结构体声明分析。值得关注的是其`__forwarding`指针指向了自己本身。     
+**<font color = red>__forwarding的存在是为了不管__block变量是在堆上还是栈上都可以访问该变量，因为在复制__block变量到堆上是会改变栈上__block结构中的__forwarding指向堆上的，而堆上的__block变量指向自己本身，因此堆上与栈上都能可以该变量。</font>**
 
 
 # 总结
