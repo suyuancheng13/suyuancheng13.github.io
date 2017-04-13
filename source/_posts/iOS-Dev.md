@@ -63,33 +63,43 @@ runloop只有在开启第二个线程的时候才考虑使用runloop，而且也
 
 ```
 
-	#import "Singleton.h"  
-	  
-	@implementation Singleton  
-	  
-	static Singleton* _instance = nil;  
-	  
-	+(instancetype) shareInstance  
-	{  
-	    static dispatch_once_t onceToken ;  
-	    dispatch_once(&onceToken, ^{  
-	        _instance = [[super allocWithZone:NULL] init] ;  
-	    }) ;  
-	      
-	    return _instance ;  
-	}  
-	  
-	+(id) allocWithZone:(struct _NSZone *)zone  
-	{  
-	    return [Singleton shareInstance] ;  
-	}  
-	  
-	-(id) copyWithZone:(struct _NSZone *)zone  
-	{  
-	    return [Singleton shareInstance] ;  
-	}  
-	  
-	@end  
+	+(instancetype) sharedInstance
+	{
+	    static IMSDKLocalLog *_instance = nil;
+	    static dispatch_once_t onceToken ;
+	    dispatch_once(&onceToken, ^{
+	        _instance = [[super allocWithZone:NULL] initSingleton];// 继承可能有问题
+	    }) ;
+	    
+	    return _instance ;
+	}
+	
+	+(id) allocWithZone:(struct _NSZone *)zone
+	{
+	    return [IMSDKLocalLog sharedInstance];
+	}
+	
+	- (id) copyWithZone:(NSZone *)zone
+	{
+	    return [IMSDKLocalLog sharedInstance];
+	}
+	
+	- (id) mutablecopyWithZone:(NSZone *)zone
+	{
+	    return [IMSDKLocalLog sharedInstance];
+	}
+	
+	
+	- (instancetype)initSingleton {
+	    self = [super init];
+	    if (self) {        //TODO
+	        _logfile = @"";
+	        _maxLogSize = 20*1024*1024;
+	        _maxFileSize = 512*1024;
+	        _retry = 3;
+	    }
+	    return self;
+	} 
 ```
 
 ## 二、关于certificates 和provisioning proflies
