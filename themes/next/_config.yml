@@ -429,7 +429,7 @@ calendar:
 
 reward_comment: 
 alipay: 
-wechatpay: https://github.com/suyuancheng13/suyuancheng13.github.io/blob/hexo/themes/next/wechatpay.jpg
+wechatpay: C:\\Users\\Administrator\\Desktop\\wechatpay.jpg
 
 # Algolia Search
 algolia_search:
