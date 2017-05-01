@@ -15,5 +15,5 @@ categories: git
 ## 一、常用命令
 ### 1、 删除版本库中的一个commit: `git reset --hard HEAD~1`
 ### 2、 删除远程库中的一个commit: `git reset --hard HEAD~1`, `git push --force`
-### 3、 将本地分支推送到远程分支：`git push origin local_ branch:remote_branch` ：这个操作，local_ branch必须为你本地存在的分支，remote_ branch为远程分支，如果remote_ branch不存在则会自动创建分支。
+### 3、 将本地分支推送到远程分支：`git push origin local_ branch:remote_ branch` ：这个操作，local_ branch必须为你本地存在的分支，remote_ branch为远程分支，如果remote_ branch不存在则会自动创建分支。
 ### 4、将本地分支与远程分支建立对应关系：`git branch --set-upstream-to=origin/<branch> <remote>`

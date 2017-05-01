@@ -27,3 +27,5 @@ tags: 使用手册
 ## 四、关于hexo使用markdown语法
 + 代码块使用tap键缩进，不要使用语法
 + 标题与`##`之间要人空格
+
+## 五、hexo相关图片如果需要站点内部引用则需要放置:`themes/next/source/uploads(images)`
