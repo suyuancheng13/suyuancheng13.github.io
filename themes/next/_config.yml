@@ -424,13 +424,6 @@ calendar:
   singleEvents: true
   maxResults: 250
 
-
-
-
-reward_comment: 
-alipay: 
-wechatpay: C:\\Users\\Administrator\\Desktop\\wechatpay.jpg
-
 # Algolia Search
 algolia_search:
   enable: true
@@ -451,7 +444,9 @@ local_search:
 # Alias: {% extlink text url "title" %}
 exturl: false
 
-
+reward_comment: 
+alipay: 
+wechatpay: /uploads/wechatpay.jpg
 #! ---------------------------------------------------------------
 #! DO NOT EDIT THE FOLLOWING SETTINGS
 #! UNLESS YOU KNOW WHAT YOU ARE DOING
