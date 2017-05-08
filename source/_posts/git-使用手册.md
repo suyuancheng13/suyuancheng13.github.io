@@ -18,7 +18,9 @@ categories: git
 ### 3、 将本地分支推送到远程分支：`git push origin local_ branch:remote_ branch` ：这个操作，local_ branch必须为你本地存在的分支，remote_ branch为远程分支，如果remote_ branch不存在则会自动创建分支。
 ### 4、将本地分支与远程分支建立对应关系：`git branch --set-upstream-to=origin/<branch> <remote>`  
 ### 5、将本地分支删除：`git branch -d <branchName>`
-+ **注意如果处在当前分支是无法删除的需要切换到其它分支再删除。另外，不管它有没有merge使用`git branch -D <branchName>`**
+
++ **注意如果处在当前分支是无法删除的需要切换到其它分支再删除。另外，不管它有没有merge使用`git branch -D <branchName>`**  
+
 ### 6、如果对应outlook密码修改，则可以在目录`/Users/username/.ssh`下删除`id_rsa`和`id_rsa.pub`
 ### 7、切换分支:`git checkout <branchname>`
 ### 8、切换分支并创建本地分支:`git checkout -b <branchname>`   
