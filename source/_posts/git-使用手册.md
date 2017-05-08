@@ -19,7 +19,9 @@ categories: git
 ### 4、将本地分支与远程分支建立对应关系：`git branch --set-upstream-to=origin/<branch> <remote>`  
 ### 5、将本地分支删除：`git branch -d <branchName>`
 
-+ **注意如果处在当前分支是无法删除的需要切换到其它分支再删除。另外，不管它有没有merge使用`git branch -D <branchName>`**  
+
++ 注意如果处在当前分支是无法删除的需要切换到其它分支再删除。另外，不管它有没有merge使用`git branch -D <branchName>` 
+
 
 ### 6、如果对应outlook密码修改，则可以在目录`/Users/username/.ssh`下删除`id_rsa`和`id_rsa.pub`
 ### 7、切换分支:`git checkout <branchname>`
