@@ -20,7 +20,7 @@ categories: iOS
 		let instance = Singleton()
 		class Singleton {
 			//MARK: 单例1
-			static var sharedInstance = Singleton()
+			static let sharedInstance = Singleton()
 		
 			//MARK: 单例2 
 			class var sharedInstance2: Singleton {
@@ -36,7 +36,7 @@ categories: iOS
 		    }
 		}
 
-**Caution:跨模块（framework）使用时Xcode不会提示相应类属性，手动写上即可**
+**Caution:跨模块（framework）使用时Xcode不会提示相应类属性，手动写上即可；另外，`let`是线程安全的**
 
 # 二、Swift混编
 ## 2.1 Swift 与 OC 混编
