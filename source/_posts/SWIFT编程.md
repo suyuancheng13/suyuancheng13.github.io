@@ -11,6 +11,33 @@ categories: iOS
 <!--More-->    
 
 # 一、基础知识
+
+## 1.1 Swift单例
+
+原理都是通过类属性实现，访问时通过类直接获取。
+
+		//MARK: 单例2
+		let instance = Singleton()
+		class Singleton {
+			//MARK: 单例1
+			static var sharedInstance = Singleton()
+		
+			//MARK: 单例2 
+			class var sharedInstance2: Singleton {
+				return instance
+			}
+		
+			//MARK: 单例3
+			static var shareInstance3:Single{
+		        struct MyStatic{
+		            static var instance :Single = Single()
+		        }
+		        return MyStatic.instance;
+		    }
+		}
+
+**Caution:跨模块（framework）使用时Xcode不会提示相应类属性，手动写上即可**
+
 # 二、Swift混编
 ## 2.1 Swift 与 OC 混编
 ### 2.1.1 OC调用Swift
