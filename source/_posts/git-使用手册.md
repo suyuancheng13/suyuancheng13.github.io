@@ -26,4 +26,5 @@ categories: git
 ### 6、如果对应outlook密码修改，则可以在目录`/Users/username/.ssh`下删除`id_rsa`和`id_rsa.pub`
 ### 7、切换分支:`git checkout <branchname>`
 ### 8、切换分支并创建本地分支:`git checkout -b <branchname>`   
-### 9、`git checkout origin/remoteName -b localName` 获取远程分支remoteName 到本地新分支localName，并跳到localName分支
+### 9、`git checkout origin/remoteName -b localName` 获取远程分支remoteName 到本地新分支localName，并跳到localName分支   
+### 10、`git checkoutremoteName` 获取远程分支remoteName 到本地并生成新分支remoteName，并跳到localName分支
