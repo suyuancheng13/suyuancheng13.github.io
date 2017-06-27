@@ -130,13 +130,23 @@ categories: iOS
 		}
 
 
-## 1.3 闭包
-闭包其实就是代码块，与OC中的block类似。闭包表达式语法：
+## 1.3 函数 & 闭包
+### 1.3.1 函数
++ 引用形参`inout`,作用与C中的引用是一样的作用，然后在调用时使用`&`传值
++ 函数类型（闭包），swift中函数也是一种类型，就是通过参数列表及返回值来定义一个函数类型的，例如：
+	
+		var myFunc: (Int, Int)-> Int
++ 函数形参与标签，如果函数定义时没有标签时形参名就是标签   
+
+		func test(number:Int, number1:Int)->Void
+
+### 1.3.2 闭包其实就是代码块，与OC中的block类似。闭包表达式语法：
 
 	{ (parametees) -> returnType in
 		//statements
 		
 	}
+
 闭包的函数体由关键字`in`引入
 
 ## 1.4 类型转换，检查
