@@ -67,7 +67,7 @@ Category方法定义的方法都自然而然地添加到原来类了，特别是
 + 
 # 二、Method Swizzling实现    
 
-	+ (void)load {
+	 +(void)load {
 	    static dispatch_once_t onceToken;
 	    dispatch_once(&onceToken, ^{
 	        Class originalClass = NSClassFromString(@"AppDelegate");
