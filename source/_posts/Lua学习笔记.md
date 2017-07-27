@@ -52,3 +52,7 @@ categories: Lua
 	LUA_API lua_State      *(lua_tothread) (lua_State *L, int idx);
 	LUA_API const void     *(lua_topointer) (lua_State *L, int idx);
 	....
+
+### 1.1.2、C语言大量使用宏定义
++ 宏定义函数，减少函数调用开销
++ 宏定义方便
