@@ -66,7 +66,8 @@ Category方法定义的方法都自然而然地添加到原来类了，特别是
 
 + Swizzling最好在`+load`中做， 关于`+load`与`+initialize`的区别可以参考[Objective-C +load vs +initialize](http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/)
 + 使用`dispatch_once`处理Swizzling部分代码，防止子类影响父类   
-+ 
+
+
 # 二、Method Swizzling实现    
 
 ```   
