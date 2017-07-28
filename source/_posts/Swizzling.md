@@ -7,6 +7,8 @@ categories: iOS
 
 > iOS Method　Swizzling学习笔记    
 
+<!--More-->
+
 # 一、Method Swizzling原理
 ## 1.1、Runtime   
 + 首先，看一下Class的结构      
@@ -67,6 +69,8 @@ Category方法定义的方法都自然而然地添加到原来类了，特别是
 + 
 # 二、Method Swizzling实现    
 
+```   
+
 	 +(void)load {
 	    static dispatch_once_t onceToken;
 	    dispatch_once(&onceToken, ^{
@@ -107,6 +111,6 @@ Category方法定义的方法都自然而然地添加到原来类了，特别是
 	        }
 	    });
 	}
-
+```
 
 # 三、项目怎么样方便使用
