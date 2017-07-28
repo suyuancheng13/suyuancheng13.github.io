@@ -65,8 +65,8 @@ Category方法定义的方法都自然而然地添加到原来类了，特别是
 ## 1.3、注意点
 
 + Swizzling最好在`+load`中做， 关于`+load`与`+initialize`的区别可以参考[Objective-C +load vs +initialize](http://blog.leichunfeng.com/blog/2015/05/02/objective-c-plus-load-vs-plus-initialize/)
-+ 使用`dispatch_once`处理Swizzling部分代码，防止子类影响父类   
-
++ 使用`dispatch_once`处理Swizzling部分代码，以保证代码只会执行一次且线程安全。  
++ Swizzle后记得在交换的方法里调用被交换的方法。
 
 # 二、Method Swizzling实现    
 
@@ -111,7 +111,25 @@ Category方法定义的方法都自然而然地添加到原来类了，特别是
 	            method_exchangeImplementations(originalMethod, swizzledMethod);
 	        }
 	    });
+	}     
+	
+	- (BOOL)firebase_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	    ///注意此时的self已经是AppDelegate了
+	    [FIRApp configure];
+	    [FIRMessaging messaging].delegate = self;
+	    NSLog(@"in : %s", __func__);
+	    return [self firebase_application:application didFinishLaunchingWithOptions:launchOptions];
 	}
-```
+```    
+
+其中，需要注意的是：   
+
++ 第一，originalClass有实现originalSelector方法。   
++ 第二，originalClass没有实现originalSelector方法。  
++ 第三，`firebase_application: didFinishLaunchingWithOptions:`中代码调用`[self firebase_application:application didFinishLaunchingWithOptions:launchOptions];`
 
 # 三、项目怎么样方便使用
+# 四、Swizzling 与 load+Notification
+## 4.1 load+Notification
++ load+Notification监听方法需要是类方法，需要注意的是在OC中类方法中`self`为`Class`与对象中为`Object`不一样
++ 如果需要实现第三Delegate时，是无法满足需求的。
