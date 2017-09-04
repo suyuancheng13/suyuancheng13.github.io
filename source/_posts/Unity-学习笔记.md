@@ -9,6 +9,31 @@ categories: Unity
 <!--More-->
 
 # 一、基础
+## 1.1 Gameobject
+
+Gameobject是游戏中最重要的一个角色，游戏中任务一个对象都是一个Gameobject。
+## 1.2 prefab
+
+预设 (Prefabs) 是可重复用于场景中的游戏对象 (GameObject) 和组件 (Component) 的集合。一个预设 (Prefab) 可创建多个相同对象，称之为实例化。Prefab可以理解为结构蓝图，如果蓝图变了实例也会跟着一起变。
+## 1.3 Shader，Material，Texture
+[参考](http://docs.manew.com/Manual/index.htm)      
+
+着色器(Shader)可定义以下事项：
+
++ 渲染对象的方法。这包括使用不同方法，具体取决于最终用户的图形卡。
++ 用于渲染的任何顶点照明和部分照明程序。
++ 材质 (Materials) 内可供分配的纹理属性。
++ 材质 (Materials) 内可供分配的颜色和数量设置。    
+
+材质 (Materials) 可定义：　　　
+
++ 渲染使用的纹理。　　
++ 渲染使用的颜色。　　
++ 任何其他资源，如着色器进行渲染所需的立方体贴图 (Cubemap)。　　　
+
+着色器由图形程序员编写。程序员使用非常简单的 ShaderLab 语言创建着色器。但是，让着色器在各种不同图形卡上充分发挥其作用是一项复杂的工作，这需要对图形卡运行原理有非常全面地了解。
+
+# 二、实践
 ## 2.1 Unity使用DLL（动态链接库）
 ### 2.1.1、 生成DLL
 
