@@ -100,7 +100,11 @@ runloop只有在开启第二个线程的时候才考虑使用runloop，而且也
 	    }
 	    return self;
 	} 
-```
+```    
+### 10、xcode 切换/build
+1. xcodebuild -verison   (查看你的xcode版本)   
+2. sudo xcode-select -switch xcode path , 例如：</Applications/Xcode8.0.app/Contents/Developer  > (如果需要切换)    
+3. xcodebuild -target {你的工程名字}    
 
 ## 二、关于certificates 和provisioning proflies
 

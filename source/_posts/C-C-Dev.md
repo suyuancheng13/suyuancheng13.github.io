@@ -73,11 +73,11 @@ tags: [C/C++,Dev]
 
 ## 7、关于C++继承访问控制问题
 
-|  父类访问控制| public | protected | private |
-| -- | -- | -- | --|
-|public 继承| public |  protected | 不可用 |   
-|protected 继承| protected |  protected | 不可用 |  
-|private 继承|  private  |   private | 不可用 |   
+|  父类访问控制| public | protected | private |    
+| -- | -- | -- | --|    
+|public 继承| public |  protected | 不可用 |      
+|protected 继承| protected |  protected | 不可用 |     
+|private 继承|  private  |   private | 不可用 |      
 
 **protected**：不可以被用户访问，只可以被派生类访问  
 
