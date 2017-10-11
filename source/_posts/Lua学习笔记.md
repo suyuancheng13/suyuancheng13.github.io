@@ -57,6 +57,9 @@ categories: Lua
 + 宏定义函数，减少函数调用开销
 + 宏定义方便    
 
+### 1.1.3、VS编译lua源码
++ 参考： [https://www.kancloud.cn/digest/luanote/119932](https://www.kancloud.cn/digest/luanote/119932)     
++ 注意要把你的测试project设置成启动项目，否则会出现错误：无法启动程序：xxxx.lib 指定文件格式无法识别或不支持二进制
 ## 2、Lua语法
 ### 2.1、Lua函数调用方法`.`与`:`区别    
 `.`:是一般的调用     
