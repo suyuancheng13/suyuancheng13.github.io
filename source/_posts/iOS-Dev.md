@@ -106,6 +106,17 @@ runloop只有在开启第二个线程的时候才考虑使用runloop，而且也
 2. sudo xcode-select -switch xcode path , 例如：</Applications/Xcode8.0.app/Contents/Developer  > (如果需要切换)    
 3. xcodebuild -target {你的工程名字}    
 
+### 11、关于`[NSString UTF8String]`返回null的问题
++ 首先，在使用UTF8String时要做好保护，因为其返回是可能为空的只是概率不高；
++ 返回null的一种可能情况：    
+
+```
+
+NSString *ns = @"sdfhsdjf % C dsfsd";
+const char *s = [ns UTF8String];   
+```
+
+**原因：在字符串中出现了`% C`占位符。占位符的意义是会将指定内存格式化，但是这里没有指定内存，另外`%C`会将指定内存转为UTF-16，这样ns字符串中概率性的会出现非UTF8字符，所以转UTF8String时是会出现null的**
 ## 二、关于certificates 和provisioning proflies
 
 1、certificates：key(private key)

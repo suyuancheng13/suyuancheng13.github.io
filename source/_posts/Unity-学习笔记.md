@@ -70,6 +70,10 @@ Gameobject是游戏中最重要的一个角色，游戏中任务一个对象都�
 ## 1.6 Unity坐标系
 ![img](http://answers.unity3d.com/storage/temp/8053-spaces.jpg)   
 
+## 1.7 iOS编译问题
+
+从Unity导出iOS工程时需要注意是否使用了一些JIT(just in time compiler)特性的语法（例如C# Linq的排序）。因为iOS编译是AOT((Ahead-Of-Time，静态编译)不支持动态编译。
+
 # 二、实践
 ## 2.1 Unity使用DLL（动态链接库）
 ### 2.1.1、 生成DLL
