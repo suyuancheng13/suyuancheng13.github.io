@@ -11,7 +11,7 @@ tags: 使用手册
 
 ## 一、关于日常笔记（添加新，修改等）：
 + 依次执行git pull, git add .、git commit -m "..."、git push origin hexo指令将改动推送到GitHub；
-+ 然后才执行hexo g -d发布网站到master分支上 
++ 然后才执行`hexo clean g d`发布网站到master分支上 
 + master分支不用理会，hexo管理   
 
 ## 二、其它设备上使用下列步骤：
@@ -26,6 +26,6 @@ tags: 使用手册
 
 ## 四、关于hexo使用markdown语法
 + 代码块使用tap键缩进，不要使用语法
-+ 标题与`##`之间要人空格
++ 标题与`##`之间要空格
 
 ## 五、hexo相关图片如果需要站点内部引用则需要放置:`themes/next/source/uploads(images)`
