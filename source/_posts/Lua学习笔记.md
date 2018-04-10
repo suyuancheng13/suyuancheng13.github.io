@@ -54,13 +54,131 @@ categories: Lua
 	....
 
 ### 1.1.2、C语言大量使用宏定义
+
 + 宏定义函数，减少函数调用开销
 + 宏定义方便    
 
-### 1.1.3、VS编译lua源码
+### 1.1.3、VS编译lua源码  
+
 + 参考： [https://www.kancloud.cn/digest/luanote/119932](https://www.kancloud.cn/digest/luanote/119932)     
-+ 注意要把你的测试project设置成启动项目，否则会出现错误：无法启动程序：xxxx.lib 指定文件格式无法识别或不支持二进制
++ 注意要把你的测试project设置成启动项目，否则会出现错误：无法启动程序：xxxx.lib 指定文件格式无法识别或不支持二进制  
+
 ## 2、Lua语法
+
 ### 2.1、Lua函数调用方法`.`与`:`区别    
-`.`:是一般的调用     
-`:`:自带第一个参数`self`
+
++ `.`:是一般的调用     
++ `:`:自带第一个参数`self`    
++ `s.xxx(s,arg) == s:xxx(arg)`
+
+
+### 2.2、lua在查找一个表元素的时候，其步如下 
+
+1. 在表中查找，如果找到的话，则返回该元素，找不到则继续。    
+2. 判断该表是否有metatable表，如果没有metatable表，返回nil，有元表则继续。    
+3. **判断metatable是否有__index方法，如果__index方法为nil，则返回nil;如果__index方法是一个表，则重复1、2、3步骤;如果__index方法是一个函数，则返回该函数的返回值。**
+4. **__index中的function会增加一个默认入参，而且是第一个参数**    
+例如调用 foo.bar 时，如果在 foo 中没有找到名为 bar 的域时，则会调用 Metatable：__index(foo, bar)。于是：  
+
+
+### 2.3、__newindex元方法 
+__newindex元方法用来对表更新，而__index则用来对表进行访问。当你给表的一个缺少的索引赋值的时，解释器就会查找__newindex元方法；如果存在则调用这个函数而不进行赋值操作。     
+
+
+## 3、实战
+### C++ 类导入lua
+
+```
+/***********C++ Class to Lua*********************/
+class Account {
+public: 
+	Account(double balance){ m_balance = balance;}
+	void deposit(double amount){m_balance += amount;}
+	void withdraw(double amount){m_balance -= amount;}
+	double balance(){return m_balance;}
+private:
+	double m_balance;
+};
+
+//class WrapperAccount {
+
+
+Account* checkaccount(lua_State *L, int narg)
+{
+	luaL_checktype(L,narg, LUA_TUSERDATA);
+	void *ud = luaL_checkudata(L,narg,"Account");
+	luaL_argcheck(L,ud!= NULL,1,"user data error");
+	return *(Account**)ud;
+}
+
+int create_account(lua_State *L)
+{
+	
+	double balance = luaL_checknumber(L,1);
+	Account **a = (Account**)lua_newuserdata(L,sizeof(Account));
+	*a = new Account(balance);
+	printf("construct! balance is: %lf\n",balance);
+	luaL_getmetatable(L,"Account");
+	lua_setmetatable(L,-2);
+	return 1;
+}
+int deposit(lua_State *L)
+{
+	Account *a = checkaccount(L,1);//(Account**)lua_touserdata(L,1);
+	double amount = luaL_checknumber(L,-1);
+	(a)->deposit(amount);
+	return 0;
+}
+int withdraw(lua_State *L)
+{
+	Account *a = checkaccount(L,1);//(Account**)lua_touserdata(L,1);
+	double amount = luaL_checknumber(L,-1);
+	(a)->withdraw(amount);
+	return 0;
+}
+int balance(lua_State *L)
+{
+	Account *a = checkaccount(L,1);//(Account**)lua_touserdata(L,1);
+	double balance = (a)->balance();
+	printf("balance is: %lf\n",balance);
+	lua_pushnumber(L,balance);
+	return 0;
+}
+//public:
+
+const char className[10] = "Account";
+static const luaL_Reg methods[]= {
+	//{"Account",create_account},
+	{"deposit",deposit},
+	{"withdraw",withdraw},
+	{"balance",balance},
+	{NULL,NULL}
+};
+
+int luaopen_Account(lua_State *L)
+{
+	luaL_newmetatable(L,"Account");
+	lua_pushvalue(L,-1);
+	lua_setfield(L,-2,"__index");//AAccount.__index = AAccount
+	luaL_setfuncs(L,methods,0);//register the methods to the table that is on the top
+	//luaL_newlib(L,methods);
+	printf("xxxxxxxxxx\n");
+	return 1;
+}
+
+static const luaL_Reg libs [] = {{"Account",luaopen_Account},{NULL,NULL}};
+void Register(lua_State* L)
+{
+	const luaL_Reg *lib = libs;
+	for (;lib->func; lib++) 
+	{
+		luaL_requiref(L, lib->name, lib->func, 1);
+		lua_pop(L, 1);  /* remove lib */
+	}
+	lua_register(L,"Account",create_account);
+}
+
++++++++++ lua中使用++++++++
+print("start");local a  = Account(100);print(a);print(a:balance());a:deposit(399);print("start");print(a:balance());print("end");
+
+```
