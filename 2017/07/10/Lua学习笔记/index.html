@@ -1,0 +1,1133 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Dev,Lua," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Lua 学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/07/10/Lua学习笔记/index.html">
+<meta property="og:site_name" content="Rain Frog">
+<meta property="og:description" content="Lua 学习笔记">
+<meta property="og:updated_time" content="2018-04-10T06:25:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lua学习笔记">
+<meta name="twitter:description" content="Lua 学习笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/10/Lua学习笔记/"/>
+
+
+
+
+
+  <title> Lua学习笔记 | Rain Frog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rain Frog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/Lua学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Suyuancheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rain Frog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Lua学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T17:06:34+08:00">
+                2017-07-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-10T14:25:54+08:00">
+                2018-04-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Lua/" itemprop="url" rel="index">
+                    <span itemprop="name">Lua</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/10/Lua学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/10/Lua学习笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/10/Lua学习笔记/" class="leancloud_visitors" data-flag-title="Lua学习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Lua 学习笔记</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="1-1、-Lua源码学习"><a href="#1-1、-Lua源码学习" class="headerlink" title="1.1、 Lua源码学习"></a>1.1、 Lua源码学习</h2><h3 id="1-1-1、C语言函数名与宏定义冲突问题"><a href="#1-1-1、C语言函数名与宏定义冲突问题" class="headerlink" title="1.1.1、C语言函数名与宏定义冲突问题"></a>1.1.1、C语言函数名与宏定义冲突问题</h3><p>所望的语言函数名与宏定义冲突问题，就是指宏定义与函数相同时编译器不知道标识符该怎么处理。如下代码：</p>
+<pre><code>#pragma once
+
+#include &lt;stdio.h&gt;
+#define f() printf(&quot;this is define &quot;);
+void f();
+</code></pre><p>上述代码在VS2010会检测出<code>Error:不允许使用不完整定义</code>。解决方案很简单，如下：</p>
+<pre><code>#pragma once
+
+#include &lt;stdio.h&gt;
+#define f() printf(&quot;this is define &quot;);
+void (f)();
+</code></pre><p>在函数名上添加小括号即可解决问题。这也就是为什么lua.h头文件里为什么那么函数名都带括号的原因:</p>
+<pre><code>/*
+** access functions (stack -&gt; C)
+*/
+
+LUA_API int             (lua_isnumber) (lua_State *L, int idx);
+LUA_API int             (lua_isstring) (lua_State *L, int idx);
+LUA_API int             (lua_iscfunction) (lua_State *L, int idx);
+LUA_API int             (lua_isinteger) (lua_State *L, int idx);
+LUA_API int             (lua_isuserdata) (lua_State *L, int idx);
+LUA_API int             (lua_type) (lua_State *L, int idx);
+LUA_API const char     *(lua_typename) (lua_State *L, int tp);
+
+LUA_API lua_Number      (lua_tonumberx) (lua_State *L, int idx, int *isnum);
+LUA_API lua_Integer     (lua_tointegerx) (lua_State *L, int idx, int *isnum);
+LUA_API int             (lua_toboolean) (lua_State *L, int idx);
+LUA_API const char     *(lua_tolstring) (lua_State *L, int idx, size_t *len);
+LUA_API size_t          (lua_rawlen) (lua_State *L, int idx);
+LUA_API lua_CFunction   (lua_tocfunction) (lua_State *L, int idx);
+LUA_API void           *(lua_touserdata) (lua_State *L, int idx);
+LUA_API lua_State      *(lua_tothread) (lua_State *L, int idx);
+LUA_API const void     *(lua_topointer) (lua_State *L, int idx);
+....
+</code></pre><h3 id="1-1-2、C语言大量使用宏定义"><a href="#1-1-2、C语言大量使用宏定义" class="headerlink" title="1.1.2、C语言大量使用宏定义"></a>1.1.2、C语言大量使用宏定义</h3><ul>
+<li>宏定义函数，减少函数调用开销</li>
+<li>宏定义方便    </li>
+</ul>
+<h3 id="1-1-3、VS编译lua源码"><a href="#1-1-3、VS编译lua源码" class="headerlink" title="1.1.3、VS编译lua源码"></a>1.1.3、VS编译lua源码</h3><ul>
+<li>参考： <a href="https://www.kancloud.cn/digest/luanote/119932" target="_blank" rel="external">https://www.kancloud.cn/digest/luanote/119932</a>     </li>
+<li>注意要把你的测试project设置成启动项目，否则会出现错误：无法启动程序：xxxx.lib 指定文件格式无法识别或不支持二进制  </li>
+</ul>
+<h2 id="2、Lua语法"><a href="#2、Lua语法" class="headerlink" title="2、Lua语法"></a>2、Lua语法</h2><h3 id="2-1、Lua函数调用方法-与-区别"><a href="#2-1、Lua函数调用方法-与-区别" class="headerlink" title="2.1、Lua函数调用方法.与:区别"></a>2.1、Lua函数调用方法<code>.</code>与<code>:</code>区别</h3><ul>
+<li><code>.</code>:是一般的调用     </li>
+<li><code>:</code>:自带第一个参数<code>self</code>    </li>
+<li><code>s.xxx(s,arg) == s:xxx(arg)</code></li>
+</ul>
+<h3 id="2-2、lua在查找一个表元素的时候，其步如下"><a href="#2-2、lua在查找一个表元素的时候，其步如下" class="headerlink" title="2.2、lua在查找一个表元素的时候，其步如下"></a>2.2、lua在查找一个表元素的时候，其步如下</h3><ol>
+<li>在表中查找，如果找到的话，则返回该元素，找不到则继续。    </li>
+<li>判断该表是否有metatable表，如果没有metatable表，返回nil，有元表则继续。    </li>
+<li><strong>判断metatable是否有<strong>index方法，如果</strong>index方法为nil，则返回nil;如果<strong>index方法是一个表，则重复1、2、3步骤;如果</strong>index方法是一个函数，则返回该函数的返回值。</strong></li>
+<li><strong>__index中的function会增加一个默认入参，而且是第一个参数</strong><br>例如调用 foo.bar 时，如果在 foo 中没有找到名为 bar 的域时，则会调用 Metatable：__index(foo, bar)。于是：  </li>
+</ol>
+<h3 id="2-3、-newindex元方法"><a href="#2-3、-newindex元方法" class="headerlink" title="2.3、__newindex元方法"></a>2.3、__newindex元方法</h3><p><strong>newindex元方法用来对表更新，而</strong>index则用来对表进行访问。当你给表的一个缺少的索引赋值的时，解释器就会查找__newindex元方法；如果存在则调用这个函数而不进行赋值操作。     </p>
+<h2 id="3、实战"><a href="#3、实战" class="headerlink" title="3、实战"></a>3、实战</h2><h3 id="C-类导入lua"><a href="#C-类导入lua" class="headerlink" title="C++ 类导入lua"></a>C++ 类导入lua</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">/***********C++ Class to Lua*********************/</div><div class="line">class Account &#123;</div><div class="line">public: </div><div class="line">	Account(double balance)&#123; m_balance = balance;&#125;</div><div class="line">	void deposit(double amount)&#123;m_balance += amount;&#125;</div><div class="line">	void withdraw(double amount)&#123;m_balance -= amount;&#125;</div><div class="line">	double balance()&#123;return m_balance;&#125;</div><div class="line">private:</div><div class="line">	double m_balance;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">//class WrapperAccount &#123;</div><div class="line"></div><div class="line"></div><div class="line">Account* checkaccount(lua_State *L, int narg)</div><div class="line">&#123;</div><div class="line">	luaL_checktype(L,narg, LUA_TUSERDATA);</div><div class="line">	void *ud = luaL_checkudata(L,narg,&quot;Account&quot;);</div><div class="line">	luaL_argcheck(L,ud!= NULL,1,&quot;user data error&quot;);</div><div class="line">	return *(Account**)ud;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int create_account(lua_State *L)</div><div class="line">&#123;</div><div class="line">	</div><div class="line">	double balance = luaL_checknumber(L,1);</div><div class="line">	Account **a = (Account**)lua_newuserdata(L,sizeof(Account));</div><div class="line">	*a = new Account(balance);</div><div class="line">	printf(&quot;construct! balance is: %lf\n&quot;,balance);</div><div class="line">	luaL_getmetatable(L,&quot;Account&quot;);</div><div class="line">	lua_setmetatable(L,-2);</div><div class="line">	return 1;</div><div class="line">&#125;</div><div class="line">int deposit(lua_State *L)</div><div class="line">&#123;</div><div class="line">	Account *a = checkaccount(L,1);//(Account**)lua_touserdata(L,1);</div><div class="line">	double amount = luaL_checknumber(L,-1);</div><div class="line">	(a)-&gt;deposit(amount);</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line">int withdraw(lua_State *L)</div><div class="line">&#123;</div><div class="line">	Account *a = checkaccount(L,1);//(Account**)lua_touserdata(L,1);</div><div class="line">	double amount = luaL_checknumber(L,-1);</div><div class="line">	(a)-&gt;withdraw(amount);</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line">int balance(lua_State *L)</div><div class="line">&#123;</div><div class="line">	Account *a = checkaccount(L,1);//(Account**)lua_touserdata(L,1);</div><div class="line">	double balance = (a)-&gt;balance();</div><div class="line">	printf(&quot;balance is: %lf\n&quot;,balance);</div><div class="line">	lua_pushnumber(L,balance);</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line">//public:</div><div class="line"></div><div class="line">const char className[10] = &quot;Account&quot;;</div><div class="line">static const luaL_Reg methods[]= &#123;</div><div class="line">	//&#123;&quot;Account&quot;,create_account&#125;,</div><div class="line">	&#123;&quot;deposit&quot;,deposit&#125;,</div><div class="line">	&#123;&quot;withdraw&quot;,withdraw&#125;,</div><div class="line">	&#123;&quot;balance&quot;,balance&#125;,</div><div class="line">	&#123;NULL,NULL&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">int luaopen_Account(lua_State *L)</div><div class="line">&#123;</div><div class="line">	luaL_newmetatable(L,&quot;Account&quot;);</div><div class="line">	lua_pushvalue(L,-1);</div><div class="line">	lua_setfield(L,-2,&quot;__index&quot;);//AAccount.__index = AAccount</div><div class="line">	luaL_setfuncs(L,methods,0);//register the methods to the table that is on the top</div><div class="line">	//luaL_newlib(L,methods);</div><div class="line">	printf(&quot;xxxxxxxxxx\n&quot;);</div><div class="line">	return 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">static const luaL_Reg libs [] = &#123;&#123;&quot;Account&quot;,luaopen_Account&#125;,&#123;NULL,NULL&#125;&#125;;</div><div class="line">void Register(lua_State* L)</div><div class="line">&#123;</div><div class="line">	const luaL_Reg *lib = libs;</div><div class="line">	for (;lib-&gt;func; lib++) </div><div class="line">	&#123;</div><div class="line">		luaL_requiref(L, lib-&gt;name, lib-&gt;func, 1);</div><div class="line">		lua_pop(L, 1);  /* remove lib */</div><div class="line">	&#125;</div><div class="line">	lua_register(L,&quot;Account&quot;,create_account);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+++++++++ lua中使用++++++++</div><div class="line">print(&quot;start&quot;);local a  = Account(100);print(a);print(a:balance());a:deposit(399);print(&quot;start&quot;);print(a:balance());print(&quot;end&quot;);</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div></div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechatpay.png" alt="Suyuancheng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Dev/" rel="tag"># Dev</a>
+          
+            <a href="/tags/Lua/" rel="tag"># Lua</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/27/Unity-学习笔记/" rel="next" title="Unity 学习笔记">
+                <i class="fa fa-chevron-left"></i> Unity 学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/07/10/Lua学习笔记/"
+     data-title="Lua学习笔记"
+     data-content=""
+     data-url="http://yoursite.com/2017/07/10/Lua学习笔记/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/07/10/Lua学习笔记/"
+           data-title="Lua学习笔记" data-url="http://yoursite.com/2017/07/10/Lua学习笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Suyuancheng" />
+          <p class="site-author-name" itemprop="name">Suyuancheng</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、基础知识"><span class="nav-number">1.</span> <span class="nav-text">一、基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1、-Lua源码学习"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、 Lua源码学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1、C语言函数名与宏定义冲突问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1、C语言函数名与宏定义冲突问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2、C语言大量使用宏定义"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2、C语言大量使用宏定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3、VS编译lua源码"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.1.3、VS编译lua源码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Lua语法"><span class="nav-number">1.2.</span> <span class="nav-text">2、Lua语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1、Lua函数调用方法-与-区别"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1、Lua函数调用方法.与:区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2、lua在查找一个表元素的时候，其步如下"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2、lua在查找一个表元素的时候，其步如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3、-newindex元方法"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3、__newindex元方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、实战"><span class="nav-number">1.3.</span> <span class="nav-text">3、实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-类导入lua"><span class="nav-number">1.3.1.</span> <span class="nav-text">C++ 类导入lua</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Suyuancheng</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"suyuancheng13"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("U1HloGzfBbpvCUBQAKTPNvTU", "Y0WCpDT94y1NpuTPA3YnKCXz");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+</body>
+</html>

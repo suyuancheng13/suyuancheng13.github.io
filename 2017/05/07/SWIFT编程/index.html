@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS,swift," />
 
 
 
@@ -87,22 +87,18 @@
 
 
 
-<meta name="description" content="title: SWIFT编程date: 2017-05-07 20:18:41categories: iOS
-tags: [iOS, swift]
-Swift学习与编程笔记">
+<meta name="description" content="Swift学习与编程笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rain Frog">
+<meta property="og:title" content="SWIFT编程">
 <meta property="og:url" content="http://yoursite.com/2017/05/07/SWIFT编程/index.html">
 <meta property="og:site_name" content="Rain Frog">
-<meta property="og:description" content="title: SWIFT编程date: 2017-05-07 20:18:41categories: iOS
-tags: [iOS, swift]
-Swift学习与编程笔记">
-<meta property="og:updated_time" content="2017-05-07T12:46:03.000Z">
+<meta property="og:description" content="Swift学习与编程笔记">
+<meta property="og:image" content="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializerDelegation01_2x.png">
+<meta property="og:updated_time" content="2018-04-10T03:18:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rain Frog">
-<meta name="twitter:description" content="title: SWIFT编程date: 2017-05-07 20:18:41categories: iOS
-tags: [iOS, swift]
-Swift学习与编程笔记">
+<meta name="twitter:title" content="SWIFT编程">
+<meta name="twitter:description" content="Swift学习与编程笔记">
+<meta name="twitter:image" content="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializerDelegation01_2x.png">
 
 
 
@@ -136,7 +132,7 @@ Swift学习与编程笔记">
 
 
 
-  <title>  | Rain Frog </title>
+  <title> SWIFT编程 | Rain Frog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -334,7 +330,7 @@ Swift学习与编程笔记">
             
             
               
-                
+                SWIFT编程
               
             
           </h1>
@@ -365,12 +361,34 @@ Swift学习与编程笔记">
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T20:46:03+08:00">
-                2017-05-07
+              <time title="更新于" itemprop="dateModified" datetime="2018-04-10T11:18:34+08:00">
+                2018-04-10
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -389,7 +407,7 @@ Swift学习与编程笔记">
 
           
           
-             <span id="/2017/05/07/SWIFT编程/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2017/05/07/SWIFT编程/" class="leancloud_visitors" data-flag-title="SWIFT编程">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -418,17 +436,131 @@ Swift学习与编程笔记">
       
 
       
-        <hr>
-<p>title: SWIFT编程<br>date: 2017-05-07 20:18:41<br>categories: iOS</p>
-<h2 id="tags-iOS-swift"><a href="#tags-iOS-swift" class="headerlink" title="tags: [iOS, swift]"></a>tags: [iOS, swift]</h2><blockquote>
+        <blockquote>
 <p>Swift学习与编程笔记</p>
 </blockquote>
 <a id="more"></a>    
-<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h1 id="二、Swift混编"><a href="#二、Swift混编" class="headerlink" title="二、Swift混编"></a>二、Swift混编</h1><h2 id="2-1-Swift-与-OC-混编"><a href="#2-1-Swift-与-OC-混编" class="headerlink" title="2.1 Swift 与 OC 混编"></a>2.1 Swift 与 OC 混编</h2><h3 id="2-1-1-OC调用Swift"><a href="#2-1-1-OC调用Swift" class="headerlink" title="2.1.1 OC调用Swift"></a>2.1.1 OC调用Swift</h3><p>OC要调用Swift需要借助于<code>yourtargetname-swift.h</code>   </p>
+<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="1-1-Swift单例"><a href="#1-1-Swift单例" class="headerlink" title="1.1 Swift单例"></a>1.1 Swift单例</h2><p>原理都是通过类属性实现，访问时通过类直接获取。</p>
+<pre><code>//MARK: 单例2
+let instance = Singleton()
+class Singleton {
+    //MARK: 单例1
+    static let sharedInstance = Singleton()
+
+    //MARK: 单例2 
+    class var sharedInstance2: Singleton {
+        return instance
+    }
+
+    //MARK: 单例3
+    static var shareInstance3:Single{
+        struct MyStatic{
+            static var instance :Single = Single()
+        }
+        return MyStatic.instance;
+    }
+}
+</code></pre><p><strong>Caution:跨模块（framework）使用时Xcode不会提示相应类属性，手动写上即可；另外，<code>let</code>是线程安全的</strong>     </p>
+<h2 id="1-2、构造函数"><a href="#1-2、构造函数" class="headerlink" title="1.2、构造函数"></a>1.2、构造函数</h2><h3 id="1-2-1-在构造函数里可以对常量进行修改，一旦修改后这个值就不会变了"><a href="#1-2-1-在构造函数里可以对常量进行修改，一旦修改后这个值就不会变了" class="headerlink" title="1.2.1 在构造函数里可以对常量进行修改，一旦修改后这个值就不会变了"></a>1.2.1 在构造函数里可以对常量进行修改，一旦修改后这个值就不会变了</h3><pre><code>class test {
+    let text: String
+    init(text: String) {
+        self.text = text
+    }
+}
+</code></pre><h3 id="1-2-2-系统合成构造函数主要包括两种：默认构造函数（不用多说），逐一赋值构造函数（结构体，类类型是没有的）"><a href="#1-2-2-系统合成构造函数主要包括两种：默认构造函数（不用多说），逐一赋值构造函数（结构体，类类型是没有的）" class="headerlink" title="1.2.2 系统合成构造函数主要包括两种：默认构造函数（不用多说），逐一赋值构造函数（结构体，类类型是没有的）"></a>1.2.2 系统合成构造函数主要包括两种：默认构造函数（不用多说），逐一赋值构造函数（结构体，类类型是没有的）</h3><pre><code>struct Size {
+    var width = 0.0, height = 0.0
+}
+let zhuyi = Size(width: 2.0, height: 2.0)
+</code></pre><h3 id="1-2-2-两段式构造"><a href="#1-2-2-两段式构造" class="headerlink" title="1.2.2 两段式构造"></a>1.2.2 两段式构造</h3><ul>
+<li>第一个阶段，每个存储型属性被引入它们的类指定一个初始值。当每个存储型属性的初始值被确定后;  </li>
+<li>第二阶段开始，它给每个类一次机会，在新实例准备使用之前进一步定制它们的存储型属性。</li>
+</ul>
+<h3 id="1-2-3-指定构造器，便利构造器"><a href="#1-2-3-指定构造器，便利构造器" class="headerlink" title="1.2.3 指定构造器，便利构造器"></a>1.2.3 指定构造器，便利构造器</h3><ul>
+<li><p><strong>指定构造器</strong>是类必须有的至少一个。可以通过继承了父类中的指定构造器而满足了这个条件</p>
+<pre><code>class test {
+    init(parametes)
+}
+</code></pre></li>
+<li><p><strong>便利构造器</strong>是类中比较次要的、辅助型的构造器。  </p>
+<pre><code>class test {
+   convenience  init(parametes)
+   }   
+</code></pre><p>两者的关系如下图：<br><img src="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializerDelegation01_2x.png" alt="img"><br><strong>1.指定构造器必须向上也就是父类继续</strong><br><strong>2.便利构造器必须横向向指定构造器依赖，也就是便利构造器必须导致一个指定构造器被调用</strong>  </p>
+</li>
+</ul>
+<ul>
+<li>便利构造器不能直接调用父类的便利构造器</li>
+<li>构造器的自动继承<br>子类在默认情况下不会继承父类的构造器。但是如果满足特定条件，父类构造器是可以被自动继承的。<ul>
+<li>子类中引入的所有新属性都提供了默认值</li>
+<li>如果子类没有定义任何<strong>指定构造器</strong>，它将自动继承所有父类的<strong>指定构造器</strong>。（OC继承；C++不继承）</li>
+<li>如果子类提供了所有父类<strong>指定构造器</strong>的实现——无论是通过规则 1 继承过来的，还是提供了自定义实现——它将自动继承所有父类的<strong>便利构造器</strong>。</li>
+<li>子类可以将父类的<strong>指定构造器</strong>重写为<strong>便利构造器</strong></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>demo:</p>
+<pre><code>class Food {
+    var name: String
+    init(name: String) {//指定构造器
+        self.name = name
+    }
+    convenience init() {//便利构造器， 符合横向代理原则：调用指定构造器
+        self.init(name: &quot;[Unnamed]&quot;)
+    }
+}
+
+//继承
+class RecipeIngredient: Food {
+    var quantity: Int//新增属性
+    init(name: String, quantity: Int) {
+        //符合两段式构造第一阶段，给属性一个初始化值
+        self.quantity = quantity//应该不可以访问self
+        super.init(name: name)//还是处于第一阶段，初始化父类部分属性
+
+    }
+    //子类的便利构造器与父类的指定构造器匹配，因些也算重写所以加上 override
+    override convenience init(name: String) {
+        self.init(name: name, quantity: 1)//调用指定构造器
+    }
+
+    //由于子类实现了父类的所有指定构造器，所以子类便继承了父类的便利构造器
+    //convenience init() {
+    //         self.init(name: &quot;[Unnamed]&quot;)
+    // }
+}
+
+//子类没有构造器，所以继承所有的父类构造器
+class ShoppingListItem: RecipeIngredient {
+    var purchased = false
+    var description: String {
+        var output = &quot;\(quantity) x \(name)&quot;
+        output += purchased ? &quot; ✔&quot; : &quot; ✘&quot;
+        return output
+    }
+}
+</code></pre></li>
+</ul>
+<h2 id="1-3-函数-amp-闭包"><a href="#1-3-函数-amp-闭包" class="headerlink" title="1.3 函数 &amp; 闭包"></a>1.3 函数 &amp; 闭包</h2><h3 id="1-3-1-函数"><a href="#1-3-1-函数" class="headerlink" title="1.3.1 函数"></a>1.3.1 函数</h3><ul>
+<li>引用形参<code>inout</code>,作用与C中的引用是一样的作用，然后在调用时使用<code>&amp;</code>传值</li>
+<li><p>函数类型（闭包），swift中函数也是一种类型，就是通过参数列表及返回值来定义一个函数类型的，例如：</p>
+<pre><code>var myFunc: (Int, Int)-&gt; Int
+</code></pre></li>
+<li><p>函数形参与标签，如果函数定义时没有标签时形参名就是标签   </p>
+<pre><code>func test(number:Int, number1:Int)-&gt;Void
+</code></pre></li>
+</ul>
+<h3 id="1-3-2-闭包其实就是代码块，与OC中的block类似。闭包表达式语法："><a href="#1-3-2-闭包其实就是代码块，与OC中的block类似。闭包表达式语法：" class="headerlink" title="1.3.2 闭包其实就是代码块，与OC中的block类似。闭包表达式语法："></a>1.3.2 闭包其实就是代码块，与OC中的block类似。闭包表达式语法：</h3><pre><code>{ (parametees) -&gt; returnType in
+    //statements
+
+}
+</code></pre><p>闭包的函数体由关键字<code>in</code>引入</p>
+<h3 id="1-3-3-闭包“逃逸”"><a href="#1-3-3-闭包“逃逸”" class="headerlink" title="1.3.3 闭包“逃逸”"></a>1.3.3 闭包“逃逸”</h3><p>所设置的闭包逃逸是指这个闭包是要函数执行完成后再去执行的，也就是异步执行的回调。在函数声明是需要在闭包入参之前添加关键字<code>@escaping</code><br>，因为逃逸了所以如果访问成员时需要添加<code>self</code>。</p>
+<h2 id="1-4-类型转换，检查"><a href="#1-4-类型转换，检查" class="headerlink" title="1.4 类型转换，检查"></a>1.4 类型转换，检查</h2><h3 id="1-4-1-swift类型转主要通过两个操作符：as-与as-。as-表示转换时可能失败返回nil-as-类型转换表示一定会转换成功并强解引用"><a href="#1-4-1-swift类型转主要通过两个操作符：as-与as-。as-表示转换时可能失败返回nil-as-类型转换表示一定会转换成功并强解引用" class="headerlink" title="1.4.1 swift类型转主要通过两个操作符：as?与as!。as?表示转换时可能失败返回nil,as!类型转换表示一定会转换成功并强解引用"></a>1.4.1 swift类型转主要通过两个操作符：<code>as?</code>与<code>as!</code>。<code>as?</code>表示转换时可能失败返回nil,<code>as!</code>类型转换表示一定会转换成功并强解引用</h3><h3 id="1-4-2-swift类型检查操作符：is。"><a href="#1-4-2-swift类型检查操作符：is。" class="headerlink" title="1.4.2 swift类型检查操作符：is。"></a>1.4.2 swift类型检查操作符：<code>is</code>。</h3><h1 id="二、Swift混编"><a href="#二、Swift混编" class="headerlink" title="二、Swift混编"></a>二、Swift混编</h1><h2 id="2-1-Swift-与-OC-混编"><a href="#2-1-Swift-与-OC-混编" class="headerlink" title="2.1 Swift 与 OC 混编"></a>2.1 Swift 与 OC 混编</h2><h3 id="2-1-1-OC调用Swift"><a href="#2-1-1-OC调用Swift" class="headerlink" title="2.1.1 OC调用Swift"></a>2.1.1 OC调用Swift</h3><p>OC要调用Swift需要借助于<code>yourtargetname-swift.h</code>   </p>
 <ul>
 <li>当我们在一个OC的工程中添加Swift语言Xcode会提示是否添加桥接文件；</li>
-<li>创建Swift类，为了让OC能调用还需要在类前添加<code>@objc</code>表示Swift代码暴露给OC用；</li>
-<li><p>但OC怎么使用Swift呢？这就需要<code>yourtargetname-swift.h</code>，这个头文件名可以要<code>target-&gt;Build Setting-&gt;Objective-C Generated Interface Header Name</code>。<strong>需要注意的是这个头文件target中只有一个，而且是看不到的，它是会在编译时生成</strong>，代码如下：</p>
+<li>创建Swift类，为了让OC能调用还需要在类前添加<code>@objc</code>表示Swift代码暴露给OC用；<strong><em>注意：<code>@objc</code>是不可以将非继承<code>NSObject</code>转换成OC可调用的对象</em></strong></li>
+<li><p>但OC怎么使用Swift呢？这就需要<code>yourtargetname-swift.h</code>，这个头文件名可以要<code>target-&gt;Build Setting-&gt;Objective-C Generated Interface Header Name</code>。<strong>需要注意的是这个头文件target中只有一个，而且是看不到的，它是会在编译时生成，如果模块是一个framework可能在生成的framework头文件里可以看到此文件</strong>，代码如下：</p>
 <pre><code>#import &quot;yourtargetname-swift.h&quot;
 
 ...        
@@ -482,6 +614,14 @@ swiftclass *instance = [[swiftclass alloc]init];
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/swift/" rel="tag"># swift</a>
+          
+        </div>
+      
 
       
         
@@ -501,6 +641,10 @@ swiftclass *instance = [[swiftclass alloc]init];
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/06/27/Unity-学习笔记/" rel="prev" title="Unity 学习笔记">
+                Unity 学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -515,7 +659,7 @@ swiftclass *instance = [[swiftclass alloc]init];
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2017/05/07/SWIFT编程/"
-     data-title=""
+     data-title="SWIFT编程"
      data-content=""
      data-url="http://yoursite.com/2017/05/07/SWIFT编程/">
   <div class="ds-share-inline">
@@ -545,7 +689,7 @@ swiftclass *instance = [[swiftclass alloc]init];
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/05/07/SWIFT编程/"
-           data-title="" data-url="http://yoursite.com/2017/05/07/SWIFT编程/">
+           data-title="SWIFT编程" data-url="http://yoursite.com/2017/05/07/SWIFT编程/">
       </div>
     
   </div>
@@ -594,7 +738,7 @@ swiftclass *instance = [[swiftclass alloc]init];
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -603,7 +747,7 @@ swiftclass *instance = [[swiftclass alloc]init];
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -612,7 +756,7 @@ swiftclass *instance = [[swiftclass alloc]init];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -647,7 +791,7 @@ swiftclass *instance = [[swiftclass alloc]init];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-iOS-swift"><span class="nav-number">1.</span> <span class="nav-text">tags: [iOS, swift]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、基础知识"><span class="nav-number"></span> <span class="nav-text">一、基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Swift混编"><span class="nav-number"></span> <span class="nav-text">二、Swift混编</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Swift-与-OC-混编"><span class="nav-number">1.</span> <span class="nav-text">2.1 Swift 与 OC 混编</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-OC调用Swift"><span class="nav-number">1.1.</span> <span class="nav-text">2.1.1 OC调用Swift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-Swift调用OC"><span class="nav-number">1.2.</span> <span class="nav-text">2.1.2 Swift调用OC</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、基础知识"><span class="nav-number">1.</span> <span class="nav-text">一、基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Swift单例"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Swift单例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2、构造函数"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-在构造函数里可以对常量进行修改，一旦修改后这个值就不会变了"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 在构造函数里可以对常量进行修改，一旦修改后这个值就不会变了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-系统合成构造函数主要包括两种：默认构造函数（不用多说），逐一赋值构造函数（结构体，类类型是没有的）"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 系统合成构造函数主要包括两种：默认构造函数（不用多说），逐一赋值构造函数（结构体，类类型是没有的）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-两段式构造"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.2 两段式构造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-指定构造器，便利构造器"><span class="nav-number">1.2.4.</span> <span class="nav-text">1.2.3 指定构造器，便利构造器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-函数-amp-闭包"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 函数 & 闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-闭包其实就是代码块，与OC中的block类似。闭包表达式语法："><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2 闭包其实就是代码块，与OC中的block类似。闭包表达式语法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-闭包“逃逸”"><span class="nav-number">1.3.3.</span> <span class="nav-text">1.3.3 闭包“逃逸”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-类型转换，检查"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 类型转换，检查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-swift类型转主要通过两个操作符：as-与as-。as-表示转换时可能失败返回nil-as-类型转换表示一定会转换成功并强解引用"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1 swift类型转主要通过两个操作符：as?与as!。as?表示转换时可能失败返回nil,as!类型转换表示一定会转换成功并强解引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-swift类型检查操作符：is。"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2 swift类型检查操作符：is。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Swift混编"><span class="nav-number">2.</span> <span class="nav-text">二、Swift混编</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Swift-与-OC-混编"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Swift 与 OC 混编</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-OC调用Swift"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 OC调用Swift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-Swift调用OC"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 Swift调用OC</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -670,7 +814,7 @@ swiftclass *instance = [[swiftclass alloc]init];
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
