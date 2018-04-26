@@ -26,7 +26,7 @@ int MyAdd(lua_State* l) {	int n = lua_tonumber(l,-1);	int n2 = lua_tonumber(l
 }
 	
 ```
-![img](../images/cr.png)    
+  
 
 
 ## 二、C++导入Lua  
@@ -79,7 +79,7 @@ int create_account(lua_State *L){		double balance = luaL_checknumber(L,1);	A
 ```
 print("start");local a  = Account(100);print(a);print(a:balance());a:deposit(399);print("start");print(a:balance());print("end");
 ```    
-![img](../images/cppr.png)
+
 ## 三、C#类导入Lua  
 
 C# 单个函数导入Lua比较简单与 C 导入Lua基本一致，此处就不赘述。C#类的导入则与C++差不多，但是怎么将C#对象存储于`userdata`是一个问题。有两种方案处理这个问题（仅本人所知）：
@@ -117,7 +117,7 @@ C# 单个函数导入Lua比较简单与 C 导入Lua基本一致，此处就不�
 IntPtr l = LuaDLL.puaL_newstate();		LuaTestDemoWrapper.Reg(l);		string lua = "" +		             "local d = LuaTestDemo();" +		             "local ret = d:Add(100,500);" +		             "local ret2 = d:Add(1000,5000);" +		             "print(\"ret is:\"..ret..\"   \"..ret2);" +		             "";		LuaDLL.pua_dostring(l,lua);
 ```
 
-![img](../images/csr.png)    
+ 
 
 ## 四、总结
 + 上文仅是一个入门的学习，没有涉及到内存的管理，内存的管理应该是比较核心的。
