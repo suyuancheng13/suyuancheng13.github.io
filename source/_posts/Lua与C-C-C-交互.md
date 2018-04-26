@@ -11,7 +11,7 @@ tags:
 因为Lua虚拟机就是C编写的，C函数导入Lua通过Lua C API就可以完成，相对还是比较简单。需要掌握的知识点就是Lua栈及Lua C API：  
 
 + Lua栈可以类比于计算机的内存  
-+ Lua C API类似于汇编语言，Lua C API可以操纵Lua栈，通过操纵Lua栈可以达到与Lua交互的目的。[Lua C API 参考](https://cloudwu.github.io/lua53doc/manual.html)
++ Lua C API类似于汇编语言，Lua C API可以操纵Lua栈，通过操纵Lua栈可以达到与Lua交互的目的。Lua C API 参考(https://cloudwu.github.io/lua53doc/manual.html)
 
 ### 1.1 实例    
 `lua_tonumber `表示从Lua栈指定`index`处取参数，`lua_pushnumber`表示把number压入栈顶。`Add`函数本质就是从Lua栈上取两个参数然后再将两个参数的计算结果压入Lua栈供Lua获取。   
