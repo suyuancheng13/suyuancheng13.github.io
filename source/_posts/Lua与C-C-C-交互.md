@@ -19,7 +19,8 @@ tags:
 ```  
 int MyAdd(lua_State* l) {	int n = lua_tonumber(l,-1);	int n2 = lua_tonumber(l,-2);	int ret = n + n2;	lua_pushnumber(l,ret);	return 1;}
 ```
-上面定义了一个C函数`MyAdd`，接下来要做的事情就是将C函数导入Lua，`lua_register`（还有其它相关API）就可以将C函数注册到Lua中，`luaL_dostring `执行段Lua代码。   
+上面定义了一个C函数`MyAdd`，接下来要做的事情就是将C函数导入Lua，`lua_register`（还有其它相关API）就可以将C函数注册到Lua中，`luaL_dostring `执行段Lua代码。    
+
 
 ```int main(int argc, _TCHAR* argv[]){	lua_State *l = luaL_newstate();	luaL_openlibs(l);	lua_register(l,"MyAdd",MyAdd);
 	//执行lua代码	luaL_dostring(l,"print(\"MyAdd result is:\");print(MyAdd(100,200))");   
@@ -42,8 +43,10 @@ int MyAdd(lua_State* l) {	int n = lua_tonumber(l,-1);	int n2 = lua_tonumber(l
 #### 1、 准备将要导入Lua的自定义C++ `Account`类
 
 ```
-class Account {public: 	Account(double balance){ m_balance = balance;}	void deposit(double amount){m_balance += amount;}	void withdraw(double amount){m_balance -= amount;}	double balance(){return m_balance;}private:	double m_balance;};```
-####2、 “构造”函数
+class Account {public: 	Account(double balance){ m_balance = balance;}	void deposit(double amount){m_balance += amount;}	void withdraw(double amount){m_balance -= amount;}	double balance(){return m_balance;}private:	double m_balance;};```  
+
+#### 2、 “构造”函数   
+
 通过`lua_newuserdata `创建一个`userdata`，并将`Account`对象的指针存储于`userdata`。然后，通过`lua_setmetatable `给`userdata`设置元表（元表会在注册时创建，见下文）。    
 至于为什么需要给`userdata`关联元表，因为`userdata`只是一个指针而已没有任何方法，所以需要设置一个元表（元表也是一个table）。 lua的查找路径：
 
@@ -54,7 +57,8 @@ class Account {public: 	Account(double balance){ m_balance = balance;}	void d
 
 ```
 int create_account(lua_State *L){		double balance = luaL_checknumber(L,1);	Account **a = (Account**)lua_newuserdata(L,sizeof(Account));	*a = new Account(balance);	printf("construct! balance is: %lf\n",balance);	luaL_getmetatable(L,"Account");	lua_setmetatable(L,-2);//将userdata与Account metatable关联起来	return 1;}
-```
+```   
+
 #### 3、 C++ 类`Account`的方法映射到C函数
 
 每一个函数原理都基本一致：   
@@ -100,19 +104,25 @@ C# 单个函数导入Lua比较简单与 C 导入Lua基本一致，此处就不�
 ```
     class LuaTestDemo:System.Object    {        public double Add(double a, double b)        {            Debug.Log("lua call the Add function!!");            double ret = a + b;            Debug.Log("==========: "+ret);            return ret;        }    }```    
 
-#### 2、“构造”函数
+#### 2、“构造”函数   
+
 与C++处理流程基本一致，**需要注意的是`userdata`的值是`100`，并将`LuaTestDemo`的实例做为`100`的value存入`Dictionary`**。
 
 ```      [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]       public static int CreateLuaTestDemo(IntPtr l)       {            Debug.Log("lua call the CreateLuaTestDemo function!!");            LuaDLL.luaS_newuserdata(l,100);//userdata is 100            LuaTestDemo o = new LuaTestDemo();            cache.Add(100,o);//map object to userdata            LuaDLL.puaL_getmetatable(l, "LuaTestDemo");//connect the userdata to LuaTestDemo metatable            LuaDLL.pua_setmetatable(l, -2);            return 1;        }```
-#### 3、Wrapper.  
+#### 3、Wrapper   
+
 与C++一致，**需要注意的`userdata`获取的是一个`int`，并以`int`为key获取C#对象，然后访问对应方法;**     **通过[MonoPInvokeCallbackAttribute]标签让C语言可以直接调用C#函数**    
 
 ```		static LuaTestDemo checkuserdata(IntPtr l)        {            LuaDLL.puaL_checktype(l,1,LuaTypes.LUA_TUSERDATA);            IntPtr userdata = LuaDLL.puaL_checkudata(l, 1, "LuaTestDemo");            int index = Marshal.ReadInt32(userdata);            Debug.Log("userdata is: " + index);            LuaTestDemo o = cache[index];            return o;        }
-                [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]        static public int AddWrapper(IntPtr l)        {            Debug.Log("lua call the AddWrapper function!!");            LuaTestDemo o = checkuserdata(l);            double a = LuaDLL.pua_tonumber(l, -1);            double b = LuaDLL.pua_tonumber(l, -2);            double ret = o.Add(a,b);            LuaDLL.pua_pushnumber(l, ret);            return 1;        }        ```
-#### 4、注册
-```             public static void Reg(IntPtr l)        {            LuaDLL.puaL_newmetatable(l, "LuaTestDemo");            LuaDLL.pua_pushvalue(l,-1);            LuaDLL.pua_setfield(l,-2,"__index");//LuaTestDemo.__index = LuaTestDemo            LuaDLL.pua_pushcclosure(l, AddWrapper, 0);            LuaDLL.pua_setfield(l,-2,"Add");            LuaDLL.pua_pop(l,1);                        LuaDLL.pua_pushcclosure(l, CreateLuaTestDemo , 0);            LuaDLL.pua_setglobal(l, "LuaTestDemo");        }    }
-```    
-#### 5、测试
+                [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]        static public int AddWrapper(IntPtr l)        {            Debug.Log("lua call the AddWrapper function!!");            LuaTestDemo o = checkuserdata(l);            double a = LuaDLL.pua_tonumber(l, -1);            double b = LuaDLL.pua_tonumber(l, -2);            double ret = o.Add(a,b);            LuaDLL.pua_pushnumber(l, ret);            return 1;        }         ```   
+
+#### 4、注册   
+
+```             public static void Reg(IntPtr l)        {            LuaDLL.puaL_newmetatable(l, "LuaTestDemo");            LuaDLL.pua_pushvalue(l,-1);            LuaDLL.pua_setfield(l,-2,"__index");//LuaTestDemo.__index = LuaTestDemo            LuaDLL.pua_pushcclosure(l, AddWrapper, 0);            LuaDLL.pua_setfield(l,-2,"Add");            LuaDLL.pua_pop(l,1);                        LuaDLL.pua_pushcclosure(l, CreateLuaTestDemo , 0);            LuaDLL.pua_setglobal(l, "LuaTestDemo");        }    
+```      
+
+#### 5、测试   
+
 ```
 IntPtr l = LuaDLL.puaL_newstate();		LuaTestDemoWrapper.Reg(l);		string lua = "" +		             "local d = LuaTestDemo();" +		             "local ret = d:Add(100,500);" +		             "local ret2 = d:Add(1000,5000);" +		             "print(\"ret is:\"..ret..\"   \"..ret2);" +		             "";		LuaDLL.pua_dostring(l,lua);
 ```
