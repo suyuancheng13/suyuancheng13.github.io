@@ -84,7 +84,7 @@ print("start");local a  = Account(100);print(a);print(a:balance());a:deposit
 
 C# 单个函数导入Lua比较简单与 C 导入Lua基本一致，此处就不赘述。C#类的导入则与C++差不多，但是怎么将C#对象存储于`userdata`是一个问题。有两种方案处理这个问题（仅本人所知）：
 
-+ C# 对象可以通过`Marshal.StructureToPtr`转为`IntPtr`的指针，但是要求类添加`[StructLayout(LayoutKind.Sequential)]`标记，如此如果要导出一些非自定义类可能比较麻烦。   
++ C# 对象可以通过`Marshal.StructureToPtr`转为`IntPtr`的指针，但是要求类添加`StructLayout(LayoutKind.Sequential)`标记，如此如果要导出一些非自定义类可能比较麻烦。   
 + 另一个方法，将一个`int`存储于`userdata`，并以`int`做key C#对象为value缓存于C#字典中，对于`userdata`的其它操作与C++一致。当lua调用该对象时，通过`Marshal.ReadInt32`函数，将返回的`userdata`转为一个`int`的key从C#对象字典中取出实际对象即可。     
 
 接下来就方法二进行一下了解。
@@ -105,7 +105,7 @@ C# 单个函数导入Lua比较简单与 C 导入Lua基本一致，此处就不�
 
 ```      [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]       public static int CreateLuaTestDemo(IntPtr l)       {            Debug.Log("lua call the CreateLuaTestDemo function!!");            LuaDLL.luaS_newuserdata(l,100);//userdata is 100            LuaTestDemo o = new LuaTestDemo();            cache.Add(100,o);//map object to userdata            LuaDLL.puaL_getmetatable(l, "LuaTestDemo");//connect the userdata to LuaTestDemo metatable            LuaDLL.pua_setmetatable(l, -2);            return 1;        }```
 #### 3、Wrapper.  
-与C++一致，**需要注意的`userdata`获取的是一个`int`，并以`int`为key获取C#对象，然后访问对应方法;**     **通过[MonoPInvokeCallbackAttribute]标签让C语言可以直接调用C#函数**    
+与C++一致，**需要注意的`userdata`获取的是一个`int`，并以`int`为key获取C#对象，然后访问对应方法;**     **通过MonoPInvokeCallbackAttribute标签让C语言可以直接调用C#函数**    
 
 ```		static LuaTestDemo checkuserdata(IntPtr l)        {            LuaDLL.puaL_checktype(l,1,LuaTypes.LUA_TUSERDATA);            IntPtr userdata = LuaDLL.puaL_checkudata(l, 1, "LuaTestDemo");            int index = Marshal.ReadInt32(userdata);            Debug.Log("userdata is: " + index);            LuaTestDemo o = cache[index];            return o;        }
                 [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]        static public int AddWrapper(IntPtr l)        {            Debug.Log("lua call the AddWrapper function!!");            LuaTestDemo o = checkuserdata(l);            double a = LuaDLL.pua_tonumber(l, -1);            double b = LuaDLL.pua_tonumber(l, -2);            double ret = o.Add(a,b);            LuaDLL.pua_pushnumber(l, ret);            return 1;        }        ```
