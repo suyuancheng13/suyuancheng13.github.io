@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -32,7 +32,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -66,21 +66,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="iOS,Dev," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Dev,iOS,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -88,11 +88,13 @@
 
 
 <meta name="description" content="最近由于工作原因，对iOS Block进行一次学习,本篇文章对Block的内存使用相关的内容简要整理一下，解释其中一些原理和使用Block需要注意的问题 。">
+<meta name="keywords" content="Dev,iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Blocks in iOS">
 <meta property="og:url" content="http://yoursite.com/2017/03/19/Blocks-in-iOS/index.html">
 <meta property="og:site_name" content="Rain Frog">
 <meta property="og:description" content="最近由于工作原因，对iOS Block进行一次学习,本篇文章对Block的内存使用相关的内容简要整理一下，解释其中一些原理和使用Block需要注意的问题 。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-04-01T11:44:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Blocks in iOS">
@@ -124,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/19/Blocks-in-iOS/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/19/Blocks-in-iOS/">
 
 
 
@@ -133,7 +135,7 @@
   <title> Blocks in iOS | Rain Frog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -158,13 +160,13 @@
   <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Rain Frog</span>
         <span class="logo-line-after"><i></i></span>
@@ -194,7 +196,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -204,7 +206,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -214,7 +216,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -224,7 +226,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -234,7 +236,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -247,7 +249,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -306,16 +308,16 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/Blocks-in-iOS/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Suyuancheng">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rain Frog">
     </span>
 
@@ -366,7 +368,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -377,7 +379,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
                   <a href="/categories/iOS/" itemprop="url" rel="index">
                     <span itemprop="name">iOS</span>
                   </a>
@@ -441,14 +443,14 @@
 <h1 id="一、关于Block的内存表示"><a href="#一、关于Block的内存表示" class="headerlink" title="一、关于Block的内存表示"></a>一、关于Block的内存表示</h1><h2 id="1-1、clang-rewite-objc-源文件-o-目标文件（可以为-txt）"><a href="#1-1、clang-rewite-objc-源文件-o-目标文件（可以为-txt）" class="headerlink" title="1.1、clang -rewite-objc 源文件 -o 目标文件（可以为.txt）"></a>1.1、<code>clang -rewite-objc 源文件 -o 目标文件（可以为.txt）</code></h2><ul>
 <li>首先我们来看一段常见源码，通过上述命令查看其中间文件：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">typedef void (^ test1) (BOOL success, NSError *error) ;</div><div class="line"></div><div class="line">int main(int argc, char * argv[]) &#123;</div><div class="line">    @autoreleasepool &#123;</div><div class="line">        int base =10;</div><div class="line">        for(int i=0;i&lt;10;i++)&#123;</div><div class="line">            int a =10;</div><div class="line">            // int *b  = (int*)malloc(10*sizeof(int));</div><div class="line">            void (^ test) (BOOL success, NSError *error)= ^(BOOL success, NSError *error) &#123;</div><div class="line">                NSLog(@&quot;sssss:%d,base:%d&quot;,success,base);</div><div class="line">            &#125; ;</div><div class="line">            test(1,nil);</div><div class="line">           </div><div class="line">        &#125;</div><div class="line"></div><div class="line">//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">typedef void (^ test1) (BOOL success, NSError *error) ;</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[]) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        int base =10;</span><br><span class="line">        for(int i=0;i&lt;10;i++)&#123;</span><br><span class="line">            int a =10;</span><br><span class="line">            // int *b  = (int*)malloc(10*sizeof(int));</span><br><span class="line">            void (^ test) (BOOL success, NSError *error)= ^(BOOL success, NSError *error) &#123;</span><br><span class="line">                NSLog(@&quot;sssss:%d,base:%d&quot;,success,base);</span><br><span class="line">            &#125; ;</span><br><span class="line">            test(1,nil);</span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>通过sublime打开目标文件会发现代码远不止上面那寥寥几行，不难从其中可以找到如下与Block相关的代码。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">struct __block_impl &#123;</div><div class="line"> 		void *isa;</div><div class="line"> 		int Flags;</div><div class="line"> 		int Reserved;</div><div class="line"> 		void *FuncPtr;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">struct __block_impl &#123;</span><br><span class="line"> 		void *isa;</span><br><span class="line"> 		int Flags;</span><br><span class="line"> 		int Reserved;</span><br><span class="line"> 		void *FuncPtr;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><code>struct __block_impl</code>就是block的真面目，结构还是相当清晰。<code>isa</code>对OC开发人员再熟悉不过，是表示其类型或者说本质的，block有三种类型<code>NSGlobalBlock</code>，<code>NSStackBlock</code>,<code>NSMallocBlock</code>，不同类型的block就是通过<code>isa</code>字段区分。然后就是<code>FuncPtr</code>，顾名思义就是指向某一函数的指针。其实block本质上与c语言中的函数指针是一样的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">struct __main_block_impl_0 &#123;</div><div class="line">  struct __block_impl impl;</div><div class="line">  struct __main_block_desc_0* Desc;</div><div class="line">  int base;</div><div class="line">  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int _base, int flags=0) : base(_base) &#123;</div><div class="line">    impl.isa = &amp;_NSConcreteStackBlock;</div><div class="line">    impl.Flags = flags;</div><div class="line">    impl.FuncPtr = fp;</div><div class="line">    Desc = desc;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself, BOOL success, NSError *error) &#123;</div><div class="line">  int base = __cself-&gt;base; // bound by copy</div><div class="line"></div><div class="line">                NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_rl_k02s7ny56tj7m7cg3kdrfpbh0000gn_T_main_0c0cda_mi_0,success,base);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">static struct __main_block_desc_0 &#123;</div><div class="line">  size_t reserved;</div><div class="line">  size_t Block_size;</div><div class="line">&#125; __main_block_desc_0_DATA = &#123; 0, sizeof(struct __main_block_impl_0)&#125;;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">int main(int argc, char * argv[]) &#123;</div><div class="line">    /* @autoreleasepool */ &#123; __AtAutoreleasePool __autoreleasepool; </div><div class="line">        int base =10;</div><div class="line"></div><div class="line">        for(int i=0;i&lt;10;i++)&#123;</div><div class="line">            int a =10;</div><div class="line"></div><div class="line">            void (* test) (BOOL success, NSError *error)= (void (*)(BOOL, NSError *))((id (*)(id, SEL))(void *)objc_msgSend)((id)((void (*)(BOOL, NSError *))&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, base)), sel_registerName(&quot;copy&quot;));</div><div class="line">            ((void (*)(__block_impl *, BOOL, NSError *))((__block_impl *)test)-&gt;FuncPtr)((__block_impl *)test, 1, __null);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">struct __main_block_impl_0 &#123;</span><br><span class="line">  struct __block_impl impl;</span><br><span class="line">  struct __main_block_desc_0* Desc;</span><br><span class="line">  int base;</span><br><span class="line">  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int _base, int flags=0) : base(_base) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself, BOOL success, NSError *error) &#123;</span><br><span class="line">  int base = __cself-&gt;base; // bound by copy</span><br><span class="line"></span><br><span class="line">                NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_rl_k02s7ny56tj7m7cg3kdrfpbh0000gn_T_main_0c0cda_mi_0,success,base);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">static struct __main_block_desc_0 &#123;</span><br><span class="line">  size_t reserved;</span><br><span class="line">  size_t Block_size;</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; 0, sizeof(struct __main_block_impl_0)&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int main(int argc, char * argv[]) &#123;</span><br><span class="line">    /* @autoreleasepool */ &#123; __AtAutoreleasePool __autoreleasepool; </span><br><span class="line">        int base =10;</span><br><span class="line"></span><br><span class="line">        for(int i=0;i&lt;10;i++)&#123;</span><br><span class="line">            int a =10;</span><br><span class="line"></span><br><span class="line">            void (* test) (BOOL success, NSError *error)= (void (*)(BOOL, NSError *))((id (*)(id, SEL))(void *)objc_msgSend)((id)((void (*)(BOOL, NSError *))&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, base)), sel_registerName(&quot;copy&quot;));</span><br><span class="line">            ((void (*)(__block_impl *, BOOL, NSError *))((__block_impl *)test)-&gt;FuncPtr)((__block_impl *)test, 1, __null);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以上这一段代码正是与源码相对应的<code>struct __main_block_impl_0</code>是此处block的真正实现，主要分为两部分一个是block的定义一个是block的一些描述。<code>__main_block_func_0</code>是具体执行的函数体。接下来就是要<code>main</code>函数体中初始化block，然后就大功告成可以便可享用block。<br>以上揭示了block的本质。</p>
 <h1 id="二、关于Block类型"><a href="#二、关于Block类型" class="headerlink" title="二、关于Block类型"></a>二、关于Block类型</h1><h2 id="2-1-Block的类型"><a href="#2-1-Block的类型" class="headerlink" title="2.1 Block的类型"></a>2.1 Block的类型</h2><table>
 <thead>
@@ -604,7 +606,7 @@ sizeof(__Block_byref_base_0),
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/uploads/wechatpay.png" alt="Suyuancheng WeChat Pay"/>
+          <img id="wechat_qr" src="/uploads/wechatpay.png" alt="Suyuancheng WeChat Pay">
           <p>微信打赏</p>
         </div>
       
@@ -621,9 +623,9 @@ sizeof(__Block_byref_base_0),
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
-          
             <a href="/tags/Dev/" rel="tag"># Dev</a>
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
         </div>
       
@@ -663,12 +665,9 @@ sizeof(__Block_byref_base_0),
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/03/19/Blocks-in-iOS/"
-     data-title="Blocks in iOS"
-     data-content=""
-     data-url="http://yoursite.com/2017/03/19/Blocks-in-iOS/">
+        <div class="ds-share flat" data-thread-key="2017/03/19/Blocks-in-iOS/" data-title="Blocks in iOS" data-content="" data-url="http://yoursite.com/2017/03/19/Blocks-in-iOS/">
   <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+    <ul class="ds-share-icons-16">
 
       <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
       <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
@@ -693,8 +692,7 @@ sizeof(__Block_byref_base_0),
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/19/Blocks-in-iOS/"
-           data-title="Blocks in iOS" data-url="http://yoursite.com/2017/03/19/Blocks-in-iOS/">
+      <div class="ds-thread" data-thread-key="2017/03/19/Blocks-in-iOS/" data-title="Blocks in iOS" data-url="http://yoursite.com/2017/03/19/Blocks-in-iOS/">
       </div>
     
   </div>
@@ -719,7 +717,7 @@ sizeof(__Block_byref_base_0),
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -729,10 +727,8 @@ sizeof(__Block_byref_base_0),
       
 
       <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Suyuancheng" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Suyuancheng">
           <p class="site-author-name" itemprop="name">Suyuancheng</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
@@ -796,7 +792,7 @@ sizeof(__Block_byref_base_0),
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、关于Block的内存表示"><span class="nav-number">1.</span> <span class="nav-text">一、关于Block的内存表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1、clang-rewite-objc-源文件-o-目标文件（可以为-txt）"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、clang -rewite-objc 源文件 -o 目标文件（可以为.txt）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、关于Block类型"><span class="nav-number">2.</span> <span class="nav-text">二、关于Block类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Block的类型"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Block的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-对Block进行copy的效果"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 对Block进行copy的效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、-block变量"><span class="nav-number">3.</span> <span class="nav-text">三、__block变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#block变量在Block内外都可以访问"><span class="nav-number">3.0.1.</span> <span class="nav-text">__block变量在Block内外都可以访问</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、-Block是一个OC对象"><span class="nav-number">4.0.1.</span> <span class="nav-text">1、 Block是一个OC对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、block变量可以有Block内外都可以访问，是由于-forwarding-的存在"><span class="nav-number">4.0.2.</span> <span class="nav-text">2、block变量可以有Block内外都可以访问，是由于`forwarding`的存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、虽然本文是研究Block的内存表象，但对于Block的常见问题还是得提一下，注意Block循环引用问题"><span class="nav-number">4.0.3.</span> <span class="nav-text">3、虽然本文是研究Block的内存表象，但对于Block的常见问题还是得提一下，注意Block循环引用问题</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、关于Block的内存表示"><span class="nav-number">1.</span> <span class="nav-text">一、关于Block的内存表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1、clang-rewite-objc-源文件-o-目标文件（可以为-txt）"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、clang -rewite-objc 源文件 -o 目标文件（可以为.txt）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、关于Block类型"><span class="nav-number">2.</span> <span class="nav-text">二、关于Block类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Block的类型"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Block的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-对Block进行copy的效果"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 对Block进行copy的效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、-block变量"><span class="nav-number">3.</span> <span class="nav-text">三、__block变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#block变量在Block内外都可以访问"><span class="nav-number">3.0.1.</span> <span class="nav-text">__block变量在Block内外都可以访问</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、-Block是一个OC对象"><span class="nav-number">4.0.1.</span> <span class="nav-text">1、 Block是一个OC对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、block变量可以有Block内外都可以访问，是由于-forwarding-的存在"><span class="nav-number">4.0.2.</span> <span class="nav-text">2、block变量可以有Block内外都可以访问，是由于`forwarding`的存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、虽然本文是研究Block的内存表象，但对于Block的常见问题还是得提一下，注意Block循环引用问题"><span class="nav-number">4.0.3.</span> <span class="nav-text">3、虽然本文是研究Block的内存表象，但对于Block的常见问题还是得提一下，注意Block循环引用问题</span></a></li></ol></li></div>
             
 
           </div>
@@ -816,7 +812,7 @@ sizeof(__Block_byref_base_0),
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>
