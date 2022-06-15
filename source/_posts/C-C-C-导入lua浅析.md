@@ -134,7 +134,7 @@ int balance(lua_State *L)
 }
 ```
 
-#### 4、注册
+#### 4、注册 
 
 + 创建一个`metatable` `Account`，`Account`将会关联到存储C++对象的`userdata`
 + 将第三步的C函数注册到`Account`表
