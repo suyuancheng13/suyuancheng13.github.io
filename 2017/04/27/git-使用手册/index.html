@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>git 使用手册 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="git 使用手册">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git 使用手册">
+<meta property="og:url" content="http://example.com/2017/04/27/git-%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="git 使用手册">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://image.beekka.com/blog/2014/bg2014061202.jpg">
+<meta property="article:published_time" content="2017-04-27T01:33:15.000Z">
+<meta property="article:modified_time" content="2026-01-01T09:27:55.822Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="使用手册">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://image.beekka.com/blog/2014/bg2014061202.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-git-使用手册" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/04/27/git-%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" class="article-date">
+  <time class="dt-published" datetime="2017-04-27T01:33:15.000Z" itemprop="datePublished">2017-04-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      git 使用手册
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>git 使用手册</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0、-示意图"><a href="#0、-示意图" class="headerlink" title="0、 示意图"></a>0、 示意图</h2><p><img src="http://image.beekka.com/blog/2014/bg2014061202.jpg" alt="image"></p>
+<h2 id="一、常用命令"><a href="#一、常用命令" class="headerlink" title="一、常用命令"></a>一、常用命令</h2><h3 id="1、-删除版本库中的一个commit-git-reset-hard-HEAD-1"><a href="#1、-删除版本库中的一个commit-git-reset-hard-HEAD-1" class="headerlink" title="1、 删除版本库中的一个commit: git reset --hard HEAD~1"></a>1、 删除版本库中的一个commit: <code>git reset --hard HEAD~1</code></h3><h3 id="2、-删除远程库中的一个commit-git-reset-hard-HEAD-1-git-push-force"><a href="#2、-删除远程库中的一个commit-git-reset-hard-HEAD-1-git-push-force" class="headerlink" title="2、 删除远程库中的一个commit: git reset --hard HEAD~1, git push --force"></a>2、 删除远程库中的一个commit: <code>git reset --hard HEAD~1</code>, <code>git push --force</code></h3><h3 id="3、-将本地分支推送到远程分支：git-push-origin-local-branch-remote-branch-：这个操作，local-branch必须为你本地存在的分支，remote-branch为远程分支，如果remote-branch不存在则会自动创建分支。"><a href="#3、-将本地分支推送到远程分支：git-push-origin-local-branch-remote-branch-：这个操作，local-branch必须为你本地存在的分支，remote-branch为远程分支，如果remote-branch不存在则会自动创建分支。" class="headerlink" title="3、 将本地分支推送到远程分支：git push origin local_ branch:remote_ branch ：这个操作，local_ branch必须为你本地存在的分支，remote_ branch为远程分支，如果remote_ branch不存在则会自动创建分支。"></a>3、 将本地分支推送到远程分支：<code>git push origin local_ branch:remote_ branch</code> ：这个操作，local_ branch必须为你本地存在的分支，remote_ branch为远程分支，如果remote_ branch不存在则会自动创建分支。</h3><h3 id="4、将本地分支与远程分支建立对应关系：git-branch-set-upstream-to-origin"><a href="#4、将本地分支与远程分支建立对应关系：git-branch-set-upstream-to-origin" class="headerlink" title="4、将本地分支与远程分支建立对应关系：git branch --set-upstream-to=origin/&lt;branch&gt; &lt;remote&gt;"></a>4、将本地分支与远程分支建立对应关系：<code>git branch --set-upstream-to=origin/&lt;branch&gt; &lt;remote&gt;</code></h3><h3 id="5、将本地分支删除：git-branch-d"><a href="#5、将本地分支删除：git-branch-d" class="headerlink" title="5、将本地分支删除：git branch -d &lt;branchName&gt;"></a>5、将本地分支删除：<code>git branch -d &lt;branchName&gt;</code></h3><ul>
+<li>注意如果处在当前分支是无法删除的需要切换到其它分支再删除。另外，不管它有没有merge使用<code>git branch -D &lt;branchName&gt;</code></li>
+</ul>
+<h3 id="6、如果对应outlook密码修改，则可以在目录-Users-username-ssh下删除id-rsa和id-rsa-pub"><a href="#6、如果对应outlook密码修改，则可以在目录-Users-username-ssh下删除id-rsa和id-rsa-pub" class="headerlink" title="6、如果对应outlook密码修改，则可以在目录/Users/username/.ssh下删除id_rsa和id_rsa.pub"></a>6、如果对应outlook密码修改，则可以在目录<code>/Users/username/.ssh</code>下删除<code>id_rsa</code>和<code>id_rsa.pub</code></h3><h3 id="7、切换分支-git-checkout"><a href="#7、切换分支-git-checkout" class="headerlink" title="7、切换分支:git checkout &lt;branchname&gt;"></a>7、切换分支:<code>git checkout &lt;branchname&gt;</code></h3><h3 id="8、切换分支并创建本地分支-git-checkout-b"><a href="#8、切换分支并创建本地分支-git-checkout-b" class="headerlink" title="8、切换分支并创建本地分支:git checkout -b &lt;branchname&gt;"></a>8、切换分支并创建本地分支:<code>git checkout -b &lt;branchname&gt;</code></h3><h3 id="9、git-checkout-origin-remoteName-b-localName-获取远程分支remoteName-到本地新分支localName，并跳到localName分支"><a href="#9、git-checkout-origin-remoteName-b-localName-获取远程分支remoteName-到本地新分支localName，并跳到localName分支" class="headerlink" title="9、git checkout origin/remoteName -b localName 获取远程分支remoteName 到本地新分支localName，并跳到localName分支"></a>9、<code>git checkout origin/remoteName -b localName</code> 获取远程分支remoteName 到本地新分支localName，并跳到localName分支</h3><h3 id="10、git-checkoutremoteName-获取远程分支remoteName-到本地并生成新分支remoteName，并跳到localName分支"><a href="#10、git-checkoutremoteName-获取远程分支remoteName-到本地并生成新分支remoteName，并跳到localName分支" class="headerlink" title="10、git checkoutremoteName 获取远程分支remoteName 到本地并生成新分支remoteName，并跳到localName分支"></a>10、<code>git checkoutremoteName</code> 获取远程分支remoteName 到本地并生成新分支remoteName，并跳到localName分支</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/04/27/git-%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" data-id="cuid4am1etwHbAPrvPTrOCy6S" data-title="git 使用手册" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" rel="tag">使用手册</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/07/SWIFT%E7%BC%96%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          SWIFT编程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">设计模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Lua/">Lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">学习资源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/" rel="tag">C&#x2F;C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/" rel="tag">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" rel="tag">使用手册</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" rel="tag">学习资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Dev/" style="font-size: 20px;">Dev</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/iOS/" style="font-size: 16.67px;">iOS</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" style="font-size: 13.33px;">使用手册</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" style="font-size: 10px;">学习资源</a> <a href="/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 10px;">网页</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/01/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/01/Android-Dev/">Android Dev</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/25/C-C-C-%E5%AF%BC%E5%85%A5lua%E6%B5%85%E6%9E%90/">C/C++/C#导入lua浅析</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/10/Lua%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Lua学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/27/Unity-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Unity 学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

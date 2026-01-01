@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Python Dev | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Python 学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Dev">
+<meta property="og:url" content="http://example.com/2017/03/21/Python-Dev/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Python 学习">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-03-21T08:57:02.000Z">
+<meta property="article:modified_time" content="2026-01-01T09:27:55.822Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Dev">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Python-Dev" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/03/21/Python-Dev/" class="article-date">
+  <time class="dt-published" datetime="2017-03-21T08:57:02.000Z" itemprop="datePublished">2017-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Python Dev
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Python-学习"><a href="#Python-学习" class="headerlink" title="Python 学习"></a>Python 学习</h1><span id="more"></span>
+
+<h2 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h2><h3 id="1-0、逻辑运算（补充）"><a href="#1-0、逻辑运算（补充）" class="headerlink" title="1.0、逻辑运算（补充）"></a>1.0、逻辑运算（补充）</h3><table>
+<thead>
+<tr>
+<th>逻辑运算</th>
+<th>python 表示</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>与</td>
+<td>and</td>
+</tr>
+<tr>
+<td>或</td>
+<td>or</td>
+</tr>
+<tr>
+<td>非</td>
+<td>not</td>
+</tr>
+<tr>
+<td>异或</td>
+<td>^</td>
+</tr>
+</tbody></table>
+<h3 id="1-1、-关于list与tuple-元组-数组"><a href="#1-1、-关于list与tuple-元组-数组" class="headerlink" title="1.1、 关于list与tuple(元组), 数组"></a>1.1、 关于list与tuple(元组),<font color = red> <em>数组</em></font></h3><p>1、<code>list</code> 是可变，<code>tuple</code>是不可变，可以用<code>tuple</code>的地方尽量用<code>tuple</code>；  </p>
+<p>2、<code>list</code>利用“[]”表示，<code>tuple</code>利用”()”表示<br>3、数组python用numpy来做的：  </p>
+<pre><code>import numpy
+matrix = numpy.zeros(shape=(5,2))#创建数组
+print matrix[i,j]#获取元素
+</code></pre>
+<h3 id="1-2、关于dict-set"><a href="#1-2、关于dict-set" class="headerlink" title="1.2、关于dict,set"></a>1.2、关于dict,set</h3><p>参考c++map,set</p>
+<p><strong>CAUTION:</strong> Python的集合(set)和其他语言类似, 是一个无序不重复元素集, 基本功能包括关系测试和消除重复元素. 集合对象还支持union(联合), intersection(交), difference(差)和sysmmetric difference(对称差集)等数学运算.由于集合是无序的,所以，sets 不支持 索引, 分片, 或其它类序列（sequence-like）的操作。Dict的key必须是不可变的</p>
+<h3 id="1-3、关于python的可变参数与关键字参数"><a href="#1-3、关于python的可变参数与关键字参数" class="headerlink" title="1.3、关于python的可变参数与关键字参数"></a>1.3、关于python的可变参数与关键字参数</h3><p>1、可变参数就是传入的参数的个数是可变定义方式为<code>def func(*args)</code>。可变参数在函数调用时自动组装为一tuple。</p>
+<p>2、关键字参数可以传入零个或多个含参数名的参数也就是键值对，定义方式为<code>def func(**kv)</code>。关键字参数在函数调用时组装成一个dict。</p>
+<p>3、list,tuple可以在变量前面添加<code>*</code>来传入到参数为可变参数的函数，dict同样也可传入到参数为关键字参数的函数。</p>
+<p>4、由于3，对于任意函数我们都可以通过<code>def func(*args,**kv)</code>来调用它，不管他是怎么样定义的。</p>
+<p>5、python函数的参数顺序问题：必须函数，默认参数，可变参数，关键字参数  </p>
+<h3 id="1-4、Python所谓的高级我切片与matlab的取第几行几列类似"><a href="#1-4、Python所谓的高级我切片与matlab的取第几行几列类似" class="headerlink" title="1.4、Python所谓的高级我切片与matlab的取第几行几列类似"></a>1.4、Python所谓的高级我切片与matlab的取第几行几列类似</h3><h3 id="1-5、迭代使用for-in-或者for-value-in-d-iteatervalues-同时也可以用for-k-v-in-d-iteritems"><a href="#1-5、迭代使用for-in-或者for-value-in-d-iteatervalues-同时也可以用for-k-v-in-d-iteritems" class="headerlink" title="1.5、迭代使用for ... in 或者for value in d.iteatervalues()同时也可以用for k,v in d.iteritems()"></a>1.5、迭代使用<code>for ... in </code>或者<code>for value in d.iteatervalues()</code>同时也可以用<code>for k,v in d.iteritems()</code></h3><p>例如：   </p>
+<pre><code>d  = { a :1, b :2}	
+for key in d:	
+print key
+</code></pre>
+<p>1、但是要使用迭代一个对象，那么这个对象要是<strong>可迭代的</strong>，<font color = red>方法：可以通过collections 模块的iterable进行判断</font>      </p>
+<h3 id="1-6、生成器-Generator"><a href="#1-6、生成器-Generator" class="headerlink" title="1.6、生成器(Generator)"></a>1.6、生成器(Generator)</h3><p>由于通过列表生成器生成一个列表时，受到内存的限制，列表的容量是有限的。所以如果可以按照一种算法进行推算出来，那就不必创建完整的list从而可以节省大量空间。创建generator的方法有多种：  </p>
+<p>第一种： </p>
+<pre><code>l = [ x*x for x in range(1,11) ]	
+g = (x*x for x in range(1,11))   # g就是一个generator，与列表生成器不同的是[ ]与（ ）的问题  
+g.next()  # generator保存的是算法每次调用next()实际是在计算下一个元素，直到计算到最后的元素，当没有元素时就会抛出StopIteration的错误
+for n in g: # 由于不断调用next（）函数并不是很方便，由于generator是可迭代对象，因此正确的使用方法是使用迭代
+print n
+</code></pre>
+<p>第二种：<br>在函数定义中如果包含yield关键字，那么这个函数就是一个generator      </p>
+<pre><code>def fib(max):	
+	    n,a,b = 0,0,1	
+	    while n&lt;max:	
+	        yield b      # yield关键字
+	        a,b =b ,a+b	
+	        n = n+1
+</code></pre>
+<h3 id="1-7、python高函数"><a href="#1-7、python高函数" class="headerlink" title="1.7、python高函数"></a>1.7、python高函数</h3><p>所谓的高阶函数就是一个函数接收函数作为参数</p>
+<h3 id="1-8、map-reduce-filter"><a href="#1-8、map-reduce-filter" class="headerlink" title="1.8、map&#x2F;reduce&#x2F;filter"></a>1.8、map&#x2F;reduce&#x2F;filter</h3><p><a target="_blank" rel="noopener" href="http://static.googleusercontent.com/media/research.google.com/zh-CN//archive/mapreduce-osdi04.pdf">关于MapReduce文章</a>    </p>
+<ul>
+<li><p>map&#x2F;reduce demo  </p>
+<pre><code>  def str2int(s):    
+      def fn(x,y):    
+         return x*10+y    
+        def char2num (s) :    
+          return {  0  : 0 ,  1  : 1 ,  2  : 2 ,  3  : 3 ,  4  : 4 ,  5  : 5 ,  6  : 6 ,  7  : 7 ,  8  : 8 ,  9  : 9 }[s]
+          return reduce(fn,map(char2num,s))
+</code></pre>
+</li>
+</ul>
+<p><font color=red><strong>注意map,reduce都接收一个函数与一个list，因此第5行代码就好理解了</strong>   </font>    </p>
+<ul>
+<li><p>filter 与map&#x2F;reduce一样都 是高阶函数都是接收一个函数与list变量,filter是根据传入函数作用于每一个元素返回true&#x2F;false来决定这个元素是否保留</p>
+<pre><code>  def is_odd(n):    
+      return n%2 ==1
+         filter(is_odd,[1,2,3,4,5])
+</code></pre>
+</li>
+</ul>
+<h3 id="1-9、funciton-partial偏函数，把一个函数的某些参数给固定住，返回一个新函数，那么调用-这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools-partial创建一个偏函数。"><a href="#1-9、funciton-partial偏函数，把一个函数的某些参数给固定住，返回一个新函数，那么调用-这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools-partial创建一个偏函数。" class="headerlink" title="1.9、funciton.partial偏函数，把一个函数的某些参数给固定住，返回一个新函数，那么调用 这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools.partial创建一个偏函数。"></a>1.9、<strong>funciton.partial偏函数</strong>，把一个函数的某些参数给固定住，返回一个新函数，那么调用 这个函数就会简单一些。当一个函数的参数个数太多需要简化的时候可以使用functools.partial创建一个偏函数。</h3><pre><code>	import functools	
+	int2 = functools.partial(int,base = 2) #int2就是一个新函数只有一个参数
+</code></pre>
+<h3 id="1-9-1-装饰器及-语法"><a href="#1-9-1-装饰器及-语法" class="headerlink" title="1.9.1 装饰器及 @语法"></a>1.9.1 装饰器及 <code>@</code>语法</h3><p>开门见山，直上代码</p>
+<pre><code>	def log(func):	
+	        def wrapper(*args,**kw):	
+	            print  call %s %func.__name__
+	            return func(*args,**kw)	
+	return wrapper
+</code></pre>
+<p><code>log</code>函数接收一个函数作为参数，然后返回一个函数，这就叫做decorator。那么怎么用这个decorator呢？代码直上：  </p>
+<pre><code>	@log	
+	def now():	
+	    print  sdfdsfds 
+</code></pre>
+<p><code>@</code>语法相当于：<code>now = log(now)</code>     </p>
+<h3 id="1-10、python用模块（module）来组织工程"><a href="#1-10、python用模块（module）来组织工程" class="headerlink" title="1.10、python用模块（module）来组织工程"></a>1.10、python用模块（module）来组织工程</h3><p>1、使用模块可以避免函数与变量名的冲突。一个.py文件 就是一个模块。</p>
+<p>2、为了避免模块名的冲突python引入package，本质就是按目录来组织模块</p>
+<p>3、package目录下一定要有一__init__.py模块，否则认为普通目录  </p>
+<p>4、注释也可采用  </p>
+<pre><code>		‘’‘
+	
+		注释
+		
+		’‘’
+</code></pre>
+<h3 id="1-11、关于if-name-main"><a href="#1-11、关于if-name-main" class="headerlink" title="1.11、关于if __name__== main:"></a>1.11、关于<code>if __name__== main:</code></h3><p>当我们用命令行运行模块的时候，Python解释器就会将一个特殊变量<code>__name__</code>置为<code>__main__</code>，而在其它地方导入该模块这个判断就会失败，也就是说这条语句主要是便于我们使用命令行。  </p>
+<h3 id="1-12、作用域"><a href="#1-12、作用域" class="headerlink" title="1.12、作用域"></a>1.12、作用域</h3><p>private访问控制在python里通过<code>_</code>或者<code>__</code>前缀来实现。这里所说的private只是一种编程习惯，因为python并没有private的控制访问。</p>
+<h3 id="1-13、python面向对象编程-Object-Oriented-Programming-OOP"><a href="#1-13、python面向对象编程-Object-Oriented-Programming-OOP" class="headerlink" title="1.13、python面向对象编程(Object Oriented Programming,OOP)"></a>1.13、python面向对象编程(Object Oriented Programming,OOP)</h3><p>话不多说直接上demo</p>
+<pre><code>	class Student(object):                                 #表示Student从object继承 
+	        def __init__(self,name,score):            #__init__类于构造函数，且第一个参数永远是self，表示创建实例本身。而且实例化对象时一定要传入与__init__参数对应的参数
+	
+	                self.name = name	
+	                self.score = score	
+	                super(Student,self).__init__()    #表示调用父类方法
+		        def print_score(self):	
+	                print  %s,%s %(self.name,self.score)
+</code></pre>
+<p>1、<code>__init__</code>类于构造函数，且第一个参数永远是self，表示创建实例本身。而且实例化对象时一定要传入与__init__参数对应的参数。<br>2、成员函数与普通函数不一样的地方就是第一个参数永远是self<br>3、private访问控制权限就是在变量前面添加<code>__</code>前缀。<code>_</code>在类中视为private但是其实是可以访问的，只是按约定视为private.<br>4、private变量其实也是可以访问的，可以通过<code>_类名_private变量</code>如<code>_Student_name</code><br>5、  super(className,self).function()      父类方法调用<font color = red> 如果是多继承且多个父类有同样的方法则按顺序调用</font></p>
+<h3 id="1-14、关于python的多态"><a href="#1-14、关于python的多态" class="headerlink" title="1.14、关于python的多态"></a>1.14、关于python的多态</h3><p>由于python里不需要事先声明变量的类型，因此多态实现起来就简单得多：  </p>
+<pre><code>	def run(animal):	
+	    animal.run()
+</code></pre>
+<p>代码中只要传入的参数有run这个方法就可以，<font color = red><strong>不管是不是animal还是子类或者不是子类</strong></font>，这样子就与c++里的多态一样。其实本质上是由于python本来就是动态语言。  </p>
+<h3 id="1-15、获取对象信息"><a href="#1-15、获取对象信息" class="headerlink" title="1.15、获取对象信息"></a>1.15、获取对象信息</h3><p>1、type可以判断基本类型的所属类型</p>
+<pre><code>import types	
+type( ssdfdf )
+</code></pre>
+<p>2、isinstance可以判断基本数据类型还可以判断class类</p>
+<p>3、dir可以获取对象的所有属性和方法</p>
+<p>4、getattr(),setattr(),hasattr()可以操作一个对象的属性，顾名思义  </p>
+<h3 id="1-16、python动态绑定方法"><a href="#1-16、python动态绑定方法" class="headerlink" title="1.16、python动态绑定方法"></a>1.16、python动态绑定方法</h3><pre><code>def set_age(self,age):	
+        self.age = age		
+from types import MethodType	
+s.set_age = MethodType(set_age,s,Student)          #给实例新增方法
+Student.set_age = MethodType(set_age,None,Student)    #给类新增方法
+</code></pre>
+<p>1、<font color = red><strong><code>__slot__</code></strong></font>关键字</p>
+<p>如果想对class限制只允许给类的实例添加属性时，我们可以使用<code>__slot__</code>，但是不遗传</p>
+<pre><code>class Student(object):	
+__slot__ = ( name , age )  #用tuple定义允许修改的属性名称
+</code></pre>
+<h3 id="1-17、-property关键字"><a href="#1-17、-property关键字" class="headerlink" title="1.17、@property关键字"></a>1.17、<code>@property</code>关键字</h3><p><code>@property</code>负责将一个方法变成属性调用，而与一个属性不同的是属性并没有检查是否合法，而方法是可以进行检查的。</p>
+<pre><code>class Student(object):	
+        @property	
+        def score(self):	
+                return self._score	
+        @score.setter	
+        def score(self,value):	
+                if():
+                        .....#参数检查
+                self._score = value
+
+&gt;&gt;&gt;s = Student()	
+&gt;&gt;&gt;s.score = 10 #实际上是调用的s.set_score()
+&gt;&gt;&gt;s.score #实际上调用 的是s.get_score()
+</code></pre>
+<p><code>@property</code>把一个方法变成属性，<code>@xxx.setter</code>把一个方法变成属性赋值，与OC的property有一点相似</p>
+<h3 id="1-18、多重继承"><a href="#1-18、多重继承" class="headerlink" title="1.18、多重继承"></a>1.18、多重继承</h3><h3 id="1-19、定制类"><a href="#1-19、定制类" class="headerlink" title="1.19、定制类"></a>1.19、定制类</h3><h3 id="1-20、元类"><a href="#1-20、元类" class="headerlink" title="1.20、元类"></a>1.20、元类</h3><p>1、type动态创建一个对象</p>
+<pre><code>hello = type( Hello ,(object,),dict(hello = fn))
+</code></pre>
+<p>type接收三个参数：</p>
+<ul>
+<li><p>class名字</p>
+</li>
+<li><p>参数2 为父类，是一个tuple（object,）</p>
+</li>
+<li><p>dict(hello &#x3D; fn),绑定函数到类的方法</p>
+</li>
+</ul>
+<p>2、metaclass元类，（OC中也有这个概念）   </p>
+<h3 id="1-21、异常捕获try-except-finally"><a href="#1-21、异常捕获try-except-finally" class="headerlink" title="1.21、异常捕获try:....except...finally..."></a>1.21、异常捕获<code>try:....except...finally...</code></h3><pre><code>try:	
+    print  try.... 	
+    r = 10/0	
+    print  reuslt: ,r	
+except ZeroDivisionError ,e:        #还可以多级捕获
+    print  error: ,e	
+finally:	
+    print  finally... 
+</code></pre>
+<p>1、可以通过<code>raise</code>抛出异常，<code>raise</code>后面不带参数则将错误原样抛出，同样<code>raise</code>也可以修改抛出错误的类型  </p>
+<h3 id="1-22、调试"><a href="#1-22、调试" class="headerlink" title="1.22、调试"></a>1.22、调试</h3><p>1、print打印信息</p>
+<p>2、asser断言</p>
+<p>3、logging推荐，可以定义log级别：debug,info,waning,error ,可以指定输出文件<code>logging.config.fileConfig(filename)</code>,<a target="_blank" rel="noopener" href="https://docs.python.org/2/library/logging.config.html#logging-config-fileformat">filename规则</a>  ，给一个log.conf</p>
+<pre><code>[loggers]
+keys=root
+
+[handlers]
+keys=consoleHandler,fileHandler
+
+[formatters]
+keys=simpleFormatter
+
+[logger_root]
+level=DEBUG
+handlers=consoleHandler,fileHandler
+
+[handler_consoleHandler]
+class=StreamHandler
+level=DEBUG
+formatter=simpleFormatter
+args=(sys.stdout,)
+
+[handler_fileHandler]
+class=logging.handlers.TimedRotatingFileHandler
+level=DEBUG
+formatter=simpleFormatter
+args=(&#39;./log/sample.log&#39;,&#39;D&#39;,1,14)
+#args=(&#39;/data/iTOP_ROOT/dev/log/admin/pack/sample.log&#39;,&#39;D&#39;,1,14)
+
+[formatter_simpleFormatter]
+format=[%(asctime)s][pid %(process)d][%(levelname)s][%(filename)s:%(lineno)d]%(message)s
+datefmt=
+</code></pre>
+<p>使用方式：  </p>
+<pre><code>logging.config.fileConfig(&#39;./log.conf&#39;)
+logger = logging.getLogger(&#39;root&#39;)
+</code></pre>
+<p>还可以直接使用代码： </p>
+<pre><code>import logging
+
+logger = logging.getLogger()
+handler = logging.StreamHandler()
+formatter = logging.Formatter(
+        &#39;%(asctime)s %(name)-12s %(levelname)-8s %(message)s&#39;)
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+logger.setLevel(logging.DEBUG)
+</code></pre>
+<p>4、<a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/00138683229901532c40b749184441dbd428d2e0f8aa50e000">pdb</a>   </p>
+<h3 id="1-23、单元测试"><a href="#1-23、单元测试" class="headerlink" title="1.23、单元测试"></a>1.23、单元测试</h3><h3 id="1-24、文档测试（测试注释了的代码–python交互式代码）"><a href="#1-24、文档测试（测试注释了的代码–python交互式代码）" class="headerlink" title="1.24、文档测试（测试注释了的代码–python交互式代码）"></a>1.24、文档测试（测试注释了的代码–python交互式代码）</h3><h3 id="1-25、IO编程"><a href="#1-25、IO编程" class="headerlink" title="1.25、IO编程"></a>1.25、IO编程</h3><p>1、文件读写   </p>
+<pre><code>f = open(filename,r)
+f.read()
+f.close
+</code></pre>
+<p>为了保证会调用<code>close()</code>同时也是为了简单化，Python引入了<code>with</code>语法来帮助我们调用<code>close()</code></p>
+<pre><code>with open( filename ,r ) as f:
+		 print f.read()
+</code></pre>
+<p>2、<a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868321590543ff305fb9f9949f08d760883cc243812000">操作文件和目录</a>    </p>
+<p>3、序列化   </p>
+<ul>
+<li><p>python中序列化提供了两个模块来实现：<code>cPickle</code>和<code>pickle</code>(有<code>c</code>开头的就是用c语言实现的)<a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/00138683221577998e407bb309542d9b6a68d9276bc3dbe000">pickle参考</a>   </p>
+</li>
+<li><p>json，<code>pickle</code>的问题在于序列化只能用在python中不能进行传递或者其它语言来解释，json刚好可以解决这个问题。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>json</th>
+<th>python</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>{ }</td>
+<td>dict</td>
+</tr>
+<tr>
+<td>[ ]</td>
+<td>list</td>
+</tr>
+<tr>
+<td>“string”</td>
+<td>str 或者u unicode</td>
+</tr>
+<tr>
+<td>123.4</td>
+<td>int 或者 float</td>
+</tr>
+<tr>
+<td>true&#x2F;false</td>
+<td>Ture &#x2F;False</td>
+</tr>
+<tr>
+<td>null</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<pre><code>import josn	
+d = dict(name = &#39;Bob&#39;,age = 10,score = 88)	json.dumps(d)  #dump意为转储	
+json.loads(str)#转成dict python对象
+</code></pre>
+<p><font color = red><strong>CAUTION:</strong></font>json反序列化得到字符串对象都是unicode不是str。  </p>
+<ul>
+<li><p>class 序列化（json的进阶）   </p>
+<p>  json.dumps(s,<br>  default<br>  &#x3D;lambda obj: obj.<strong>dict</strong>)#当class有__slot__属性时不能用</p>
+</li>
+</ul>
+<h3 id="1-26、进程与线程"><a href="#1-26、进程与线程" class="headerlink" title="1.26、进程与线程"></a>1.26、<a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868323401155ceb3db1e2044f80b974b469eb06cb43000">进程与线程</a></h3><p>1、进程</p>
+<ul>
+<li><p>Unix&#x2F;Linux下可以调用<code>fork()</code>实现多进程</p>
+</li>
+<li><p>跨平台的多进程，可以使用multiprocessing  </p>
+</li>
+<li><p>进程间的通信可以使用Queue,Pipes</p>
+</li>
+</ul>
+<p>2、线程，python中有两个模块（thread,threading，后者是高级，我们一般使用高级）</p>
+<ul>
+<li><p>线程与进程最大的不同是，同一个变量在进程中是各自有一份copy互不影响，而多线程中所有的线程共享进程的变量，是相互影响的。因此在多线程中我们使用Lock来保证变量的不相互影响   </p>
+<pre><code>  import time, threading     
+  balance = 0
+  lock = threading.Lock()
+  def change_it(n):        
+          global balance       
+           balance = balance + n    
+           balance = balance - n 
+   def run_thread(n):        
+          for i in range(100000):
+                 lock.acquire()     #先获取锁                   try:                #try...finally保证不管什么情况下都会释放locK
+                     change_it(n)
+                 finally:
+                     lock.release()  #释放锁
+  if __name__ ==  __main__ :
+        t1 = threading.Thread(target=run_thread, args=(5,)) 
+        t2 = threading.Thread(target=run_thread, args=(8,))   
+        t1.start()       
+        t2.start()       
+       t1.join()        
+      t2.join()      
+      print balance
+ 
+</code></pre>
+</li>
+<li><p>在多线程下每一个线程要保持自己的数据时，我们可使用ThreadLocal, <strong>ThreadLocal最常用的地方就是为每一个线程绑定一个数据库链接，http请求，用户身份信息等</strong></p>
+<pre><code>  import threading    
+  local_shcool = threading.local()  #每一个线程都可以写，且相互不影响，可以理解为一个以thread为key的dict
+  def pro_std():    
+      print hello,%s (in %s) %(loca_school.student,threading.current_thread().name)
+  def pro_thread(name):    
+      local_shcool.student = name    
+              pro_std()    
+  t1 = threading.Thread(target = pro_thread,args = ( Alice ),name =  a )
+  t2 = threading.Thread(target = pro_thread,args = ( Bob ),name =  B )
+  t1.start()    
+  t2.start()    
+  t1.join()    
+  t2.join()
+</code></pre>
+</li>
+</ul>
+<h3 id="1-27、分布式编程"><a href="#1-27、分布式编程" class="headerlink" title="1.27、分布式编程"></a>1.27、分布式编程</h3><p><a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386832973658c780d8bfa4c6406f83b2b3097aed5df6000">参考</a>   </p>
+<h3 id="1-28、正则表达式"><a href="#1-28、正则表达式" class="headerlink" title="1.28、正则表达式"></a>1.28、正则表达式</h3><h3 id="1-29常用内嵌模块"><a href="#1-29常用内嵌模块" class="headerlink" title="1.29常用内嵌模块"></a>1.29常用内嵌模块</h3><p>1、collections</p>
+<p>2、base64:base64是一种任意二进制到文本字符串的编码方法。<strong>关于base64的理解：将3个字符串转成4个字符串，3 * 8 &#x3D; 4*6，因此叫base64</strong>  </p>
+<p>3、hashlib摘要算法库，md5,SHA1。md5结果是128bit,SHA1结果是160bit</p>
+<pre><code>import hashlib	
+md5 = hashlib.md5()	
+md5.update(  hello world )	
+md5.update( hdhhd )	
+print md5.hexdigest()
+</code></pre>
+<p>SHA1与md5的调用 一样将上述代码改成SHA1即可  </p>
+<h2 id="2、python进阶"><a href="#2、python进阶" class="headerlink" title="2、python进阶"></a>2、python进阶</h2><h3 id="2-1、Range与XRange的区别"><a href="#2-1、Range与XRange的区别" class="headerlink" title="2.1、Range与XRange的区别"></a>2.1、Range与XRange的区别</h3><p>在 Range的方法中，它会生成一个<strong>list</strong>的对象，但是在XRange中，它生成的却是一个<strong>xrange的对象</strong>，当返回的东西不是很大的时候，或者在一个 循环里，基本上都是从头查到底的情况下，这两个方法的效率差不多。但是，当返回的东西很大，或者循环中常常会被Break出来的话，还是建议使用 XRange，这样既省空间，又会提高效率。</p>
+<h3 id="2-2、ArgumentParser处理数组传入"><a href="#2-2、ArgumentParser处理数组传入" class="headerlink" title="2.2、ArgumentParser处理数组传入"></a>2.2、ArgumentParser处理数组传入</h3><ul>
+<li>nargs说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">nargs &#x3D;’+’</td>
+<td align="left">输入至少一个参数</td>
+</tr>
+<tr>
+<td align="left">nargs &#x3D; ‘*’</td>
+<td align="left">输入零个或多个参数</td>
+</tr>
+</tbody></table>
+<p>例如：</p>
+<pre><code>ap = argparse.ArgumentParser()
+ap.add_argument(&#39;-p&#39;,&#39;--plugins&#39;,required = True, nargs = &#39;+&#39;, help = &#39;the channel which you will test&#39;)
+</code></pre>
+<h3 id="2-3、ConfigParser"><a href="#2-3、ConfigParser" class="headerlink" title="2.3、ConfigParser"></a>2.3、ConfigParser</h3><p>在python开发中经常会遇到配置化问题，也就是将配置写在一个xxxx.conf文件，然后程序根据配置文件做相应的事情。那配置化文件长什么样？又需要怎么样解析？本节<code>ConfigParser</code>就是来做这样的事情的。首先，给出一个配置文件示例：   </p>
+<pre><code>	[IMSDKLoginFacebook]
+	bundleid = com.tencent.imsdk2
+	systemlibs = [&quot;CoreTelephony.framework&quot;,&quot;CoreLocation.framework&quot;]
+	buildsettings = {&quot;OTHER_LDFLAGS&quot;:&quot;-ObjC&quot;, &quot;ENABLE_BITCODE&quot;:&quot;NO&quot;}
+	xctestfiles = [&quot;DemoFacebookLoginTests.mm&quot;]
+	thirdsdks = [&quot;/IMSDK/Demo/IMSDK/Third/Facebook&quot;]
+	resources = []
+	infoplist = {}
+	capabilites = {}
+</code></pre>
+<p>接下来就是要解析配置文件</p>
+<pre><code>	 cf = ConfigParser.ConfigParser()
+   	cf.read(&#39;sample.conf&#39;)  #先读取文件
+   
+</code></pre>
+<p>配置文件内容解析：section, option。<code>[IMSDKLoginFacebook]</code>称为section, <code>resources = []</code>称为option</p>
+<pre><code>	cf.has_section(&#39;section&#39;) # 判断是否有对应section
+	cf.add_section(&#39;section&#39;) # 添加section
+	cf.set(&#39;section&#39;,&#39;option&#39;,&#39;[]&#39;) #设置section/option
+	cf.get(&#39;section&#39;，‘option’) #获取section/option
+	
+</code></pre>
+<p><strong>注意，配置文件都是处理结果都字符串，要想处理其它类型数据可以考虑通过json转换</strong></p>
+<h2 id="3、python实战"><a href="#3、python实战" class="headerlink" title="3、python实战"></a>3、python实战</h2><h3 id="3-1、python制作gif，然后可以在ppt导入"><a href="#3-1、python制作gif，然后可以在ppt导入" class="headerlink" title="3.1、python制作gif，然后可以在ppt导入"></a>3.1、<a target="_blank" rel="noopener" href="http://python.jobbole.com/81185/">python制作gif</a>，然后可以在ppt导入</h3><h3 id="3-2、Tkinter-UI"><a href="#3-2、Tkinter-UI" class="headerlink" title="3.2、Tkinter UI"></a>3.2、Tkinter UI</h3><p>1、动态更新UI，使用<code>config</code>   </p>
+<pre><code>root = Tk()
+btn = Button(root,text =&#39;test&#39;)
+btn.pack()
+btn.config(state = &#39;disabled&#39;）
+</code></pre>
+<p>关于布局有三种，pack,grid,place<a target="_blank" rel="noopener" href="http://www.tutorialspoint.com/python/tk_pack.htm">参考</a>   </p>
+<h2 id="4、opencv-python"><a href="#4、opencv-python" class="headerlink" title="4、opencv python"></a>4、opencv python</h2><h3 id="4-1、反转黑白图片"><a href="#4-1、反转黑白图片" class="headerlink" title="4.1、反转黑白图片"></a>4.1、反转黑白图片</h3><pre><code>thresh = cv2.thrsehold(image,122,255,cv2.THRESH_BINARY_INV)[1]
+</code></pre>
+<h3 id="4-2、python进行条形码检测"><a href="#4-2、python进行条形码检测" class="headerlink" title="4.2、python进行条形码检测"></a>4.2、<a target="_blank" rel="noopener" href="http://python.jobbole.com/81130/">python进行条形码检测</a></h3><h3 id="4-3、cv2-crop图片"><a href="#4-3、cv2-crop图片" class="headerlink" title="4.3、cv2  crop图片"></a>4.3、cv2  crop图片</h3><pre><code>img = image[y:y+h,x:x+w]
+</code></pre>
+<h3 id="4-4、由文本生成图片，参考"><a href="#4-4、由文本生成图片，参考" class="headerlink" title="4.4、由文本生成图片，参考"></a>4.4、由文本生成图片，<a target="_blank" rel="noopener" href="http://python.jobbole.com/81983/">参考</a></h3><h3 id="4-5、图片生成汉字库，关于怎么样将汉字切片可以参考"><a href="#4-5、图片生成汉字库，关于怎么样将汉字切片可以参考" class="headerlink" title="4.5、图片生成汉字库，关于怎么样将汉字切片可以参考"></a>4.5、图片生成汉字库，关于怎么样将汉字切片可以<a target="_blank" rel="noopener" href="http://python.jobbole.com/81985/">参考</a></h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/03/21/Python-Dev/" data-id="cuidB_Vsm7ijQlwSU4pFtoEnr" data-title="Python Dev" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/" rel="tag">Dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          设计模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/19/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E5%A4%A7%E5%85%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">学习资源大全</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Lua/">Lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">学习资源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/" rel="tag">C&#x2F;C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/" rel="tag">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" rel="tag">使用手册</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" rel="tag">学习资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Dev/" style="font-size: 20px;">Dev</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/iOS/" style="font-size: 16.67px;">iOS</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" style="font-size: 13.33px;">使用手册</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" style="font-size: 10px;">学习资源</a> <a href="/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 10px;">网页</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/01/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/01/Android-Dev/">Android Dev</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/25/C-C-C-%E5%AF%BC%E5%85%A5lua%E6%B5%85%E6%9E%90/">C/C++/C#导入lua浅析</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/10/Lua%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Lua学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/27/Unity-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Unity 学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

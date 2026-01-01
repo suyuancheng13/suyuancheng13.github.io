@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>C/C++/C#导入lua浅析 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="C&#x2F;C++&#x2F;C#导入Lua浅入浅出一、C函数导入Lua因为Lua虚拟机就是C编写的，C函数导入Lua通过Lua C API就可以完成，相对还是比较简单。需要掌握的知识点就是Lua栈及Lua C API：    Lua栈可以类比于计算机的内存   Lua C API类似于汇编语言，Lua C API可以操纵Lua栈，通过操纵Lua栈可以达到与Lua交互的目的。Lua C API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&#x2F;C++&#x2F;C#导入lua浅析">
+<meta property="og:url" content="http://example.com/2018/10/25/C-C-C-%E5%AF%BC%E5%85%A5lua%E6%B5%85%E6%9E%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="C&#x2F;C++&#x2F;C#导入Lua浅入浅出一、C函数导入Lua因为Lua虚拟机就是C编写的，C函数导入Lua通过Lua C API就可以完成，相对还是比较简单。需要掌握的知识点就是Lua栈及Lua C API：    Lua栈可以类比于计算机的内存   Lua C API类似于汇编语言，Lua C API可以操纵Lua栈，通过操纵Lua栈可以达到与Lua交互的目的。Lua C API">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/cr.png">
+<meta property="og:image" content="http://example.com/img/cppr.png">
+<meta property="og:image" content="http://example.com/img/csr.png">
+<meta property="article:published_time" content="2018-10-25T06:32:58.000Z">
+<meta property="article:modified_time" content="2026-01-01T09:27:55.821Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/cr.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-C-C-C-导入lua浅析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/10/25/C-C-C-%E5%AF%BC%E5%85%A5lua%E6%B5%85%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2018-10-25T06:32:58.000Z" itemprop="datePublished">2018-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      C/C++/C#导入lua浅析
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="C-C-C-导入Lua浅入浅出"><a href="#C-C-C-导入Lua浅入浅出" class="headerlink" title="C&#x2F;C++&#x2F;C#导入Lua浅入浅出"></a>C&#x2F;C++&#x2F;C#导入Lua浅入浅出</h1><h2 id="一、C函数导入Lua"><a href="#一、C函数导入Lua" class="headerlink" title="一、C函数导入Lua"></a>一、C函数导入Lua</h2><p>因为Lua虚拟机就是C编写的，C函数导入Lua通过Lua C API就可以完成，相对还是比较简单。需要掌握的知识点就是Lua栈及Lua C API：  </p>
+<ul>
+<li>Lua栈可以类比于计算机的内存  </li>
+<li>Lua C API类似于汇编语言，Lua C API可以操纵Lua栈，通过操纵Lua栈可以达到与Lua交互的目的。<a target="_blank" rel="noopener" href="https://cloudwu.github.io/lua53doc/manual.html">Lua C API 参考</a></li>
+</ul>
+<h3 id="1-1-实例"><a href="#1-1-实例" class="headerlink" title="1.1 实例"></a>1.1 实例</h3><p><code>lua_tonumber </code>表示从Lua栈指定<code>index</code>处取参数，<code>lua_pushnumber</code>表示把number压入栈顶。<code>Add</code>函数本质就是从Lua栈上取两个参数然后再将两个参数的计算结果压入Lua栈供Lua获取。   </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int MyAdd(lua_State* l) </span><br><span class="line">&#123;</span><br><span class="line">	int n = lua_tonumber(l,-1);</span><br><span class="line">	int n2 = lua_tonumber(l,-2);</span><br><span class="line">	int ret = n + n2;</span><br><span class="line">	lua_pushnumber(l,ret);</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面定义了一个C函数<code>MyAdd</code>，接下来要做的事情就是将C函数导入Lua，<code>lua_register</code>（还有其它相关API）就可以将C函数注册到Lua中，<code>luaL_dostring </code>执行段Lua代码。   </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int main(int argc, _TCHAR* argv[])</span><br><span class="line">&#123;</span><br><span class="line">	lua_State *l = luaL_newstate();</span><br><span class="line">	luaL_openlibs(l);</span><br><span class="line">	lua_register(l,&quot;MyAdd&quot;,MyAdd);</span><br><span class="line">	//执行lua代码</span><br><span class="line">	luaL_dostring(l,&quot;print(\&quot;MyAdd result is:\&quot;);print(MyAdd(100,200))&quot;);   </span><br><span class="line">&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/cr.png" alt="img">    </p>
+<h2 id="二、C-导入Lua"><a href="#二、C-导入Lua" class="headerlink" title="二、C++导入Lua"></a>二、C++导入Lua</h2><p>上文已经简单了解了C函数导入Lua的原理，C++类的方法的导入可以通过C函数Wrapper C++的方法，然后再将C函数导入Lua。但是需要注意的是怎么样在Lua访问C++的对象，一般可以通过<code>userdata</code>存储C++对象的指针，然后访问时从<code>userdata</code>中取。<br>一般将C++类导入Lua里分为三步：  </p>
+<ul>
+<li>首先，创建一个<code>userdata</code> 存放 C++ 对象指针    </li>
+<li>然后给 <code>userdata</code> 添加元表</li>
+<li>用 <code>__index</code> 元方法映射 C++ 中的方法。</li>
+</ul>
+<h3 id="2-1-实例"><a href="#2-1-实例" class="headerlink" title="2.1 实例"></a>2.1 实例</h3><h4 id="1、-准备将要导入Lua的自定义C-Account类"><a href="#1、-准备将要导入Lua的自定义C-Account类" class="headerlink" title="1、 准备将要导入Lua的自定义C++ Account类"></a>1、 准备将要导入Lua的自定义C++ <code>Account</code>类</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Account &#123;</span><br><span class="line">public: </span><br><span class="line">	Account(double balance)&#123; m_balance = balance;&#125;</span><br><span class="line">	void deposit(double amount)&#123;m_balance += amount;&#125;</span><br><span class="line">	void withdraw(double amount)&#123;m_balance -= amount;&#125;</span><br><span class="line">	double balance()&#123;return m_balance;&#125;</span><br><span class="line">private:</span><br><span class="line">	double m_balance;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、-“构造”函数"><a href="#2、-“构造”函数" class="headerlink" title="2、 “构造”函数"></a>2、 “构造”函数</h4><p>通过<code>lua_newuserdata </code>创建一个<code>userdata</code>，并将<code>Account</code>对象的指针存储于<code>userdata</code>。然后，通过<code>lua_setmetatable </code>给<code>userdata</code>设置元表（元表会在注册时创建，见下文）。<br>至于为什么需要给<code>userdata</code>关联元表，因为<code>userdata</code>只是一个指针而已没有任何方法，所以需要设置一个元表（元表也是一个table）。 lua的查找路径：</p>
+<ol>
+<li>在当前的表中查找，如果找到，返回该元素，找不到则继续2。</li>
+<li>判断该表是否有元表，如果没有元表，返回nil，有元表则继续3 。</li>
+<li>判断元表有没有 <code>__index</code>，如果<code>__index</code>方法为nil，则返回nil；如果<code>__index</code>的值是一个table，则重复1、2、3；如果<code>__index</code>的值是一个function，则返回该函数的返回值。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int create_account(lua_State *L)</span><br><span class="line">&#123;</span><br><span class="line">	</span><br><span class="line">	double balance = luaL_checknumber(L,1);</span><br><span class="line">	Account **a = (Account**)lua_newuserdata(L,sizeof(Account));</span><br><span class="line">	*a = new Account(balance);</span><br><span class="line">	printf(&quot;construct! balance is: %lf\n&quot;,balance);</span><br><span class="line">	luaL_getmetatable(L,&quot;Account&quot;);</span><br><span class="line">	lua_setmetatable(L,-2);//将userdata与Account metatable关联起来</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、-C-类Account的方法映射到C函数"><a href="#3、-C-类Account的方法映射到C函数" class="headerlink" title="3、 C++ 类Account的方法映射到C函数"></a>3、 C++ 类<code>Account</code>的方法映射到C函数</h4><p>每一个函数原理都基本一致：   </p>
+<ul>
+<li>首先，从Lua栈顶获取<code>userdata</code>   </li>
+<li>取<code>userdata</code>保存的C++对象的指针   </li>
+<li>最后，对过C++对象指针访问对应方法</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Account* checkaccount(lua_State *L, int narg)</span><br><span class="line">&#123;</span><br><span class="line">	luaL_checktype(L,narg, LUA_TUSERDATA);</span><br><span class="line">	void *ud = luaL_checkudata(L,narg,&quot;Account&quot;);</span><br><span class="line">	luaL_argcheck(L,ud!= NULL,1,&quot;user data error&quot;);</span><br><span class="line">	return *(Account**)ud;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int deposit(lua_State *L)</span><br><span class="line">&#123;</span><br><span class="line">	Account *a = checkaccount(L,1);//(Account**)lua_touserdata(L,1);</span><br><span class="line">	double amount = luaL_checknumber(L,-1);</span><br><span class="line">	(a)-&gt;deposit(amount);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">int withdraw(lua_State *L)</span><br><span class="line">&#123;</span><br><span class="line">	Account *a = checkaccount(L,1);//(Account**)lua_touserdata(L,1);</span><br><span class="line">	double amount = luaL_checknumber(L,-1);</span><br><span class="line">	(a)-&gt;withdraw(amount);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">int balance(lua_State *L)</span><br><span class="line">&#123;</span><br><span class="line">	Account *a = checkaccount(L,1);//(Account**)lua_touserdata(L,1);</span><br><span class="line">	double balance = (a)-&gt;balance();</span><br><span class="line">	printf(&quot;balance is: %lf\n&quot;,balance);</span><br><span class="line">	lua_pushnumber(L,balance);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、注册"><a href="#4、注册" class="headerlink" title="4、注册"></a>4、注册</h4><ul>
+<li>创建一个<code>metatable</code> <code>Account</code>，<code>Account</code>将会关联到存储C++对象的<code>userdata</code></li>
+<li>将第三步的C函数注册到<code>Account</code>表</li>
+<li>注册一个<code>Account</code>全局函数，可以理解为在Lua中的一个构造函数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">static const luaL_Reg methods[]= &#123;</span><br><span class="line">	//&#123;&quot;Account&quot;,create_account&#125;,</span><br><span class="line">	&#123;&quot;deposit&quot;,deposit&#125;,</span><br><span class="line">	&#123;&quot;withdraw&quot;,withdraw&#125;,</span><br><span class="line">	&#123;&quot;balance&quot;,balance&#125;,</span><br><span class="line">	&#123;NULL,NULL&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int luaopen_Account(lua_State *L)</span><br><span class="line">&#123;</span><br><span class="line">	luaL_newmetatable(L,&quot;Account&quot;);</span><br><span class="line">	lua_pushvalue(L,-1);</span><br><span class="line">	lua_setfield(L,-2,&quot;__index&quot;);//Account.__index = Account</span><br><span class="line">	luaL_setfuncs(L,methods,0);//register the methods to the table that is on the top</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static const luaL_Reg libs [] = &#123;&quot;Account&quot;,luaopen_Account&#125;,&#123;NULL,NULL&#125;;</span><br><span class="line">void Register(lua_State* L)</span><br><span class="line">&#123;</span><br><span class="line">	const luaL_Reg *lib = libs;</span><br><span class="line">	for (;lib-&gt;func; lib++) </span><br><span class="line">	&#123;</span><br><span class="line">		luaL_requiref(L, lib-&gt;name, lib-&gt;func, 1);</span><br><span class="line">		lua_pop(L, 1);  /* remove lib */</span><br><span class="line">	&#125;</span><br><span class="line">	lua_register(L,&quot;Account&quot;,create_account);</span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
+
+<h4 id="5、test-lua"><a href="#5、test-lua" class="headerlink" title="5、test.lua"></a>5、test.lua</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;start&quot;);</span><br><span class="line">local a  = Account(100);</span><br><span class="line">print(a);</span><br><span class="line">print(a:balance());</span><br><span class="line">a:deposit(399);</span><br><span class="line">print(&quot;start&quot;);</span><br><span class="line">print(a:balance());</span><br><span class="line">print(&quot;end&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/cppr.png" alt="img">    </p>
+<h2 id="三、C-类导入Lua"><a href="#三、C-类导入Lua" class="headerlink" title="三、C#类导入Lua"></a>三、C#类导入Lua</h2><p>C# 单个函数导入Lua比较简单与 C 导入Lua基本一致，此处就不赘述。C#类的导入则与C++差不多，但是怎么将C#对象存储于<code>userdata</code>是一个问题。有两种方案处理这个问题（仅本人所知）：</p>
+<ul>
+<li>C# 对象可以通过<code>Marshal.StructureToPtr</code>转为<code>IntPtr</code>的指针，但是要求类添加<code>[StructLayout(LayoutKind.Sequential)]</code>标记，如此如果要导出一些非自定义类可能比较麻烦。   </li>
+<li>另一个方法，将一个<code>int</code>存储于<code>userdata</code>，并以<code>int</code>做key C#对象为value缓存于C#字典中，对于<code>userdata</code>的其它操作与C++一致。当lua调用该对象时，通过<code>Marshal.ReadInt32</code>函数，将返回的<code>userdata</code>转为一个<code>int</code>的key从C#对象字典中取出实际对象即可。</li>
+</ul>
+<p>接下来就方法二进行一下了解。</p>
+<h3 id="3-1-实例"><a href="#3-1-实例" class="headerlink" title="3.1 实例"></a>3.1 实例</h3><p>说明：</p>
+<ul>
+<li>将Lua虚拟机制作为Dll，并添加到Unity工程，本文直接使用的Slua来测试的</li>
+<li>本文环境为Unity</li>
+</ul>
+<h4 id="1、将要导入Lua的C-类LuaTestDemo"><a href="#1、将要导入Lua的C-类LuaTestDemo" class="headerlink" title="1、将要导入Lua的C#类LuaTestDemo"></a>1、将要导入Lua的C#类<code>LuaTestDemo</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class LuaTestDemo:System.Object</span><br><span class="line">&#123;</span><br><span class="line">    public double Add(double a, double b)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;lua call the Add function!!&quot;);</span><br><span class="line">        double ret = a + b;</span><br><span class="line">        Debug.Log(&quot;==========: &quot;+ret);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、“构造”函数"><a href="#2、“构造”函数" class="headerlink" title="2、“构造”函数"></a>2、“构造”函数</h4><p>与C++处理流程基本一致，<strong>需要注意的是<code>userdata</code>的值是<code>100</code>，并将<code>LuaTestDemo</code>的实例做为<code>100</code>的value存入<code>Dictionary</code></strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]</span><br><span class="line"> public static int CreateLuaTestDemo(IntPtr l)</span><br><span class="line"> &#123;</span><br><span class="line">      Debug.Log(&quot;lua call the CreateLuaTestDemo function!!&quot;);</span><br><span class="line">      LuaDLL.luaS_newuserdata(l,100);//userdata is 100</span><br><span class="line">      LuaTestDemo o = new LuaTestDemo();</span><br><span class="line">      cache.Add(100,o);//map object to userdata</span><br><span class="line">      LuaDLL.puaL_getmetatable(l, &quot;LuaTestDemo&quot;);//connect the userdata to LuaTestDemo metatable</span><br><span class="line">      LuaDLL.pua_setmetatable(l, -2);</span><br><span class="line">      return 1;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、Wrapper"><a href="#3、Wrapper" class="headerlink" title="3、Wrapper."></a>3、Wrapper.</h4><p>与C++一致，<strong>需要注意的<code>userdata</code>获取的是一个<code>int</code>，并以<code>int</code>为key获取C#对象，然后访问对应方法;</strong>     <strong>通过[MonoPInvokeCallbackAttribute]标签让C语言可以直接调用C#函数</strong>    </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">static LuaTestDemo checkuserdata(IntPtr l)</span><br><span class="line">      &#123;</span><br><span class="line">          LuaDLL.puaL_checktype(l,1,LuaTypes.LUA_TUSERDATA);</span><br><span class="line">          IntPtr userdata = LuaDLL.puaL_checkudata(l, 1, &quot;LuaTestDemo&quot;);</span><br><span class="line">          int index = Marshal.ReadInt32(userdata);</span><br><span class="line">          Debug.Log(&quot;userdata is: &quot; + index);</span><br><span class="line">          LuaTestDemo o = cache[index];</span><br><span class="line">          return o;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]</span><br><span class="line">      static public int AddWrapper(IntPtr l)</span><br><span class="line">      &#123;</span><br><span class="line">          Debug.Log(&quot;lua call the AddWrapper function!!&quot;);</span><br><span class="line">          LuaTestDemo o = checkuserdata(l);</span><br><span class="line">          double a = LuaDLL.pua_tonumber(l, -1);</span><br><span class="line">          double b = LuaDLL.pua_tonumber(l, -2);</span><br><span class="line">          double ret = o.Add(a,b);</span><br><span class="line">          LuaDLL.pua_pushnumber(l, ret);</span><br><span class="line">          return 1;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+
+<h4 id="4、注册-1"><a href="#4、注册-1" class="headerlink" title="4、注册"></a>4、注册</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    public static void Reg(IntPtr l)</span><br><span class="line">    &#123;</span><br><span class="line">        LuaDLL.puaL_newmetatable(l, &quot;LuaTestDemo&quot;);</span><br><span class="line">        LuaDLL.pua_pushvalue(l,-1);</span><br><span class="line">        LuaDLL.pua_setfield(l,-2,&quot;__index&quot;);//LuaTestDemo.__index = LuaTestDemo</span><br><span class="line">        LuaDLL.pua_pushcclosure(l, AddWrapper, 0);</span><br><span class="line">        LuaDLL.pua_setfield(l,-2,&quot;Add&quot;);</span><br><span class="line">        LuaDLL.pua_pop(l,1);</span><br><span class="line">        </span><br><span class="line">        LuaDLL.pua_pushcclosure(l, CreateLuaTestDemo , 0);</span><br><span class="line">        LuaDLL.pua_setglobal(l, &quot;LuaTestDemo&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5、测试"><a href="#5、测试" class="headerlink" title="5、测试"></a>5、测试</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">IntPtr l = LuaDLL.puaL_newstate();</span><br><span class="line">		LuaTestDemoWrapper.Reg(l);</span><br><span class="line">		string lua = &quot;&quot; +</span><br><span class="line">		             &quot;local d = LuaTestDemo();&quot; +</span><br><span class="line">		             &quot;local ret = d:Add(100,500);&quot; +</span><br><span class="line">		             &quot;local ret2 = d:Add(1000,5000);&quot; +</span><br><span class="line">		             &quot;print(\&quot;ret is:\&quot;..ret..\&quot;   \&quot;..ret2);&quot; +</span><br><span class="line">		             &quot;&quot;;</span><br><span class="line">		LuaDLL.pua_dostring(l,lua);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/csr.png" alt="img">    </p>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><ul>
+<li>上文仅是一个入门的学习，没有涉及到内存的管理，内存的管理应该是比较核心的。</li>
+<li>C&#x2F;C++&#x2F;C#导入Lua的本质可以简单理解为，宿主程序通过Lua栈从Lua获取参数，然后宿主程序将计算结果压入Lua栈供Lua读取</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/10/25/C-C-C-%E5%AF%BC%E5%85%A5lua%E6%B5%85%E6%9E%90/" data-id="cuid6Q_0qgT6YzuMf2drCZJtT" data-title="C/C++/C#导入lua浅析" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/01/Android-Dev/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android Dev
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/10/Lua%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lua学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Lua/">Lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">学习资源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/" rel="tag">C&#x2F;C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/" rel="tag">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" rel="tag">使用手册</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" rel="tag">学习资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Dev/" style="font-size: 20px;">Dev</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/iOS/" style="font-size: 16.67px;">iOS</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" style="font-size: 13.33px;">使用手册</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" style="font-size: 10px;">学习资源</a> <a href="/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 10px;">网页</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/01/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/01/Android-Dev/">Android Dev</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/25/C-C-C-%E5%AF%BC%E5%85%A5lua%E6%B5%85%E6%9E%90/">C/C++/C#导入lua浅析</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/10/Lua%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Lua学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/27/Unity-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Unity 学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

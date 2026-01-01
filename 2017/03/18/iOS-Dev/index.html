@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>iOS Dev | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="iOS 学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS Dev">
+<meta property="og:url" content="http://example.com/2017/03/18/iOS-Dev/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="iOS 学习笔记">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-03-18T03:08:00.000Z">
+<meta property="article:modified_time" content="2026-01-01T09:27:55.822Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Dev">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-iOS-Dev" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/03/18/iOS-Dev/" class="article-date">
+  <time class="dt-published" datetime="2017-03-18T03:08:00.000Z" itemprop="datePublished">2017-03-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      iOS Dev
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>iOS 学习笔记</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="一、iOS基础知识"><a href="#一、iOS基础知识" class="headerlink" title="一、iOS基础知识"></a>一、iOS基础知识</h2><h3 id="1、语法"><a href="#1、语法" class="headerlink" title="1、语法"></a>1、语法</h3><p>1、类方法里是不可以调用普通方法的。</p>
+<p>2、<code>extension</code>与<code>catogry</code>的区别就是括号中有没有名字。另外<code>catogry</code>只可以增加方法不能增加属性，<code>extension</code>是可以增加属性的   </p>
+<p>3、<code>self</code>的赋值一定要在<code>initxxx</code>系列函数里调用，不能在别的函数里调用，<code>initialxxx</code>都不行</p>
+<h3 id="2、关于在一个工程中添加自定义framework"><a href="#2、关于在一个工程中添加自定义framework" class="headerlink" title="2、关于在一个工程中添加自定义framework"></a>2、关于在一个工程中添加自定义framework</h3><p>1、添加方式：File-&gt;New-&gt;Target-&gt;Cocoa Touch Framework<br>2、真机测试时可会出现dyld:Library no loaded:….<br><strong>解决方法</strong>：在app对应的Target-&gt;General-&gt;Embedded Binaries 添加自定义framwork</p>
+<h3 id="3、Framework-命令行编译"><a href="#3、Framework-命令行编译" class="headerlink" title="3、Framework 命令行编译"></a>3、Framework 命令行编译</h3><p>利用xcode tools<a target="_blank" rel="noopener" href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">参考</a>,命令如下：</p>
+<blockquote>
+<p>xcodebuild clean build -project &#x2F;Users&#x2F;yuanchengsu&#x2F;Desktop&#x2F;iMSDK&#x2F;iMSDK&#x2F;iOS&#x2F;IMSDK&#x2F;IMSDK.xcodeproj<br>-target IMSDKCoreKit -configuration Release  -xcconfig &#x2F;Users&#x2F;yuanchengsu&#x2F;Desktop&#x2F;iMSDK&#x2F;iMSDK&#x2F;iOS&#x2F;IMSDK&#x2F;Demo&#x2F;Configurations&#x2F;IMSDKGNU++98.xcconfig -sdk iphoneos9.1</p>
+</blockquote>
+<h3 id="4-KVO"><a href="#4-KVO" class="headerlink" title="4.KVO"></a>4.<a target="_blank" rel="noopener" href="https://www.mikeash.com/pyblog/friday-qa-2009-01-23.html">KVO</a></h3><h3 id="5-ios-https"><a href="#5-ios-https" class="headerlink" title="5.ios https"></a>5.<a target="_blank" rel="noopener" href="http://io.diveinedu.com/2016/01/09/iOS%E5%BA%94%E7%94%A8%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8BHTTPS.html">ios https</a></h3><h3 id="6-runloop"><a href="#6-runloop" class="headerlink" title="6.runloop"></a>6.runloop</h3><p>runloop只有在开启第二个线程的时候才考虑使用runloop，而且也并非所有的线程需要runloop</p>
+<ul>
+<li><p>使用runloop的情况    </p>
+<ul>
+<li>use ports or custom input sources to communicate with other threads</li>
+<li>use timers on the thread</li>
+<li>use any of the <code>performSelector...</code></li>
+<li>keep the thread around of perform periodic tasks</li>
+</ul>
+</li>
+<li><p>performselector在后台执行时，必须开启一个runloop，否则调用不了     </p>
+</li>
+<li><p>runLoop有两套API，NSRunloop,CFRunLoopRef     </p>
+</li>
+<li><p>runLoop在获取时，就是创建</p>
+</li>
+<li><p>一个runloop有两个CFRunloopSource,source0:处理UIEvent，CFSocket,source1:mach port,CFMachPort,CFMessagePort;一种mode:default,tracking,common</p>
+</li>
+</ul>
+<h3 id="7-copy与retain"><a href="#7-copy与retain" class="headerlink" title="7.copy与retain"></a>7.copy与retain</h3><ul>
+<li>copy是指拷贝内容    </li>
+<li>retain是指拷贝指针     </li>
+<li>copy需要对象遵守NSCopying协议的    </li>
+<li></li>
+</ul>
+<h3 id="8-关于xcode查看汇编的方法"><a href="#8-关于xcode查看汇编的方法" class="headerlink" title="8.关于xcode查看汇编的方法"></a>8.关于xcode查看汇编的方法</h3><ul>
+<li>xcode 7.x: Debug &#x3D;&#x3D;&gt; Debug Workflow &#x3D;&#x3D;&gt; Show Disassembly when Debugging     </li>
+<li>xocde 7.x之前： Product &#x3D;&#x3D;&gt; Debug Workflow &#x3D;&#x3D;&gt; Show Disassembly when Debugging</li>
+</ul>
+<h3 id="9-oc严格单例"><a href="#9-oc严格单例" class="headerlink" title="9.oc严格单例"></a>9.oc严格单例</h3><p>创建对象的步骤分为申请内存(alloc)、初始化(init)这两个步骤，我们要确保对象的唯一性，因此在第一步这个阶段我们就要拦截它。当我们调用alloc方法时，oc内部会调用allocWithZone这个方法来申请内存，我们覆写这个方法，然后在这个方法中调用shareInstance方法返回单例对象，这样就可以达到我们的目的。拷贝对象也是同样的原理，覆写copyWithZone方法，然后在这个方法中调用shareInstance方法返回单例对象。看代码吧：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	+(instancetype) sharedInstance</span><br><span class="line">	&#123;</span><br><span class="line">	    static IMSDKLocalLog *_instance = nil;</span><br><span class="line">	    static dispatch_once_t onceToken ;</span><br><span class="line">	    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">	        _instance = [[super allocWithZone:NULL] initSingleton];// 继承可能有问题</span><br><span class="line">	    &#125;) ;</span><br><span class="line">	    </span><br><span class="line">	    return _instance ;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	+(id) allocWithZone:(struct _NSZone *)zone</span><br><span class="line">	&#123;</span><br><span class="line">	    return [IMSDKLocalLog sharedInstance];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	- (id) copyWithZone:(NSZone *)zone</span><br><span class="line">	&#123;</span><br><span class="line">	    return [IMSDKLocalLog sharedInstance];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	- (id) mutablecopyWithZone:(NSZone *)zone</span><br><span class="line">	&#123;</span><br><span class="line">	    return [IMSDKLocalLog sharedInstance];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	- (instancetype)initSingleton &#123;</span><br><span class="line">	    self = [super init];</span><br><span class="line">	    if (self) &#123;        //TODO</span><br><span class="line">	        _logfile = @&quot;&quot;;</span><br><span class="line">	        _maxLogSize = 20*1024*1024;</span><br><span class="line">	        _maxFileSize = 512*1024;</span><br><span class="line">	        _retry = 3;</span><br><span class="line">	    &#125;</span><br><span class="line">	    return self;</span><br><span class="line">	&#125; </span><br><span class="line">```    </span><br><span class="line">### 10、xcode 切换/build</span><br><span class="line">1. xcodebuild -verison   (查看你的xcode版本)   </span><br><span class="line">2. sudo xcode-select -switch xcode path , 例如：&lt;/Applications/Xcode8.0.app/Contents/Developer  &gt; (如果需要切换)    </span><br><span class="line">3. xcodebuild -target &#123;你的工程名字&#125;    </span><br><span class="line"></span><br><span class="line">### 11、关于`[NSString UTF8String]`返回null的问题</span><br><span class="line">+ 首先，在使用UTF8String时要做好保护，因为其返回是可能为空的只是概率不高；</span><br><span class="line">+ 返回null的一种可能情况：    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>NSString *ns &#x3D; @”sdfhsdjf % C dsfsd”;<br>const char *s &#x3D; [ns UTF8String];   </p>
+<pre><code>
+**原因：在字符串中出现了`% C`占位符。占位符的意义是会将指定内存格式化，但是这里没有指定内存，另外`%C`会将指定内存转为UTF-16，这样ns字符串中概率性的会出现非UTF8字符，所以转UTF8String时是会出现null的**
+## 二、关于certificates 和provisioning proflies
+
+1、certificates：key(private key)
+
+2、provisioning profiles:(public key)
+
+ + appid(bundle identifier) 
+
+
+ + devices(uuid)
+
+
+ + certificates(private key)  
+
+3、.p12是证书导出保存的形式     
+4、wwdr证书失效会导致自己证书无效
+
+
+## 三、关于Clang 与LLVM  
+
+
+Clang 是一个 C++ 编写、基于 LLVM、发布于 LLVM BSD 许可证下的/C++/Objective C/Objective C++ 编译器。LLVM 是 Low Level Virtual Machine。具体介绍参考[clang and llvm]( http://objccn.io/issue-6-2/)
+
++ 命令clang -E 是用于宏定义展开  
+
+   
+
+## 四、反馈系统UI设计问题：
+
+
+
+
+
+1、toolbar的设计问题，当用storyboard进行布局的时候要做到适配效果子在UIbarbuttonItem之间加入flexispace才能做到适配。
+
+2、关于storyboard initialViewcontrollerwithIdentiy的问题，当view还没出现的时生成的对象的成员都会是空的，只有到显示的时候才会出现。解决要对其进行参数传递的时候要采用property方法或者利用dispatch_after方式来做
+
+3、关于ipad版本浮动窗口形式的问题。当在ipad版本下设置Modalpresentationstyle就可以达到这种效果
+4、关于storyboard的问题。一个app中可以有多个storyboard，通过instantiateviewcontrollerwithidentiter方式 来进行实例化。要注意的是storyboard要放到 mainbundle目录下
+5、消除返回按钮上的文字，利用self.naviagtionitem.backbuttonitem = [[uibarbuttom alloc ]initwithtitle:@&quot;&quot;] style:
+
+target:action];[参见]( http://www.cnblogs.com/ygm900/p/3659619.html )  
+
+## 五、关于isKindOfClass与isMemberOfClass的区别：
+
+1、isKindOfClass，是判断一个对象是属于哪个类~~ 型，一直追溯到父类~~ 。或者子类的实例
+
+2、isMemberClass，是判断一个对象属于哪个类~~ 型，不追溯到父类!~~ 。   
+## 六、Core Data编程
+1、core data 与sql的一些对应关系：
+
+| 功能 | sql |core data| 
+| -- | -- |--|  
+|表头|表结构,实体，entity|NSEntityDescription|   
+|表中的一行数据|记录|NSManagedObject| 
+|查询|查询,select ...|NSFetchRequest|   
+|持久化|表存储,。。。|NSPersistentStoreCoordinator|   
+|数据库的设计，也就是.xcodemodel文件|数据库模型,。。。|NSManagedObjectModel|   
+|操作上下文|数据库操作|NSManagedObjectContext|  
+[更详细的底层操作](http://objccn.io/issue-4-1/)       
+2、`NSManagedObjectContext`
+`NSManagedObjectContext`是程序员主要接触的一个类，也就是所有的操作基本上都通过它来操作的，底层是怎么实现的我们不需要去关心  
+3、`NSPersistentStoreCoordinator`
+`NSPersistentStoreCoordinator`才是最终的操作实现都是才是核心,[参考](http://objccn.io/issue-4-1)   
+4、[编程参考](http://iiiyu.com/2013/03/29/learning-ios-notes-eighteen/)
+## 七、关于异步加载问题
+1、`nsdata datawithcontentsofurl`是一个同步加载方法，因此要使用此方法要采用异步加载方法。可以适用于加载图片等；
+2、注意`AFNertworking success/failure block` invoked in main thread。如果 没有进行队列设置默认会返回到主线程去。 
+ 
+
+
+	if(sucess)
+	{
+	dispatch_group_async(self.completionGroup?:http_request_operation_completion_group(),self.completionQueue?:dispatch_get_main_queue(),^{});
+	}   
+     
+
+
+## 八、关于 strong,weak引用修饰符  
+
+1、strong相当于手动引用计数（manual reference count）中的retain，拥有对象直到对象释放。
+2、weak与strong刚好相反，weak并不持有对象，而且当对象释放时weak我修饰的对象会自动赋值为nil。例如：   
+
+
+
+	id _weak obj = [[NSObject alloc]init];//错误，weak不能持有对象	
+	id _weak oo = nil;
+	{
+	   id strong object = [[NSObject alloc]init];
+	   oo= object
+	   NSLog(@&quot;%@&quot;,oo)//此处对象是存在的
+	}
+     
+
+
+## 九、[关于draweRect消耗内存](http://bihongbo.com/2016/01/03/memoryGhostdrawRect/)  
+要想搞明白这个问题，我们需要撸一撸在`iOS`程序上图形显示的原理。在`iOS`系统中所有显示的视图都是从基类`UIView`继承而来的，同时`UIView`负责接收用户交互。**但是实际上你所看到的视图内容，包括图形等，都是由`UIView`的一个实例图层属性来绘制和渲染的，那就是`CALayer`。**
+**最终我们的图形渲染落点落在`contents`身上**![如图](http://7xkdhe.com1.z0.glb.clouddn.com/drawRect3.001.png)。
+`contents`也被称为寄宿图，除了给它赋值`CGImage`之外，我们也可以直接对它进行绘制，绘制的方法正是这次问题的关键，通过继承`UIView`并实现`-drawRect:`方法即可自定义绘制。`-drawRect:` 方法没有默认的实现，因为对`UIView`来说，寄宿图并不是必须的，`UIView`不关心绘制的内容。如果`UIView`检测到`-drawRect:`方法被调用了，它就会为视图分配一个寄宿图，这个寄宿图的像素尺寸等于视图大小乘以`contentsScale`(这个属性与屏幕分辨率有关，我们的画板程序在不同模拟器下呈现的内存用量不同也是因为它)的值。这也就是`-drawRect:`消耗内存的原因。
+
+**解决方案：**使用CAShapeLayer,另外与屏幕大小的画板可以算出消耗内存几M左右，可以接受   
+## 十、[关于设置圆角问题](http://www.cocoachina.com/ios/20160301/15486.html)  
+
+
+由于设置圆角发生离屏渲染，所以对    
+
+## 十一、[数据持久化]( http://casatwy.com/iosying-yong-jia-gou-tan-ben-di-chi-jiu-hua-fang-an-ji-dong-tai-bu-shu.html)
+
+1.使用 archive的对象需要实现&lt;NSCoding&gt;里的方法，关于NSCoder怎么使用参考如下 ：   
+
+
+
+	- (	void)encodeWithCoder:(NSCoder *	)aCoder {
+	    [aCoder encodeObject:self.firstName forKey:PERSON_KEY_FIRSTNAME];
+	    [aCoder encodeObject:self.lastName forKey:PERSON_KEY_LASTNAME];
+	    [aCoder encodeFloat:self.height forKey:PERSON_KEY_HEIGHT];
+	}
+	- (
+	id
+	)initWithCoder:(NSCoder *
+	)aDecoder {
+	    self 
+	=
+	 [super init];	    
+	if
+	 (self !=
+	 nil) {
+	        self.firstName 
+	=
+	 [aDecoder decodeObjectForKey:PERSON_KEY_FIRSTNAME];
+	        self.lastName 
+	=
+	 [aDecoder decodeObjectForKey:PERSON_KEY_LASTNAME];
+	        self.height 
+	=
+	 [aDecoder decodeFloatForKey:PERSON_KEY_HEIGHT];
+	    }	    
+	return
+	 self;
+	}
+   
+
+## 十二、离屏渲染  
+
+
+
+设置了以下属性时，都会触发离屏绘制：    
+
++ shouldRasterize（光栅化）  
++ masks（遮罩）    
++ shadows（阴影）   
++ edge antialiasing（抗锯齿）  
+
+
++ group opacity（不透明）   
+
+
++ 还有一种特殊的离屏渲染，`cpu`渲染，当我们使用drawRect时会触发
+
+
+
+
+
+
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/03/18/iOS-Dev/" data-id="cuidar7UpWygZSGVbrEuaVJ95" data-title="iOS Dev" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/" rel="tag">Dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/19/Blocks-in-iOS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Blocks in iOS
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Lua/">Lua</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">学习资源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/" rel="tag">C&#x2F;C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dev/" rel="tag">Dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" rel="tag">使用手册</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" rel="tag">学习资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/Dev/" style="font-size: 20px;">Dev</a> <a href="/tags/Lua/" style="font-size: 10px;">Lua</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/iOS/" style="font-size: 16.67px;">iOS</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" style="font-size: 13.33px;">使用手册</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" style="font-size: 10px;">学习资源</a> <a href="/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 10px;">网页</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/01/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/01/Android-Dev/">Android Dev</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/25/C-C-C-%E5%AF%BC%E5%85%A5lua%E6%B5%85%E6%9E%90/">C/C++/C#导入lua浅析</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/10/Lua%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Lua学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/27/Unity-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Unity 学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
